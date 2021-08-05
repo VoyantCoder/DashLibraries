@@ -108,13 +108,63 @@ namespace DashFramework
 		}
 	    }
 
-	    public void Integrate(Control Parent, Size BarSize, Point BarLoca, Color BarBColor, string TitleText, Color TitleFColor, TitleLocation TitleLoca, Icon Icon, IconLocation IconLoca)
+	    public void Integrate(Control Parent, Size BarSize, Point BarLoca, Color BarBColor, string TitleText, Color TitleFColor, TitleLocation TitleLoca, PictureBox Icon, IconLocation IconLoca)
 	    {
 		try
 		{
 		    Integrate(Parent, BarSize, BarLoca, BarBColor, TitleText, TitleFColor, TitleLoca);
 
-		    // Integrate Icon etc.
+		    int GetBottomY() => (Panel1.Height >= Icon.Height ? 0 : Panel1.Height - Icon.Height);
+		    Point IconPosition = new Point(-2, -2);
+
+		    switch (IconLoca)
+		    {
+			case IconLocation.Bottom:
+			{
+			    IconPosition.X = Icon1.Location.X;
+			    IconPosition.Y = GetBottomY();
+			    break;
+			}
+
+			case IconLocation.Right:
+			{
+			    IconPosition.X = Panel1.Width - Icon.Width;
+			    IconPosition.Y = Icon1.Location.Y;
+			    break;
+			}
+
+			case IconLocation.Left:
+			{
+			    IconPosition.Y = Icon1.Location.Y;
+			    IconPosition.X = 0;
+			    break;
+			}
+
+			case IconLocation.Top:
+			{
+			    IconPosition.X = Icon1.Location.X;
+			    IconPosition.Y = 0;
+			    break;
+			}
+
+			case IconLocation.BottomMiddle:
+			{
+			    IconPosition.Y = GetBottomY();
+			    break;
+			}
+
+			case IconLocation.TopMiddle:
+			{
+			    IconPosition.Y = 0;
+			    break;
+			}
+		    }
+
+		    Icon2.Location = new Point(IconPosition.X, Panel1.Height);
+		    Icon1.Location = IconPosition;
+
+		    Icon1.Update();
+		    Icon2.Update();
 		}
 
 		catch
