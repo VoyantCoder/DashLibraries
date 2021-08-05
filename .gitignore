@@ -1,0 +1,4 @@
+
+*.ide
+Framework/.vs/DashFramework/v15/.suo
+*.ide-wal
