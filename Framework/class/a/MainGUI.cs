@@ -4,6 +4,7 @@
 
 using System;
 using System.Drawing;
+using System.Windows.Forms;
 
 using DashFramework.DashControls.Customs;
 using DashFramework.DashControls;
@@ -19,7 +20,7 @@ namespace DashFramework
 	{
 	    try
 	    {
-
+		// test framework components here.
 	    }
 
 	    catch (Exception E)

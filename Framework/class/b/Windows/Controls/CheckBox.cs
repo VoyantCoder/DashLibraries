@@ -33,11 +33,11 @@ namespace DashFramework
 		//Color Presets:
 		public Color CheckBoxUncheckColor = Color.Black;
 		public Color CheckBoxCheckColor = Color.Gray;
-		public Color CheckBoxDefaultColor = Color.Black;
+		public Color CheckBoxDefaultColor = Color.Gray;
 
 		public Color MarkBoxUncheckedColor = Color.Navy;
 		public Color MarkBoxCheckedColor = Color.Green;
-		public Color MarkBoxDefaultColor = Color.Navy;
+		public Color MarkBoxDefaultColor = Color.DarkGray;
 
 		public void UpdateColor(Color[] CheckBox = null, Color[] MarkBox = null, bool UpdateNow = true, string Order = ("Unchecked, Checked, Default"))
 		{

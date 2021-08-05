@@ -1,0 +1,9 @@
+F:\Programming\DashFramework\Framework\app\FrameworkUpdate4.0.exe.config
+F:\Programming\DashFramework\Framework\app\FrameworkUpdate4.0.exe
+F:\Programming\DashFramework\Framework\app\FrameworkUpdate4.0.pdb
+F:\Programming\DashFramework\Framework\obj\Debug\DashFramework.csprojAssemblyReference.cache
+F:\Programming\DashFramework\Framework\obj\Debug\DashFramework.resources.Resources.resources
+F:\Programming\DashFramework\Framework\obj\Debug\DashFramework.csproj.GenerateResource.cache
+F:\Programming\DashFramework\Framework\obj\Debug\DashFramework.csproj.CoreCompileInputs.cache
+F:\Programming\DashFramework\Framework\obj\Debug\FrameworkUpdate4.0.exe
+F:\Programming\DashFramework\Framework\obj\Debug\FrameworkUpdate4.0.pdb

@@ -21,7 +21,7 @@ namespace DashFramework
 {
     namespace Forms
     {
-	public class DashWindow : Form
+	public class DashWindow : Form // Try to extend MenuBar instead.  Should be nicer to use. ;)
 	{
 	    readonly static Transformer Transform = new Transformer();
 	    readonly static DataTools DataTool = new DataTools();

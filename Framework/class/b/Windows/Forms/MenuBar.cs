@@ -22,195 +22,103 @@ namespace DashFramework
 {
     namespace Forms
     {
-	public class DashMenuBar
+	public enum TitleLocation { Top, Bottom, Right, Left, TopMiddle, BottomMiddle, Center }
+	public enum IconLocation { Top, Bottom, Right, Left, TopMiddle, BottomMiddle, Center }
+	public enum ButtonSet { Close, CloseMinimize, Custom }
+
+	public class MenuBar
 	{
-	    readonly ControlIntegrator Control = new ControlIntegrator();
-	    readonly Transformer Transform = new Transformer();
-	    readonly DataTools DataTool = new DataTools();
-	    readonly Apply Applies = new Apply();
+	    // button controls here, publicly.
+	    // add setting for add buttons.
+	    // setting method makes use of booleans.
 
+	    readonly DashPanel Panel1 = new DashPanel();
+	    readonly DashPanel Panel2 = new DashPanel();
 
-	    public class Values
-	    {
-		public readonly PictureBox LogoLayer1 = new PictureBox();
-		public readonly PictureBox LogoLayer2 = new PictureBox();
-		public readonly DashPanel Bar = new DashPanel();
-		public readonly Button Button1 = new Button();
-		public readonly Button Button2 = new Button();
-		public readonly Label Title = new Label();
-
-		public bool Minimize = false;
-		public bool Close = false;
-		public bool Hide = false;
-
-
-		public void setLogoBackColor(Color to)
-		{
-		    LogoLayer1.BackColor = Bar.BackColor;
-		    LogoLayer2.BackColor = to;
-		}
-
-
-		public Control.ControlCollection getControls() => Bar.Controls;
-		public Control getParent() => Bar.Parent;
-
-		public Color getBarColor() => Bar.BackColor;
-
-		public void setLocationOf(Control me, Point to) => me.Location = to;
-		public void setColorOf(Control me, Color to) => me.BackColor = to;
-		public void setBarBackColor(Color to) => Bar.BackColor = to;
-		public void setTitle(string to) => Title.Text = to;
-
-		public int parentHeight() => Bar.Parent.Height;
-		public int parentWidth() => Bar.Parent.Width;
-		public int Height() => Bar.Height;
-		public int Width() => Bar.Width;
-	    }
-
-
-	    public readonly Values values = new Values();
-
-	    public DashMenuBar(string title, bool minimizeButton, bool closeButton, bool hideDialog = true)
+	    public void Integrate(Control Parent, Size BarSize, Point BarLoca, Color BarBColor)
 	    {
 		try
 		{
-		    values.Minimize = minimizeButton;
-		    values.Close = closeButton;
-		    values.Hide = hideDialog;
-
-		    values.setTitle(title);
+		    // Bar Container, Bar
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
 
-	    public enum Heights { Light = 24, Medium = 26, Heavy = 28, Fat = 30 };
+	    readonly Label Label1 = new Label();
 
-	    public void AddMe(Control parent, Color barBCol, Color borderBCol, int barHeight = 26)
+	    public void Integrate(Control Parent, Size BarSize, Point BarLoca, Color BarBColor, string TitleText, Color TitleFColor, TitleLocation TitleLoca)
 	    {
 		try
 		{
-		    var MenuBarSize = new Size(parent.Width, barHeight);
-		    var MenuBarLoca = new Point(0, 0);
-		    var MenuBarBCol = barBCol;
+		    // Add enum values:  Left, Right, TopMiddle, BottomMiddle, Center same for icon
 
-		    Control.Panel(parent, values.Bar, MenuBarSize, MenuBarLoca, MenuBarBCol);
-		    Applies.ApplyDraggability(values.Bar, parent);
+		    Integrate(Parent, BarSize, BarLoca, BarBColor);
 
-		    var LogoSize = Resources.LOGO.Size;
-		    var LogoLoca = new Point(5, 2);
+		    // Integrate title etc.
+		}
 
-		    Control.Image(parent, values.LogoLayer2, LogoSize, LogoLoca, parent.BackColor, ObjectImage: Resources.LOGO);
-		    Control.Image(values.Bar, values.LogoLayer1, LogoSize, LogoLoca, barBCol, ObjectImage: Resources.LOGO);
+		catch
+		{
+		    throw;
+		}
+	    }
 
-		    Applies.ApplyDraggability(values.LogoLayer1, parent);
-		    Applies.ApplyDraggability(values.LogoLayer2, parent);
 
-		    var TitleSize = DataTool.GetFontSize(values.Title.Text, 9);
-		    var TitleLoca = new Point(LogoSize.Width + LogoLoca.X + 5, (MenuBarSize.Height - TitleSize.Height) / 2);
+	    readonly PictureBox Icon1 = new PictureBox();
+	    readonly PictureBox Icon2 = new PictureBox();
 
-		    Control.Label(values.Bar, values.Title, TitleSize, TitleLoca, barBCol, Color.White, values.Title.Text, 1, 9);
-		    Applies.ApplyDraggability(values.Title, parent);
-
-		    var ButtonSize = new Size(65, barHeight);
-		    var ButtonLoca = new Point(MenuBarSize.Width - ButtonSize.Width, 0);
-
-		    if (values.Close)
+	    public void UpdateIconLayers()
+	    {
+		try
+		{
+		    if (Icon2.Parent.BackColor.Equals(Icon2.BackColor))
 		    {
-			Control.Button(values.Bar, values.Button1, ButtonSize, ButtonLoca, barBCol, Color.White, 1, 10, "X");
-			Applies.ApplyDraggability(values.Button1, parent);
-
-			values.Button1.Click += (s, e) =>
+			if (Icon2.Parent != null)
 			{
-			    if (!values.Hide)
-			    {
-				Application.Exit();
-				Environment.Exit(0);
-			    }
-
-			    else
-			    {
-				parent.Hide();
-			    }
-			};
+			    Icon2.BackColor = Icon2.Parent.BackColor;
+			}
 		    }
-
-		    if (values.Close && values.Minimize)
-		    {
-			ButtonLoca.X -= ButtonSize.Width;
-		    }
-
-		    else if (values.Minimize)
-		    {
-			Control.Button(values.Bar, values.Button2, ButtonSize, ButtonLoca, barBCol, Color.White, 1, 10, "-");
-			Applies.ApplyDraggability(values.Button2, parent);
-
-			values.Button2.Click += (s, e) =>
-			{
-			    parent.SendToBack();
-			};
-		    }
-
-		    values.Button1.TextAlign = ContentAlignment.BottomCenter;
-
-		    var RectangleSize = new Size(values.Width() - 3, values.parentHeight() - values.Height());
-		    var RectangleLocation = new Point(1, values.Height() + values.Bar.Top - 2);
-
-		    Transform.PaintRectangle(parent, 3, RectangleSize, RectangleLocation, borderBCol);
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
+		}
+	    }
+
+	    public void Integrate(Control Parent, Size BarSize, Point BarLoca, Color BarBColor, string TitleText, Color TitleFColor, TitleLocation TitleLoca, Icon Icon, IconLocation IconLoca)
+	    {
+		try
+		{
+		    Integrate(Parent, BarSize, BarLoca, BarBColor, TitleText, TitleFColor, TitleLoca);
+
+		    // Integrate Icon etc.
+		}
+
+		catch
+		{
+		    throw;
 		}
 	    }
 
 
-	    public void UpdateTitle(string newValue, int fontSize = 8)
+
+	    public void Integrate(Control Parent, Size BarSize, Point BarLoca, Color BarBColor, string TitleText, Color TitleFColor, TitleLocation TitleLoca, Icon Icon, IconLocation IconLoca, ButtonSet Buttons)
 	    {
 		try
 		{
-		    var newSize = DataTool.GetFontSize(newValue, fontSize);
-		    var newLabelLoca = new Point(values.Title.Left, (values.Height() - newSize.Height) / 2);
 
-		    values.setLocationOf(values.Title, newLabelLoca);
-		    values.setTitle($"{newValue}");
-
-		    Transform.Resize(values.Title, newSize);
+		    // Integrate Buttons
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
-		}
-	    }
-
-
-	    public void UpdateColor(Color newValue1, Color newValue2)
-	    {
-		try
-		{
-		    foreach (Control Control in values.getControls())
-		    {
-			values.setColorOf(Control, newValue1);
-		    }
-
-		    values.setLogoBackColor(values.getBarColor());
-		    values.setBarBackColor(newValue1);
-
-		    var RectSize = new Size(values.Width() - 4, values.parentHeight() - values.Height());
-		    var RectLoca = new Point(2, values.Height() + values.Bar.Top - 3);
-
-		    Transform.PaintRectangle(values.getParent(), 3, RectSize, RectLoca, newValue2);
-		}
-
-		catch (Exception E)
-		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 	}
