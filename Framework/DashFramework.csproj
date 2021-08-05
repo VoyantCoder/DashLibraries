@@ -57,6 +57,7 @@
     <Compile Include="class\b\Data\Data.cs" />
     <Compile Include="class\b\Data\Resources.cs" />
     <Compile Include="class\b\Handling\CodeSorting.cs" />
+    <Compile Include="class\b\Test\Copy.cs" />
     <Compile Include="class\b\Windows\Controls.cs" />
     <Compile Include="class\b\Windows\Controls\CheckBox.cs" />
     <Compile Include="class\b\Windows\Controls\CheckBoxDropMenu.cs" />
