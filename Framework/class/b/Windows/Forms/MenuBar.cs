@@ -62,6 +62,7 @@ namespace DashFramework
 
 
 	    // Title Integration:
+	    readonly DataTools DataTool = new DataTools();
 	    readonly Label Label1 = new Label();
 
 	    public int FontPoints = 10;
@@ -73,7 +74,55 @@ namespace DashFramework
 		{
 		    Integrate(Parent, BarSize, BarLoca, BarBColor);
 
-		    // Integrate title etc.
+		    Size TitleSize = DataTool.GetFontSize(TitleText, FontPoints, FontTypeId);
+		    Point TitlePosition = new Point(-2, -2);
+
+		    int GetBottomY() => (Panel1.Height >= TitleSize.Height ? 0 : Panel1.Height - TitleSize.Height);
+
+		    switch (TitleLoca)
+		    {
+			case TitleLocation.Bottom:
+			{
+			    TitlePosition.X = Icon1.Location.X;
+			    TitlePosition.Y = GetBottomY();
+			    break;
+			}
+
+			case TitleLocation.Right:
+			{
+			    TitlePosition.X = Panel1.Width - TitleSize.Width;
+			    TitlePosition.Y = Icon1.Location.Y;
+			    break;
+			}
+
+			case TitleLocation.Left:
+			{
+			    TitlePosition.Y = Icon1.Location.Y;
+			    TitlePosition.X = 0;
+			    break;
+			}
+
+			case TitleLocation.Top:
+			{
+			    TitlePosition.X = Icon1.Location.X;
+			    TitlePosition.Y = 0;
+			    break;
+			}
+
+			case TitleLocation.BottomMiddle:
+			{
+			    TitlePosition.Y = GetBottomY();
+			    break;
+			}
+
+			case TitleLocation.TopMiddle:
+			{
+			    TitlePosition.Y = 0;
+			    break;
+			}
+		    }
+
+		    Integrator.Label(Panel1, Label1, TitleSize, TitlePosition, Panel1.BackColor, TitleFColor, TitleText, FontTypeId, FontPoints);
 		}
 
 		catch
@@ -160,11 +209,11 @@ namespace DashFramework
 			}
 		    }
 
-		    Icon2.Location = new Point(IconPosition.X, Panel1.Height);
-		    Icon1.Location = IconPosition;
+		    Point Icon2Loca = new Point(IconPosition.X, Panel1.Height);
+		    Color IconBackColor = Panel1.BackColor;
 
-		    Icon1.Update();
-		    Icon2.Update();
+		    Integrator.Image(Panel1.Parent, Icon2, Icon.Size, Icon2Loca, IconBackColor);
+		    Integrator.Image(Panel1, Icon1, Icon.Size, IconPosition, IconBackColor);
 		}
 
 		catch
@@ -350,6 +399,27 @@ namespace DashFramework
 			case ButtonSet.CloseMinimize: Hook2(); break;
 			case ButtonSet.Custom: Hook3(); break;
 			case ButtonSet.Close: Hook1(); break;
+		    }
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+
+	    // Bordering
+	    readonly Transformer Transform = new Transformer();
+	    public int BorderRadius = 8;
+
+	    public void SetMenuBarBorder()
+	    {
+		try
+		{
+		    if (BorderRadius > 0)
+		    {
+			Transform.Round(Panel1, BorderRadius);
 		    }
 		}
 

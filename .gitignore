@@ -13,3 +13,6 @@ Framework/.vs/
 Framework/.vs
 Framework/.vs/*
 Framework/.vs/*.*
+*.ide-wal
+Framework/.vs/DashFramework/v15/Server/sqlite3/storage.ide
+*.ide-wal
