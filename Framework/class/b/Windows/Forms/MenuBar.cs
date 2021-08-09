@@ -25,14 +25,14 @@ namespace DashFramework
 {
     namespace Forms
     {
-	public enum TitleLocation
+	public enum TitlePosition
 	{
 	    Top, Bottom, Right, Left,
 	    TopMiddle, BottomMiddle, Center,
 	    LeftMiddle, RightMiddle,
 	}
 
-	public enum IconLocation
+	public enum IconPosition
 	{
 	    Top, Bottom, Right, Left,
 	    TopMiddle, BottomMiddle, Center,
@@ -147,13 +147,13 @@ namespace DashFramework
 		}
 	    }
 
-	    public TitleLocation TitlePosition = TitleLocation.Center;
+	    public TitlePosition ExTitlePosition = TitlePosition.Center;
 
 	    public void UpdateTitlePosition()
 	    {
 		try
 		{
-		    Label1.Location = GetTitlePosition(TitlePosition);
+		    Label1.Location = GetTitlePosition(ExTitlePosition);
 		}
 
 		catch
@@ -162,7 +162,7 @@ namespace DashFramework
 		}
 	    }
 
-	    public void ResizeTitle(int FontPoints)
+	    public void SetTitleSize(int FontPoints)
 	    {
 		try
 		{
@@ -180,7 +180,7 @@ namespace DashFramework
 
 	    readonly DataTools DataTool = new DataTools();
 	    
-	    public Point GetTitlePosition(TitleLocation TitleLoca, string TitleText = ".")
+	    public Point GetTitlePosition(TitlePosition TitlePos, string TitleText = ".")
 	    {
 		try
 		{
@@ -225,64 +225,64 @@ namespace DashFramework
 			}
 		    }
 
-		    Point TitlePosition = new Point(-2, -2);
+		    Point TitleLocation = new Point(-1, -1);
 
-		    switch (TitleLoca)
+		    switch (TitlePos)
 		    {
-			case TitleLocation.Top:
+			case TitlePosition.Top:
 			{
-			    TitlePosition.X = 0;
-			    TitlePosition.Y = 0;
+			    TitleLocation.X = 0;
+			    TitleLocation.Y = 0;
 			    break;
 			}
 
-			case TitleLocation.TopMiddle:
+			case TitlePosition.TopMiddle:
 			{
-			    TitlePosition.Y = 0;
+			    TitleLocation.Y = 0;
 			    break;
 			}
 
-			case TitleLocation.Bottom:
+			case TitlePosition.Bottom:
 			{
-			    TitlePosition.Y = DetermineBottom();
-			    TitlePosition.X = 0;
+			    TitleLocation.Y = DetermineBottom();
+			    TitleLocation.X = 0;
 			    break;
 			}
 
-			case TitleLocation.BottomMiddle:
+			case TitlePosition.BottomMiddle:
 			{
-			    TitlePosition.Y = DetermineBottom();
+			    TitleLocation.Y = DetermineBottom();
 			    break;
 			}
 
-			case TitleLocation.Right:
+			case TitlePosition.Right:
 			{
-			    TitlePosition.X = DetermineRight();
-			    TitlePosition.Y = 0;
+			    TitleLocation.X = DetermineRight();
+			    TitleLocation.Y = 0;
 			    break;
 			}
 
-			case TitleLocation.RightMiddle:
+			case TitlePosition.RightMiddle:
 			{
-			    TitlePosition.X = DetermineRight();
+			    TitleLocation.X = DetermineRight();
 			    break;
 			}
 
-			case TitleLocation.Left:
+			case TitlePosition.Left:
 			{
-			    TitlePosition.X = 10;
-			    TitlePosition.Y = 0;
+			    TitleLocation.X = 10;
+			    TitleLocation.Y = 0;
 			    break;
 			}
 
-			case TitleLocation.LeftMiddle:
+			case TitlePosition.LeftMiddle:
 			{
-			    TitlePosition.X = 10;
+			    TitleLocation.X = 10;
 			    break;
 			}
 		    }
 
-		    return TitlePosition;
+		    return TitleLocation;
 		}
 
 		catch
@@ -291,12 +291,72 @@ namespace DashFramework
 		}
 	    }
 	    
-	    // SetTitlePosition --- like button : based on TitleLocation values
-	    // SetTitleLocation --- like button : based on Point values
-	    // SetTitleBackColor
-	    // SetTitleForeColor
+	    public void SetTitlePosition(TitlePosition Position)
+	    {
+		try
+		{
+		    Label1.Location = GetTitlePosition(Position);
+		}
 
-	    public void Integrate(Control Parent, Size BarSize, Point BarLoca, Color BarBColor, string TitleText, Color TitleFColor, TitleLocation TitleLoca)
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    public void SetTitleLocation(Point Location)
+	    {
+		try
+		{
+		    if (Location.X == -1 || Location.Y == -1)
+		    {
+			if (Location.Y == -1)
+			{
+			    Location.Y = (Panel1.Height - Label1.Height) / 2;
+			}
+
+			if (Location.X == -1)
+			{
+			    Location.X = (Panel1.Width - Label1.Width) / 2;
+			}
+		    }
+
+		    Label1.Location = Location;
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    public void SetTitleBackColor(Color Color)
+	    {
+		try
+		{
+		    Label1.BackColor = Color;
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    public void SetTitleForeColor(Color Color)
+	    {
+		try
+		{
+		    Label1.ForeColor = Color;
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    public void Integrate(Control Parent, Size BarSize, Point BarLoca, Color BarBColor, string TitleText, Color TitleFColor, TitlePosition TitleLoca)
 	    {
 		try
 		{
@@ -313,7 +373,7 @@ namespace DashFramework
 			Integrator.Label(Panel1, Label1, TitleSize, TitlePosition, 
 			    Panel1.BackColor, TitleFColor, TitleText, FontTypeId, FontPoints);
 
-			this.TitlePosition = TitleLoca;
+			this.ExTitlePosition = TitleLoca;
 		    });
 		}
 
@@ -349,11 +409,11 @@ namespace DashFramework
 		}
 	    }
 
-	    public void Integrate(Control Parent, Size BarSize, Point BarLoca, Color BarBColor, string TitleText, Color TitleFColor, TitleLocation TitleLoca, Image Icon, IconLocation IconLoca)
+	    public void Integrate(Control Parent, Size BarSize, Point BarLoca, Color BarBColor, string TitleText, Color TitleFColor, TitlePosition TitlePos, Image Icon, IconPosition IconPos)
 	    {
 		try
 		{
-		    Integrate(Parent, BarSize, BarLoca, BarBColor, TitleText, TitleFColor, TitleLoca);
+		    Integrate(Parent, BarSize, BarLoca, BarBColor, TitleText, TitleFColor, TitlePos);
 		    
 		    int DetermineBottom()
 		    {
@@ -376,7 +436,7 @@ namespace DashFramework
 			}
 		    }
 
-		    Point Icon1Position = new Point(-2, -2);
+		    Point Icon1Position = new Point(-1, -1);
 
 		    void MayRepositionTitle()
 		    {
@@ -394,35 +454,35 @@ namespace DashFramework
 			}
 		    }
 
-		    switch (IconLoca)
+		    switch (IconPos)
 		    {
-			case IconLocation.Top:
+			case IconPosition.Top:
 			{
 			    Icon1Position.X = 0;
 			    Icon1Position.Y = 0;
 			    break;
 			}
 
-			case IconLocation.TopMiddle:
+			case IconPosition.TopMiddle:
 			{
 			    Icon1Position.Y = 0;
 			    break;
 			}
 
-			case IconLocation.Right:
+			case IconPosition.Right:
 			{
 			    Icon1Position.X = Panel1.Width;
 			    Icon1Position.Y = 0;
 			    break;
 			}
 
-			case IconLocation.RightMiddle:
+			case IconPosition.RightMiddle:
 			{
 			    Icon1Position.X = Panel1.Width;
 			    break;
 			}
 
-			case IconLocation.Left:
+			case IconPosition.Left:
 			{
 			    Icon1Position.Y = Icon1.Location.Y;
 			    Icon1Position.X = 0;
@@ -430,21 +490,21 @@ namespace DashFramework
 			    break;
 			}
 
-			case IconLocation.LeftMiddle:
+			case IconPosition.LeftMiddle:
 			{
 			    Icon1Position.X = 0;
 			    MayRepositionTitle();
 			    break;
 			}
 
-			case IconLocation.Bottom:
+			case IconPosition.Bottom:
 			{
 			    Icon1Position.Y = DetermineBottom();
 			    Icon1Position.X = 0;
 			    break;
 			}
 
-			case IconLocation.BottomMiddle:
+			case IconPosition.BottomMiddle:
 			{
 			    Icon1Position.Y = DetermineBottom();
 			    break;
@@ -461,6 +521,8 @@ namespace DashFramework
 
 		    Point Icon2Position = new Point(Icon1Position.X, Icon1.Top);
 		    Integrator.Image(Panel1.Parent, Icon2, Icon.Size, Icon2Position, IconBackColor, Icon);
+
+		    MessageBox.Show($"Top2: {Icon2.Top}, Top1: {Icon1.Top}");
 		}
 
 		catch
@@ -637,6 +699,19 @@ namespace DashFramework
 	    {
 		try
 		{
+		    if (Loca.X == -1 || Loca.Y == -1)
+		    {
+			if (Loca.Y == -1)
+			{
+			    Loca.Y = (Panel1.Height - Button1.Height) / 2;
+			}
+
+			if (Loca.X == -1)
+			{
+			    Loca.X = (Panel1.Width - Button1.Width) / 2;
+			}
+		    }
+
 		    SetButtonLocation(Button, new Point[] { Loca });
 		}
 
@@ -933,13 +1008,13 @@ namespace DashFramework
 		}
 	    }
 
-	    public void Integrate(Control Parent, Size BarSize, Point BarLoca, Color BarBColor, string TitleText, Color TitleFColor, TitleLocation TitleLoca, Image Icon, IconLocation IconLoca, ButtonSet Buttons)
+	    public void Integrate(Control Parent, Size BarSize, Point BarLoca, Color BarBColor, string TitleText, Color TitleFColor, TitlePosition TitlePos, Image Icon, IconPosition IconPos, ButtonSet Buttons)
 	    {
 		try
 		{
 		    Sorters.SortCode(("Top Call"), () =>
 		    {
-			Integrate(Parent, BarSize, BarLoca, BarBColor, TitleText, TitleFColor, TitleLoca, Icon, IconLoca);
+			Integrate(Parent, BarSize, BarLoca, BarBColor, TitleText, TitleFColor, TitlePos, Icon, IconPos);
 		    });
 
 		    Sorters.SortCode(("Button Integration"), () =>
