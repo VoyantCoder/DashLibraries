@@ -99,8 +99,8 @@ namespace DashFramework
 	    {
 		try
 		{
-		    int x = (Coords.X < 0 ? (BasedOn.Width - This.Width) / 2 : Coords.X);
-		    int y = (Coords.Y < 0 ? (BasedOn.Height - This.Height) / 2 : Coords.Y);
+		    int x = (Coords.X == -1 ? (BasedOn.Width - This.Width) / 2 : Coords.X);
+		    int y = (Coords.Y == -1 ? (BasedOn.Height - This.Height) / 2 : Coords.Y);
 
 		    return new Point(x, y);
 		}
