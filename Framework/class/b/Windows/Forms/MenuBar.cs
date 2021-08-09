@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 
 using DashFramework.DashControls.Customs;
+using DashFramework.DashResources;
 using DashFramework.DashControls;
 using DashFramework.ControlTools;
 using DashFramework.Erroring;
@@ -117,28 +118,94 @@ namespace DashFramework
 
 
 	    // Title Integration:
-	    readonly DataTools DataTool = new DataTools();
+	    readonly ResourceTools ResourceTool = new ResourceTools();
 	    readonly Label Label1 = new Label();
 
 	    public int FontPoints = 10;
 	    public int FontTypeId = 1;
 
-	    public void Integrate(Control Parent, Size BarSize, Point BarLoca, Color BarBColor, string TitleText, Color TitleFColor, TitleLocation TitleLoca)
+	    public void SetTitleFont(int FontPoints, int FontTypeId)
 	    {
 		try
 		{
-		    Integrate(Parent, BarSize, BarLoca, BarBColor);
+		    Font TitleFont = ResourceTool.GetFont(FontTypeId, FontPoints);
+
+		    if (TitleFont == null)
+		    {
+			return;
+		    }
+
+		    this.FontPoints = FontPoints;
+		    this.FontTypeId = FontTypeId;
+
+		    Label1.Font = TitleFont;
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    public TitleLocation TitlePosition = TitleLocation.Center;
+
+	    public void UpdateTitlePosition()
+	    {
+		try
+		{
+		    Label1.Location = GetTitlePosition(TitlePosition);
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    public void ResizeTitle(int FontPoints)
+	    {
+		try
+		{
+		    Label1.Size = DataTool.GetFontSize(Label1.Text, FontPoints, FontTypeId);
+		    Label1.Font = new Font(Label1.Font.FontFamily, FontPoints);
+
+		    UpdateTitlePosition();
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    readonly DataTools DataTool = new DataTools();
+	    
+	    public Point GetTitlePosition(TitleLocation TitleLoca, string TitleText = ".")
+	    {
+		try
+		{
+		    if (TitleText.Equals("."))
+		    {
+			TitleText = Label1.Text;
+		    }
 
 		    Size TitleSize = DataTool.GetFontSize(TitleText, FontPoints, FontTypeId);
-		    Point TitlePosition = new Point(-2, -2);
 
 		    int DetermineBottom()
 		    {
 			try
 			{
-			    return (Panel1.Height >= TitleSize.Height ? 0 : Panel1.Height - TitleSize.Height);
+			    if (Panel1.Height <= TitleSize.Height)
+			    {
+				return Panel1.Height - TitleSize.Height;
+			    }
+
+			    else
+			    {
+				return 0;
+			    }
 			}
-			
+
 			catch
 			{
 			    throw;
@@ -157,6 +224,8 @@ namespace DashFramework
 			    throw;
 			}
 		    }
+
+		    Point TitlePosition = new Point(-2, -2);
 
 		    switch (TitleLoca)
 		    {
@@ -213,7 +282,39 @@ namespace DashFramework
 			}
 		    }
 
-		    Integrator.Label(Panel1, Label1, TitleSize, TitlePosition, Panel1.BackColor, TitleFColor, TitleText, FontTypeId, FontPoints);
+		    return TitlePosition;
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+	    
+	    // SetTitlePosition --- like button : based on TitleLocation values
+	    // SetTitleLocation --- like button : based on Point values
+	    // SetTitleBackColor
+	    // SetTitleForeColor
+
+	    public void Integrate(Control Parent, Size BarSize, Point BarLoca, Color BarBColor, string TitleText, Color TitleFColor, TitleLocation TitleLoca)
+	    {
+		try
+		{
+		    Sorters.SortCode(("Top Call"), () =>
+		    {
+			Integrate(Parent, BarSize, BarLoca, BarBColor);
+		    });
+
+		    Sorters.SortCode(("Label Integration"), () =>
+		    {
+			Size TitleSize = DataTool.GetFontSize(TitleText, FontPoints, FontTypeId);
+			Point TitlePosition = GetTitlePosition(TitleLoca, TitleText);
+
+			Integrator.Label(Panel1, Label1, TitleSize, TitlePosition, 
+			    Panel1.BackColor, TitleFColor, TitleText, FontTypeId, FontPoints);
+
+			this.TitlePosition = TitleLoca;
+		    });
 		}
 
 		catch
@@ -712,9 +813,12 @@ namespace DashFramework
 			{
 			    try
 			    {
-				Cntrl.MouseEnter += (s, e) => SetColor(Cntrl, OnHover[1]);
-				Cntrl.MouseHover += (s, e) => SetColor(Cntrl, OnHover[1]);
-				Cntrl.MouseLeave += (s, e) => SetColor(Cntrl, OnHover[0]);
+				Sorters.SortCode(("On Hover"), () =>
+				{
+				    Cntrl.MouseEnter += (s, e) => SetColor(Cntrl, OnHover[1]);
+				    Cntrl.MouseHover += (s, e) => SetColor(Cntrl, OnHover[1]);
+				    Cntrl.MouseLeave += (s, e) => SetColor(Cntrl, OnHover[0]);
+				});
 			    }
 
 			    catch
@@ -727,8 +831,11 @@ namespace DashFramework
 			{
 			    try
 			    {
-				Cntrl.MouseDown += (s, e) => SetColor(Cntrl, OnDown[1]);
-				Cntrl.MouseUp += (s, e) => SetColor(Cntrl, OnDown[0]);
+				Sorters.SortCode(("On Down"), () =>
+				{
+				    Cntrl.MouseDown += (s, e) => SetColor(Cntrl, OnDown[1]);
+				    Cntrl.MouseUp += (s, e) => SetColor(Cntrl, OnDown[0]);
+				});
 			    }
 
 			    catch
@@ -741,8 +848,11 @@ namespace DashFramework
 			{
 			    try
 			    {
-				Cntrl.MouseClick += (s, e) => SetColor(Cntrl, OnDown[1]);
-				Cntrl.MouseDown += (s, e) => SetColor(Cntrl, OnDown[0]);
+				Sorters.SortCode(("On Click"), () =>
+				{
+				    Cntrl.MouseClick += (s, e) => SetColor(Cntrl, OnDown[1]);
+				    Cntrl.MouseDown += (s, e) => SetColor(Cntrl, OnDown[0]);
+				});
 			    }
 
 			    catch
@@ -827,141 +937,147 @@ namespace DashFramework
 	    {
 		try
 		{
-		    Integrate(Parent, BarSize, BarLoca, BarBColor, TitleText, TitleFColor, TitleLoca, Icon, IconLoca);
-
-		    void OptionalRepositioning()
+		    Sorters.SortCode(("Top Call"), () =>
 		    {
-			try
+			Integrate(Parent, BarSize, BarLoca, BarBColor, TitleText, TitleFColor, TitleLoca, Icon, IconLoca);
+		    });
+
+		    Sorters.SortCode(("Button Integration"), () =>
+		    {
+			void OptionalRepositioning()
 			{
-			    if (Label1.Left >= (Panel1.Width - Label1.Width - 10))
+			    try
 			    {
-				if (Button1.Parent != null && Button2.Parent != null)
+				if (Label1.Left >= (Panel1.Width - Label1.Width - 10))
 				{
-				    Label1.Left = Panel1.Width - (Button1.Width * 2);
+				    if (Button1.Parent != null && Button2.Parent != null)
+				    {
+					Label1.Left = Panel1.Width - (Button1.Width * 2);
+				    }
+
+				    else if (Button1.Parent != null)
+				    {
+					Label1.Left = Panel1.Width - Button1.Width;
+				    }
+
+				    Label1.Left -= Label1.Width + 10;
 				}
 
-				else if (Button1.Parent != null)
+				else if (Icon1.Left >= Panel1.Width - 10)
 				{
-				    Label1.Left = Panel1.Width - Button1.Width;
-				}
+				    if (Button1.Parent != null && Button2.Parent != null)
+				    {
+					Icon1.Left = Panel1.Width - (Button1.Width * 2);
+				    }
 
-				Label1.Left -= Label1.Width + 10;
+				    else if (Button1.Parent != null)
+				    {
+					Icon1.Left = Panel1.Width - Button1.Width;
+				    }
+
+				    Icon1.Left -= Icon1.Width;
+				    Icon2.Left = Icon1.Left;
+				}
 			    }
 
-			    else if (Icon1.Left >= Panel1.Width - 10)
+			    catch
 			    {
-				if (Button1.Parent != null && Button2.Parent != null)
-				{
-				    Icon1.Left = Panel1.Width - (Button1.Width * 2);
-				}
-
-				else if (Button1.Parent != null)
-				{
-				    Icon1.Left = Panel1.Width - Button1.Width;
-				}
-
-				Icon1.Left -= Icon1.Width;
-				Icon2.Left = Icon1.Left;
+				throw;
 			    }
 			}
 
-			catch
+			void Hook1()
 			{
-			    throw;
-			}
-		    }
-		    
-		    void Hook1()
-		    {
-			try
-			{
-			    Sorters.SortCode(("Close Button"), () =>
+			    try
 			    {
-				ResetExistingButtons();
+				Sorters.SortCode(("Close Button"), () =>
+				{
+				    ResetExistingButtons();
 
-				Size ButtonSize = new Size(75, Panel1.Height);
-				Point ButtonLoca = new Point(Panel1.Width - 75, 0);
+				    Size ButtonSize = new Size(75, Panel1.Height);
+				    Point ButtonLoca = new Point(Panel1.Width - 75, 0);
 
-				Integrator.Button(Panel1, Button1, ButtonSize, ButtonLoca, 
-				    BarBColor, TitleFColor, FontTypeId, FontPoints, "X");
+				    Integrator.Button(Panel1, Button1, ButtonSize, ButtonLoca,
+					BarBColor, TitleFColor, FontTypeId, FontPoints, "X");
 
-				Button1.Click += (s, e) => DefaultCloseHook();
-			    });
-			}
+				    Button1.Click += (s, e) => DefaultCloseHook();
+				});
+			    }
 
-			catch
-			{
-			    throw;
-			}
-		    }
-		    
-		    void Hook2()
-		    {
-			try
-			{
-			    Sorters.SortCode(("Close & Minimize Buttons"), () =>
+			    catch
 			    {
-				Size ButtonSize = new Size(75, Panel1.Height);
-				Point ButtonLoca = new Point(Panel1.Width - 150, 0);
+				throw;
+			    }
+			}
 
-				Integrator.Button(Panel1, Button2, ButtonSize, ButtonLoca, 
-				    BarBColor, TitleFColor, FontTypeId, FontPoints, "-");
+			void Hook2()
+			{
+			    try
+			    {
+				Sorters.SortCode(("Close & Minimize Buttons"), () =>
+				{
+				    Size ButtonSize = new Size(75, Panel1.Height);
+				    Point ButtonLoca = new Point(Panel1.Width - 150, 0);
 
-				Button2.Click += (s, e) => DefaultMinimizeHook();
+				    Integrator.Button(Panel1, Button2, ButtonSize, ButtonLoca,
+					BarBColor, TitleFColor, FontTypeId, FontPoints, "-");
 
+				    Button2.Click += (s, e) => DefaultMinimizeHook();
+
+				    Hook1();
+				});
+			    }
+
+			    catch
+			    {
+				throw;
+			    }
+			}
+
+			void Hook3()
+			{
+			    try
+			    {
+				Sorters.SortCode(("Custom Button(s)"), () =>
+				{
+				    ResetExistingButtons();
+
+				    for (int k = 0; k < CustomButtons.Count; k += 1)
+				    {
+					Panel1.Controls.Add(CustomButtons[k]);
+				    }
+				});
+			    }
+
+			    catch
+			    {
+				throw;
+			    }
+			}
+
+			switch (Buttons)
+			{
+			    case ButtonSet.CloseMinimize:
+			    {
+				Hook2();
+				OptionalRepositioning();
+				break;
+			    }
+
+			    case ButtonSet.Close:
+			    {
 				Hook1();
-			    });
-			}
+				OptionalRepositioning();
+				break;
+			    }
 
-			catch
-			{
-			    throw;
-			}
-		    }
-
-		    void Hook3()
-		    {
-			try
-			{
-			    Sorters.SortCode(("Custom Button(s)"), () =>
+			    case ButtonSet.Custom:
 			    {
-				ResetExistingButtons();
-				
-				for (int k = 0; k < CustomButtons.Count; k += 1)
-				{
-				    Panel1.Controls.Add(CustomButtons[k]);
-				}
-			    });
+				Hook3();
+				break;
+			    }
 			}
-
-			catch
-			{
-			    throw;
-			}
-		    }
-
-		    switch (Buttons)
-		    {
-			case ButtonSet.CloseMinimize:
-			{
-			    Hook2();
-			    OptionalRepositioning();
-			    break;
-			}
-
-			case ButtonSet.Close:
-			{
-			    Hook1();
-			    OptionalRepositioning();
-			    break;
-			}
-
-			case ButtonSet.Custom:
-			{
-			    Hook3();
-			    break;
-			}
-		    }
+		    });
 		}
 
 		catch
