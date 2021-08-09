@@ -689,6 +689,98 @@ namespace DashFramework
 		}
 	    }
 
+	    public void SetButtonColors(Color[] OnHover, Color[] OnDown, Color[] OnClick, string info = "[0=default,1=new]")
+	    {
+		try
+		{
+		    void RegisterColorHook(int id)
+		    {
+			void SetColor(Control Cntrl, Color Color)
+			{
+			    try
+			    {
+				Cntrl.BackColor = Color;
+			    }
+
+			    catch
+			    {
+				throw;
+			    }
+			}
+
+			void Hook1(Control Cntrl)
+			{
+			    try
+			    {
+				Cntrl.MouseEnter += (s, e) => SetColor(Cntrl, OnHover[1]);
+				Cntrl.MouseHover += (s, e) => SetColor(Cntrl, OnHover[1]);
+				Cntrl.MouseLeave += (s, e) => SetColor(Cntrl, OnHover[0]);
+			    }
+
+			    catch
+			    {
+				throw;
+			    }
+			}
+
+			void Hook2(Control Cntrl)
+			{
+			    try
+			    {
+				Cntrl.MouseDown += (s, e) => SetColor(Cntrl, OnDown[1]);
+				Cntrl.MouseUp += (s, e) => SetColor(Cntrl, OnDown[0]);
+			    }
+
+			    catch
+			    {
+				throw;
+			    }
+			}
+
+			void Hook3(Control Cntrl)
+			{
+			    try
+			    {
+				Cntrl.MouseClick += (s, e) => SetColor(Cntrl, OnDown[1]);
+				Cntrl.MouseDown += (s, e) => SetColor(Cntrl, OnDown[0]);
+			    }
+
+			    catch
+			    {
+				throw;
+			    }
+			}
+
+			foreach (Control Cntrl in Panel1.Controls)
+			{
+			    if (Cntrl.GetType() == typeof(Button))
+			    {
+				switch (id)
+				{
+				    case 0: Hook1(Cntrl); break;
+				    case 1: Hook2(Cntrl); break;
+				    case 2: Hook3(Cntrl); break;
+				}
+			    }
+			}
+		    }
+
+		    if (OnHover != null)
+			RegisterColorHook(0);
+
+		    if (OnClick != null)
+			RegisterColorHook(2);
+
+		    if (OnDown != null)
+			RegisterColorHook(1);
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
 	    readonly PlainSorters Sorters = new PlainSorters();
 
 	    public virtual void DefaultCloseHook()
