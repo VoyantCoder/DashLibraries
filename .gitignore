@@ -1,6 +1,10 @@
 *.ide
 *.ide-wal
 *.pdb
+DashFramework\obj\
+DashFramework\obj
+DashFramework/obj/
+DashFramework/obj
 DashFramework/obj/*
 DashFramework\obj\*
 DashFramework/.vs/*
