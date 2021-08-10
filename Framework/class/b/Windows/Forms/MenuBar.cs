@@ -43,10 +43,7 @@ namespace DashFramework
 
 	public class MenuBar
 	{
-	    readonly ControlIntegrator Integrator = new ControlIntegrator();
 	    readonly Transformer Transform = new Transformer();
-	    readonly Apply Appliance = new Apply();
-
 	    readonly DashPanel Panel1 = new DashPanel();
 
 	    public void ResizeMenuBar(Size NewSize)
@@ -64,6 +61,8 @@ namespace DashFramework
 		    throw;
 		}
 	    }
+
+	    readonly Apply Appliance = new Apply();
 
 	    public void SetDraggability()
 	    {
@@ -95,6 +94,8 @@ namespace DashFramework
 		    throw;
 		}
 	    }
+
+	    readonly ControlIntegrator Integrator = new ControlIntegrator();
 
 	    public void Integrate(Control Parent, Size BarSize, Point BarLoca, Color BarBColor)
 	    {
