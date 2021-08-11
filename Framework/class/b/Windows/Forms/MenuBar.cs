@@ -46,13 +46,16 @@ namespace DashFramework
 	    readonly Transformer Transform = new Transformer();
 	    readonly DashPanel Panel1 = new DashPanel();
 
-	    public void ResizeMenuBar(Size NewSize)
+	    public void SetSize(Size NewSize)
 	    {
 		try
 		{
-		    if (!NewSize.Equals(Panel1.Size))
+		    if (Panel1.Parent != null)
 		    {
-			Transform.Resize(Panel1, NewSize);
+			if (!NewSize.Equals(Panel1.Size))
+			{
+			    Transform.Resize(Panel1, NewSize);
+			}
 		    }
 		}
 
@@ -127,15 +130,13 @@ namespace DashFramework
 		{
 		    Font TitleFont = ResourceTool.GetFont(FontTypeId, FontPoints);
 
-		    if (TitleFont == null)
+		    if (TitleFont != null)
 		    {
-			return;
+			this.FontPoints = FontPoints;
+			this.FontTypeId = FontTypeId;
+
+			Label1.Font = TitleFont;
 		    }
-
-		    this.FontPoints = FontPoints;
-		    this.FontTypeId = FontTypeId;
-
-		    Label1.Font = TitleFont;
 		}
 
 		catch
