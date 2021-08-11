@@ -29,11 +29,7 @@ namespace DashFramework
 		Color AppMCol = Color.FromArgb(8, 34, 46);
 		Color AppBCol = Color.White;
 
-		Window.InitializeWindow(AppSize, AppTitle, AppBCol, AppMCol, barClose: false);
-		Window.values.ResizeTitle(9);
-
-		Window.values.onControlClick(1, () => Environment.Exit(-1));
-		Window.FormClosing += (s, e) => Environment.Exit(-1);
+		Window.InitializeWindow(AppSize, AppTitle, AppBCol, AppMCol, barClose: false, appMenuBar: false);
 
 		MainGUI = new MainGUI();
 		MainGUI.Initiator(Window);
