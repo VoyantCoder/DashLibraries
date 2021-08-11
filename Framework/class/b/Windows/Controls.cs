@@ -15,6 +15,7 @@ using DashFramework.DashControls.Customs;
 using DashFramework.DashResources;
 using DashFramework.ControlTools;
 using DashFramework.Erroring;
+using DashFramework.Sorters;
 using DashFramework.Data;
 
 
@@ -26,39 +27,46 @@ namespace DashFramework
 	{
 	    readonly DirectInteract Direct = new DirectInteract();
 	    readonly Transformer Transform = new Transformer();
+	    readonly PlainSorters Sorters = new PlainSorters();
 
-	    public void CheckBox(Control Top, PictureBox Container1, PictureBox Container2, Size Size, Point Loca, Color DeselectedBCol, [Optional] Color SelectedBCol, [Optional] bool Select)
+	    public void CheckBox(Control Top, PictureBox Container1, PictureBox Container2, Size Size, Point Loca, Color DeselectedBCol, [Optional] Color SelectedBCol, [Optional] bool Select, bool Add = true)
 	    {
 		try
 		{
-		    Image(Top, Container1, Size, Loca, DeselectedBCol);
+		    Sorters.SortCode(("Main Container"), () =>
+		    {
+			Image(Top, Container1, Size, Loca, DeselectedBCol, Add: Add);
+		    });
 
 		    Size.Height -= 4;
 		    Size.Width -= 4;
 
-		    Image(Container1, Container2, Size, new Point(2, 2), DeselectedBCol);
-
-		    Transform.Round(Container1, 2);
-		    Transform.Round(Container2, 2);
-
-		    if (Select)
-			Container2.BackColor = SelectedBCol;
-
-		    void UpdateColor()
+		    Sorters.SortCode(("Child Objects"), () =>
 		    {
-			Color Col = SelectedBCol;
+			Image(Container1, Container2, Size, new Point(2, 2), DeselectedBCol);
 
-			if (Container2.BackColor == Col)
+			Transform.Round(Container1, 2);
+			Transform.Round(Container2, 2);
+
+			if (Select)
+			    Container2.BackColor = SelectedBCol;
+
+			void UpdateColor()
 			{
-			    Col = DeselectedBCol;
-			}
+			    Color Col = SelectedBCol;
 
-			Container2.PerformLayout();
-			Container2.BackColor = Col;
-		    };
+			    if (Container2.BackColor == Col)
+			    {
+				Col = DeselectedBCol;
+			    }
 
-		    Direct.RegisterClickEvent(Container1, UpdateColor);
-		    Direct.RegisterClickEvent(Container2, UpdateColor);
+			    Container2.PerformLayout();
+			    Container2.BackColor = Col;
+			};
+
+			Direct.RegisterClickEvent(Container1, UpdateColor);
+			Direct.RegisterClickEvent(Container2, UpdateColor);
+		    });
 		}
 
 		catch (Exception E)
@@ -70,7 +78,8 @@ namespace DashFramework
 
 	    readonly ResourceTools ResourceTool = new ResourceTools();
 	    readonly DataTools DataTool = new DataTools();
-	    public void RichTextBox(Control Top, RichTextBox Object, Size ObjectSize, Point ObjectLocation, Color ObjectBCol, Color ObjectFCol, int FontTypeID, int FontSize, bool ReadOnly = false, bool MultiLine = false, bool ScrollBar = false, bool TabStop = false)
+
+	    public void RichTextBox(Control Top, RichTextBox Object, Size ObjectSize, Point ObjectLocation, Color ObjectBCol, Color ObjectFCol, int FontTypeID, int FontSize, bool ReadOnly = false, bool MultiLine = false, bool ScrollBar = false, bool TabStop = false, bool Add = true)
 	    {
 		try
 		{
@@ -91,7 +100,10 @@ namespace DashFramework
 		    Object.ReadOnly = ReadOnly;
 		    Object.TabStop = TabStop;
 
-		    Top.Controls.Add(Object);
+		    if (Add)
+		    {
+			Top.Controls.Add(Object);
+		    }
 		}
 
 		catch (Exception E)
@@ -103,7 +115,7 @@ namespace DashFramework
 
 	    public readonly Dictionary<TextBox, int> TextBoxContainers = new Dictionary<TextBox, int>();
 
-	    public void TextBox(Control Top, TextBox Object, Size ObjectSize, Point ObjectLocation, Color ObjectBCol, Color ObjectFCol, int FontTypeID, int FontSize, bool ReadOnly = false, bool Multiline = false, bool ScrollBar = false, bool FixedSize = true, bool TabStop = false)
+	    public void TextBox(Control Top, TextBox Object, Size ObjectSize, Point ObjectLocation, Color ObjectBCol, Color ObjectFCol, int FontTypeID, int FontSize, bool ReadOnly = false, bool Multiline = false, bool ScrollBar = false, bool FixedSize = true, bool TabStop = false, bool Add = true)
 	    {
 		try
 		{
@@ -129,7 +141,10 @@ namespace DashFramework
 			TextBoxContainer.BackColor = ObjectBCol;
 			TextBoxContainer.ForeColor = ObjectFCol;
 
-			Top.Controls.Add(TextBoxContainer);
+			if (Add)
+			{
+			    Top.Controls.Add(TextBoxContainer);
+			}
 
 			TextBoxContainer.Click += (s, e) =>
 			{
@@ -156,6 +171,33 @@ namespace DashFramework
 			    Object.ScrollBars = ScrollBars.Vertical;
 			}
 
+			if (Add)
+			{
+			    Top.Controls.Add(Object);
+			}
+		    }
+		}
+
+		catch (Exception E)
+		{
+		    throw (ErrorHandler.GetException(E));
+		}
+	    }
+
+
+	    public void TreeView(Control Top, DashTreeView Object, Size ObjectSize, Point ObjectLoca, Color ObjectBCol, Color ObjectFCol, bool Add = true)
+	    {
+		try
+		{
+		    Transform.Resize(Object, ObjectSize);
+
+		    Object.Location = DataTool.OGetCenter(Top, Object, ObjectLoca);
+		    Object.BorderStyle = BorderStyle.None;
+		    Object.BackColor = ObjectBCol;
+		    Object.ForeColor = ObjectFCol;
+
+		    if (Add)
+		    {
 			Top.Controls.Add(Object);
 		    }
 		}
@@ -167,7 +209,7 @@ namespace DashFramework
 	    }
 
 
-	    public void TreeView(Control Top, DashTreeView Object, Size ObjectSize, Point ObjectLoca, Color ObjectBCol, Color ObjectFCol)
+	    public void ListBox(Control Top, DashListBox Object, Size ObjectSize, Point ObjectLoca, Color ObjectBCol, Color ObjectFCol, bool Add = true)
 	    {
 		try
 		{
@@ -178,7 +220,10 @@ namespace DashFramework
 		    Object.BackColor = ObjectBCol;
 		    Object.ForeColor = ObjectFCol;
 
-		    Top.Controls.Add(Object);
+		    if (Add)
+		    {
+			Top.Controls.Add(Object);
+		    }
 		}
 
 		catch (Exception E)
@@ -188,28 +233,7 @@ namespace DashFramework
 	    }
 
 
-	    public void ListBox(Control Top, DashListBox Object, Size ObjectSize, Point ObjectLoca, Color ObjectBCol, Color ObjectFCol)
-	    {
-		try
-		{
-		    Transform.Resize(Object, ObjectSize);
-
-		    Object.Location = DataTool.OGetCenter(Top, Object, ObjectLoca);
-		    Object.BorderStyle = BorderStyle.None;
-		    Object.BackColor = ObjectBCol;
-		    Object.ForeColor = ObjectFCol;
-
-		    Top.Controls.Add(Object);
-		}
-
-		catch (Exception E)
-		{
-		    throw (ErrorHandler.GetException(E));
-		}
-	    }
-
-
-	    public void Button(Control Top, Button Object, Size ObjectSize, Point ObjectLocation, Color ObjectBCol, Color ObjectFCol, int FontTypeID, int FontSize, string ButtonText, bool TabStop = false)
+	    public void Button(Control Top, Button Object, Size ObjectSize, Point ObjectLocation, Color ObjectBCol, Color ObjectFCol, int FontTypeID, int FontSize, string ButtonText, bool TabStop = false, bool Add = true)
 	    {
 		try
 		{
@@ -225,7 +249,10 @@ namespace DashFramework
 		    Object.TabStop = TabStop;
 		    Object.Text = ButtonText;
 
-		    Top.Controls.Add(Object);
+		    if (Add)
+		    {
+			Top.Controls.Add(Object);
+		    }
 		}
 
 		catch (Exception E)
@@ -235,7 +262,7 @@ namespace DashFramework
 	    }
 
 
-	    public void Label(Control Top, Label Object, Size ObjectSize, Point ObjectLocation, Color ObjectBCol, Color ObjectFCol, string LabelText, int FontTypeID = 1, int FontSize = 8, bool TabStop = false)
+	    public void Label(Control Top, Label Object, Size ObjectSize, Point ObjectLocation, Color ObjectBCol, Color ObjectFCol, string LabelText, int FontTypeID = 1, int FontSize = 8, bool TabStop = false, bool Add = true)
 	    {
 		try
 		{
@@ -255,7 +282,10 @@ namespace DashFramework
 		    Object.TabStop = TabStop;
 		    Object.Text = LabelText;
 
-		    Top.Controls.Add(Object);
+		    if (Add)
+		    {
+			Top.Controls.Add(Object);
+		    }
 		}
 
 		catch (Exception E)
@@ -265,7 +295,7 @@ namespace DashFramework
 	    }
 
 
-	    public void Image(Control Top, PictureBox Object, Size ObjectSize, Point ObjectLoca, Color BackColor, Image ObjectImage = null, bool TabStop = false)
+	    public void Image(Control Top, PictureBox Object, Size ObjectSize, Point ObjectLoca, Color BackColor, Image ObjectImage = null, bool TabStop = false, bool Add = true)
 	    {
 		try
 		{
@@ -287,7 +317,10 @@ namespace DashFramework
 		    Object.Image = ObjectImage;
 		    Object.TabStop = TabStop;
 
-		    Top.Controls.Add(Object);
+		    if (Add)
+		    {
+			Top.Controls.Add(Object);
+		    }
 		}
 
 		catch (Exception E)
@@ -297,7 +330,7 @@ namespace DashFramework
 	    }
 
 
-	    public void Panel(Control Top, DashPanel Object, Size ObjectSize, Point ObjectLoca, Color ObjectBCol, Control.ControlCollection ChildObjects = null, string ObjectId = "A panel!")
+	    public void Panel(Control Top, DashPanel Object, Size ObjectSize, Point ObjectLoca, Color ObjectBCol, Control.ControlCollection ChildObjects = null, string ObjectId = "A panel!", bool Add = true)
 	    {
 		try
 		{
@@ -316,7 +349,10 @@ namespace DashFramework
 			}
 		    }
 
-		    Top.Controls.Add(Object);
+		    if (Add)
+		    {
+			Top.Controls.Add(Object);
+		    }
 		}
 
 		catch (Exception E)
