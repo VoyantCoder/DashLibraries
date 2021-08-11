@@ -353,6 +353,8 @@ namespace DashFramework
 		}
 	    }
 
+	    readonly PlainSorters Sorters = new PlainSorters();
+
 	    public void Integrate(Control Parent, Size BarSize, Point BarLoca, Color BarBColor, string TitleText, Color TitleFColor, TitlePosition TitleLoca)
 	    {
 		try
@@ -947,13 +949,13 @@ namespace DashFramework
 			}
 		    }
 
-		    if (OnHover != null)
+		    if (OnHover != null && OnHover.Length >= 2)
 			RegisterColorHook(0);
 
-		    if (OnClick != null)
+		    if (OnClick != null && OnClick.Length >= 2)
 			RegisterColorHook(2);
-
-		    if (OnDown != null)
+		
+		    if (OnDown != null && OnDown.Length >= 2)
 			RegisterColorHook(1);
 		}
 
@@ -962,8 +964,6 @@ namespace DashFramework
 		    throw;
 		}
 	    }
-
-	    readonly PlainSorters Sorters = new PlainSorters();
 
 	    public virtual void DefaultCloseHook()
 	    {
