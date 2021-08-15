@@ -1,4 +1,7 @@
-﻿
+﻿// Sector Name:
+// Author: Dashie
+
+
 using System;
 using System.Linq;
 using System.Drawing;
@@ -22,7 +25,27 @@ namespace DashFramework
 
 	public class Toolbar
 	{
+	    readonly Transformer Transform = new Transformer();
 	    readonly DashPanel Panel1 = new DashPanel();
+
+	    public void SetSize(Size Size)
+	    {
+		try
+		{
+		    if (Panel1.Parent != null)
+		    {
+			if (!Panel1.Size.Equals(Size))
+			{
+			    Transform.Resize(Panel1, Size);
+			}
+		    }
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
 
 	    public Size GetTotalSize()
 	    {
@@ -90,8 +113,6 @@ namespace DashFramework
 		    throw;
 		}
 	    }
-
-	    readonly Transformer Transform = new Transformer();
 
 	    public bool ApplyRounding(int Radius)
 	    {
