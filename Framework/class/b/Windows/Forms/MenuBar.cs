@@ -46,7 +46,12 @@ namespace DashFramework
 	    readonly Transformer Transform = new Transformer();
 	    readonly DashPanel Panel1 = new DashPanel();
 
-	    public void SetSize(Size NewSize)
+	    public bool HasMenubarBeenAdded()
+	    {
+		return Panel1.Parent != null;
+	    }
+
+	    public void SetMenubarSize(Size NewSize)
 	    {
 		try
 		{
@@ -65,9 +70,45 @@ namespace DashFramework
 		}
 	    }
 
+	    public Size GetMenubarSize()
+	    {
+		try
+		{
+		    if (Panel1.Size != null)
+		    {
+			return Panel1.Size;
+		    }
+
+		    return Size.Empty;
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    public Point GetMenubarLocation()
+	    {
+		try
+		{
+		    if (Panel1.Location != null)
+		    {
+			return Panel1.Location;
+		    }
+
+		    return Point.Empty;
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
 	    readonly Apply Appliance = new Apply();
 
-	    public void SetDraggability()
+	    public void SetMenubarDraggability()
 	    {
 		try
 		{
