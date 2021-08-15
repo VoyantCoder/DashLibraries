@@ -1,246 +1,377 @@
-// Sector Name:
 // Author: Dashie
 
-
-#pragma warning disable IDE1006
-
-
 using System;
+using System.Linq;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 using DashFramework.DashControls.Customs;
+using DashFramework.DashControls;
 using DashFramework.ControlTools;
-using DashFramework.Erroring;
+using DashFramework.Sorters;
 using DashFramework.Data;
-
-using DashFramework.resources;
-
 
 namespace DashFramework
 {
     namespace Forms
     {
-	public class DashWindow : Form // Try to extend MenuBar instead.  Should be nicer to use. ;)
+	public enum DashWindowPosition
 	{
-	    readonly static Transformer Transform = new Transformer();
-	    readonly static DataTools DataTool = new DataTools();
+	    Left, Right, Top, Bottom, Center, None
+	}
 
-	    public class Values
+	public enum DashWindowRoundRadius
+	{
+	    Slightly, MoreSo, Extreme
+	}
+
+	//
+	// 1) 
+	//
+	// 2)
+	//
+	// 3)
+	//
+	// 4)
+	//
+
+	public class DashWindow : MenuBar
+	{
+	    readonly ControlIntegrator Integrator = new ControlIntegrator();
+	    readonly Transformer Transform = new Transformer();
+	    readonly PlainSorters Sorters = new PlainSorters();
+
+	    readonly Form WindowInstance = new Form();
+
+	    public void SetWindowBorderStyle(FormBorderStyle BorderStyle)
 	    {
-		public DashMenuBar MenuBar = null;
-
-		public Control.ControlCollection getControls() => MenuBar.values.getControls();
-		public Control getParent() => MenuBar.values.getParent();
-		public DashPanel getBar() => MenuBar.values.Bar;
-		public Label getTitle() => MenuBar.values.Title;
-
-		public Color getBarColor() => MenuBar.values.getBarColor();
-
-		public void setLocationOf(Control me, Point to) => me.Location = to;
-		public void setColorOf(Control me, Color to) => me.BackColor = to;
-		public void setBarBackColor(Color to) => MenuBar.values.setBarBackColor(to);
-		public void setTitle(string to) => MenuBar.values.setTitle(to);
-
-
-		public PictureBox GetIconA() => MenuBar.values.LogoLayer1;
-		public PictureBox GetIconB() => MenuBar.values.LogoLayer2;
-
-
-		public void SetTitleLocation(Point to)
+		try
 		{
-		    try
+		    WindowInstance.FormBorderStyle = BorderStyle;
+		    WindowInstance.Update();
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    public Point GetWindowLocation(DashWindowPosition Position, Size Size = default(Size))
+	    {
+		try
+		{
+		    Point WindowLocation = Point.Empty;
+
+		    void SetLocation(int x = -20, int y = -20)
 		    {
-			if (to.Y == -2)
+			try
 			{
-			    to.Y = (MenuBar.values.Bar.Height - MenuBar.values.Title.Height) / 2;
+			    if (x == -20)
+			    {
+				x = 0;
+			    }
+
+			    if (y == -20)
+			    {
+				y = 0;
+			    }
+
+			    WindowLocation = new Point(x, y);
 			}
 
-			if (to.X == -2)
+			catch
 			{
-			    to.X = (MenuBar.values.Bar.Width - MenuBar.values.Title.Width) / 2;
+			    throw;
+			}
+		    }
+
+		    int MonitorHeight = SystemInformation.PrimaryMonitorSize.Height;
+		    int MonitorWidth = SystemInformation.PrimaryMonitorSize.Width;
+
+		    if (Size == default(Size))
+		    {
+			Size = WindowInstance.Size;
+		    }
+
+		    void Hook1()
+		    {
+			try
+			{
+			    Sorters.SortCode(("Bottom"), () =>
+			    {
+				int y = MonitorHeight - Size.Height - 30;
+				int x = (MonitorWidth - Size.Width) / 2;
+
+				if (x >= 0 && y >= 0)
+				{
+				    SetLocation(x, y);
+				}
+			    });
 			}
 
-			MenuBar.values.Title.Location = to;
+			catch
+			{
+			    throw;
+			}
 		    }
 
-		    catch (Exception E)
+		    void Hook2()
 		    {
-			throw (ErrorHandler.GetException(E));
-		    }
-		}
+			try
+			{
+			    Sorters.SortCode(("Center"), () =>
+			    {
+				int y = (MonitorHeight - Size.Height) / 2;
+				int x = (MonitorWidth - Size.Width) / 2;
 
+				if (x >= 0 && y >= 0)
+				{
+				    SetLocation(x, y);
+				}
+			    });
+			}
 
-		public int parentHeight() => MenuBar.values.parentHeight();
-		public int parentWidth() => MenuBar.values.parentWidth();
-		public int Height() => MenuBar.values.Height();
-		public int Width() => MenuBar.values.Width();
-
-
-		public delegate void holder();
-
-		public void onControlClick(int id, holder action)
-		{
-		    Control me = MenuBar.values.Button1;
-
-		    if (id == 2) me = MenuBar.values.Button2;
-
-		    me.Click += (s, e) =>
-		    {
-			action.Invoke();
-		    };
-		}
-
-
-		public void HideIcons()
-		{
-		    MenuBar.values.LogoLayer1.Hide();
-		    MenuBar.values.LogoLayer2.Hide();
-		}
-
-
-		public void HideTitle()
-		{
-		    MenuBar.values.Title.Hide();
-		}
-
-
-		public void CenterTitle() => MenuBar.values.Title.Location
-		    = DataTool.GetCenterFor(MenuBar.values.Title, MenuBar.values.Bar);
-
-		public void ResizeTitle(int FontSize, int Id = 1, bool CenterTitle = true)
-		{
-		    try
-		    {
-			MenuBar.values.Title.Font = new Font(MenuBar.values.Title
-			    .Font.FontFamily, FontSize);
-
-			Transform.Resize(MenuBar.values.Title, DataTool.GetFontSize(MenuBar
-			    .values.Title.Text, FontSize, Id));
-
-			if (CenterTitle) this.CenterTitle();
+			catch
+			{
+			    throw;
+			}
 		    }
 
-		    catch (Exception E)
+		    void Hook3()
 		    {
-			throw (ErrorHandler.GetException(E));
+			try
+			{
+			    Sorters.SortCode(("Right"), () =>
+			    {
+				int y = (MonitorHeight - Size.Height) / 2;
+				int x = MonitorWidth - Size.Width - 30;
+
+				if (x >= 0)
+				{
+				    SetLocation(x);
+				}
+			    });
+			}
+
+			catch
+			{
+			    throw;
+			}
 		    }
+
+		    void Hook4()
+		    {
+			try
+			{
+			    Sorters.SortCode(("Left"), () =>
+			    {
+				int y = (MonitorWidth - Size.Width) / 2;
+
+				if (y >= 0)
+				{
+				    SetLocation(y: y);
+				}
+			    });
+			}
+
+			catch
+			{
+			    throw;
+			}
+		    }
+
+		    void Hook5()
+		    {
+			try
+			{
+			    Sorters.SortCode(("Top"), () =>
+			    {
+				int x = (MonitorWidth - Size.Width) / 2;
+				SetLocation(x + 30);
+			    });
+			}
+
+			catch
+			{
+			    throw;
+			}
+		    }
+
+		    switch (Position)
+		    {
+			case DashWindowPosition.Bottom: Hook1(); break;
+			case DashWindowPosition.Center: Hook2(); break;
+			case DashWindowPosition.Right: Hook3(); break;
+			case DashWindowPosition.Left: Hook4(); break;
+			case DashWindowPosition.Top: Hook5(); break;
+		    }
+
+		    return WindowLocation;
+		}
+
+		catch
+		{
+		    return Point.Empty;
 		}
 	    }
 
-	    public Values values = new Values();
-
-
-	    private void InitS1(Size appSize, string appTitle, Color appBCol,
-		FormStartPosition startPosition = FormStartPosition.CenterScreen, FormBorderStyle borderStyle = FormBorderStyle.None, int roundRadius = -1)
+	    public void Integrate(DashWindowPosition Position, Size Size, Color BackColor, bool DisableWindowsBorder = true)
 	    {
 		try
 		{
-		    SuspendLayout();
+		    Point WindowLocation = GetWindowLocation(Position, Size);
 
-		    MaximumSize = appSize;
-		    MinimumSize = appSize;
-
-		    FormBorderStyle = borderStyle;
-		    StartPosition = startPosition;
-
-		    BackColor = appBCol;
-		    Icon = Resources.ICON;
-
-		    Text = appTitle;
-		    Name = appTitle;
-
-		    if (roundRadius > 0)
+		    if (!WindowLocation.Equals(Point.Empty))
 		    {
-			Transform.Round(this, roundRadius);
+			WindowInstance.Location = WindowLocation;
 		    }
-		}
 
-		catch (Exception E)
-		{
-		    throw (ErrorHandler.GetException(E));
-		}
-	    }
+		    WindowInstance.StartPosition = FormStartPosition.Manual;
+		    WindowInstance.BackColor = BackColor;
 
-
-	    private void InitS2(string appTitle, bool appMinim, bool appClose, bool appHide, Color barBCol)
-	    {
-		try
-		{
-		    values.MenuBar = new DashMenuBar(appTitle, appMinim, appClose, appHide);
-		    values.MenuBar.AddMe(this, barBCol, barBCol);
-		}
-
-		catch (Exception E)
-		{
-		    throw (ErrorHandler.GetException(E));
-		}
-	    }
-
-
-	    public void InitializeWindow(Size appSize, string appTitle, Color appBCol, Color barBCol,
-		FormStartPosition startPosition = FormStartPosition.CenterScreen, FormBorderStyle borderStyle = FormBorderStyle.None,
-		bool barMinim = false, bool barClose = true, bool hideApp = true, bool appMenuBar = true, int roundRadius = 8)
-	    {
-		try
-		{
-		    InitS1(appSize, appTitle, appBCol, startPosition, borderStyle, roundRadius);
-
-		    if (appMenuBar)
+		    if (DisableWindowsBorder)
 		    {
-			InitS2(appTitle, barMinim, barClose, hideApp, barBCol);
+			SetWindowBorderStyle(FormBorderStyle.None);
 		    }
+
+		    Transform.Resize(WindowInstance, Size);
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
 
-	    private bool DoInitialize = true;
-
-	    public void ShowWindow(Size appSize, string appTitle, Color appBCol, Color barBCol,
-		FormStartPosition startPosition = FormStartPosition.CenterScreen, FormBorderStyle borderStyle = FormBorderStyle.None,
-		bool showDialog = true, bool barMinim = false, bool barClose = true, bool closeHideApp = true, bool appMenuBar = true)
+	    // Bordering Integration:
+	    public void DrawWindowBorder(Color Color, int Thickness)
 	    {
 		try
 		{
-		    if (DoInitialize)
+		    Size Size = new Size(WindowInstance.Width - 2, WindowInstance.Height - 2);
+		    Point Location = new Point(0, 0);
+
+		    if (HasMenubarBeenAdded())
 		    {
-			InitializeWindow(appSize, appTitle, appBCol, barBCol, startPosition, borderStyle, barMinim, barClose, closeHideApp, appMenuBar);
-			DoInitialize = false;
+			Location.Y = GetMenubarSize().Height + GetMenubarLocation().Y;
 		    }
 
-		    ShowAsIs(showDialog);
+		    Transform.PaintRectangle(WindowInstance, Thickness, Size, Location, Color);
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
+		}
+	    }
+
+	    public void Integrate(DashWindowPosition Position, Size Size, Color BackColor, Color BorderColor, bool DisableWindowsBorder = true)
+	    {
+		try
+		{
+		    Integrate(Position, Size, BackColor, DisableWindowsBorder);
+
+		    if (BorderColor != null)
+		    {
+			DrawWindowBorder(BorderColor, 2);
+		    }
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    
+	    // Rounding Integration:
+	    public void SetWindowRounding(DashWindowRoundRadius RoundRadius)
+	    {
+		try
+		{
+		    int Radius = 4;
+
+		    switch ((int) RoundRadius)
+		    {
+			case 1: Radius = 6; break;
+			case 2: Radius = 8; break;
+		    }
+
+		    Transform.Round(WindowInstance, Radius);
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    public void Integrate(DashWindowPosition Position, Size Size, Color BackColor, Color BorderColor, bool RoundSides, DashWindowRoundRadius RoundRadius, bool DisableWindowsBorder = true)
+	    {
+		try
+		{
+		    if (RoundSides)
+		    {
+			SetWindowRounding(RoundRadius);
+		    }
+		}
+
+		catch
+		{
+		    throw;
 		}
 	    }
 
 
-	    public void ShowAsIs(bool showDialog = true)
+	    // Menubar Integration:
+	    public MenuBar Integrate(DashWindowPosition Position, Size Size, Color BackColor, Color BorderColor, bool RoundSides, Color MenuBarBackColor, Color MenuBarForeColor, Icon MenuBarIcon, string MenuBarTitle, bool DisableWindowsBorder = true)
 	    {
 		try
 		{
-		    if (showDialog)
-		    {
-			ShowDialog();
-		    }
+		    // Add Menubar etc
+		    return new MenuBar();
+		}
 
-		    else
+		catch
+		{
+		    return null;
+		}
+	    }
+
+	    
+	    // Other Integration:
+	    public virtual void Show()
+	    {
+		try
+		{
+		    if (!WindowInstance.Visible)
 		    {
-			Show();
+			WindowInstance.Show();
 		    }
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
+		}
+	    }
+
+	    public virtual void Hide()
+	    {
+		try
+		{
+		    if (WindowInstance.Visible)
+		    {
+			WindowInstance.Hide();
+		    }
+		}
+
+		catch
+		{
+		    throw;
 		}
 	    }
 	}
