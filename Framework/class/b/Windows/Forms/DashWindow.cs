@@ -25,24 +25,24 @@ namespace DashFramework
 	{
 	    Slightly, MoreSo, Extreme
 	}
+	
 
-	//
-	// 1) 
-	//
-	// 2)
-	//
-	// 3)
-	//
-	// 4)
-	//
-
-	public class DashWindow : MenuBar
+	public class DashWindow
 	{
-	    readonly ControlIntegrator Integrator = new ControlIntegrator();
-	    readonly Transformer Transform = new Transformer();
-	    readonly PlainSorters Sorters = new PlainSorters();
-
 	    readonly Form WindowInstance = new Form();
+
+	    public Form Instance()
+	    {
+		try
+		{
+		    return WindowInstance;
+		}
+
+		catch
+		{
+		    return null;
+		}
+	    }
 
 	    public void SetWindowBorderStyle(FormBorderStyle BorderStyle)
 	    {
@@ -57,6 +57,8 @@ namespace DashFramework
 		    throw;
 		}
 	    }
+
+	    readonly PlainSorters Sorters = new PlainSorters();
 
 	    public Point GetWindowLocation(DashWindowPosition Position, Size Size = default(Size))
 	    {
@@ -217,6 +219,8 @@ namespace DashFramework
 		}
 	    }
 
+	    readonly Transformer Transform = new Transformer();
+
 	    public void Integrate(DashWindowPosition Position, Size Size, Color BackColor, bool DisableWindowsBorder = true)
 	    {
 		try
@@ -254,9 +258,9 @@ namespace DashFramework
 		    Size Size = new Size(WindowInstance.Width - 2, WindowInstance.Height - 2);
 		    Point Location = new Point(0, 0);
 
-		    if (HasMenubarBeenAdded())
+		    if (Menubar().HasMenubarBeenAdded())
 		    {
-			Location.Y = GetMenubarSize().Height + GetMenubarLocation().Y;
+			Location.Y = Menubar().GetMenubarSize().Height + Menubar().GetMenubarLocation().Y;
 		    }
 
 		    Transform.PaintRectangle(WindowInstance, Thickness, Size, Location, Color);
@@ -272,12 +276,19 @@ namespace DashFramework
 	    {
 		try
 		{
-		    Integrate(Position, Size, BackColor, DisableWindowsBorder);
-
-		    if (BorderColor != null)
+		    Sorters.SortCode(("dependency"), () =>
 		    {
-			DrawWindowBorder(BorderColor, 2);
-		    }
+			Integrate(Position, Size, BackColor, DisableWindowsBorder);
+		    });
+
+
+		    Sorters.SortCode(("integration extension"), () =>
+		    {
+			if (BorderColor != null)
+			{
+			    DrawWindowBorder(BorderColor, 2);
+			}
+		    });
 		}
 
 		catch
@@ -313,10 +324,18 @@ namespace DashFramework
 	    {
 		try
 		{
-		    if (RoundSides)
+		    Sorters.SortCode(("dependency"), () =>
 		    {
-			SetWindowRounding(RoundRadius);
-		    }
+			Integrate(Position, Size, BackColor, BorderColor, DisableWindowsBorder);
+		    });
+
+		    Sorters.SortCode(("integration extension"), () =>
+		    {
+			if (RoundSides)
+			{
+			    SetWindowRounding(RoundRadius);
+			}
+		    });
 		}
 
 		catch
@@ -327,30 +346,18 @@ namespace DashFramework
 
 
 	    // Menubar Integration:
-	    public MenuBar Integrate(DashWindowPosition Position, Size Size, Color BackColor, Color BorderColor, bool RoundSides, Color MenuBarBackColor, Color MenuBarForeColor, Icon MenuBarIcon, string MenuBarTitle, bool DisableWindowsBorder = true)
+	    readonly MenuBar MenubarInstance = new MenuBar();
+
+	    public MenuBar Menubar()
 	    {
 		try
 		{
-		    // Add Menubar etc
-		    return new MenuBar();
-		}
-
-		catch
-		{
-		    return null;
-		}
-	    }
-
-	    
-	    // Other Integration:
-	    public virtual void Show()
-	    {
-		try
-		{
-		    if (!WindowInstance.Visible)
+		    if (MenubarInstance.HasMenubarBeenAdded())
 		    {
-			WindowInstance.Show();
+			return MenubarInstance;
 		    }
+
+		    return null;
 		}
 
 		catch
@@ -359,7 +366,54 @@ namespace DashFramework
 		}
 	    }
 
-	    public virtual void Hide()
+	    public void Integrate(DashWindowPosition Position, Size Size, Color BackColor, Color BorderColor, bool RoundSides, DashWindowRoundRadius RoundRadius, Color MenuBarBackColor, Color MenuBarForeColor, Image MenuBarIcon, string MenuBarTitle, bool DisableWindowsBorder = true)
+	    {
+		try
+		{
+		    Sorters.SortCode(("dependency"), () =>
+		    {
+			Integrate(Position, Size, BackColor, BorderColor, RoundSides, RoundRadius, DisableWindowsBorder);
+		    });
+
+		    Sorters.SortCode(("integration extension"), () =>
+		    {
+			Size MenubarSize = new Size(Size.Width, 28);
+			Point MenubarLocation = new Point(0, 0);
+
+			Menubar().Integrate(WindowInstance, MenubarSize, MenubarLocation, MenuBarBackColor, "Dash Window",
+			    MenuBarForeColor, TitlePosition.LeftMiddle, MenuBarIcon, IconPosition.LeftMiddle, ButtonSet.Close);
+
+			Menubar().SetMenubarDraggability();
+		    });
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    
+	    // Visibility Integration:
+	    public virtual bool Show()
+	    {
+		try
+		{
+		    if (!WindowInstance.Visible)
+		    {
+			WindowInstance.Show();
+		    }
+
+		    return true;
+		}
+
+		catch
+		{
+		    return false;
+		}
+	    }
+
+	    public virtual bool Hide()
 	    {
 		try
 		{
@@ -367,6 +421,129 @@ namespace DashFramework
 		    {
 			WindowInstance.Hide();
 		    }
+
+		    return true;
+		}
+
+		catch
+		{
+		    return false;
+		}
+	    }
+
+	    public bool SendToBack()
+	    {
+		try
+		{
+		    WindowInstance.SendToBack();
+		    return true;
+		}
+
+		catch
+		{
+		    return false;
+		}
+	    }
+
+	    public bool BringToFront()
+	    {
+		try
+		{
+		    WindowInstance.BringToFront();
+		    return true;
+		}
+
+		catch
+		{
+		    return false;
+		}
+	    }
+
+
+	    // Unnamed Integration:
+	    public bool ChangeParent(Control NewParent)
+	    {
+		try
+		{
+		    WindowInstance.Parent = NewParent;
+		    return (WindowInstance.Parent == NewParent);
+		}
+
+		catch
+		{
+		    return false;
+		}
+	    }
+
+
+	    // Control Integration:
+	    readonly Dictionary<int, Control> ChildIdentifiers = new Dictionary<int, Control>();
+
+	    public bool RemoveChild(int cid)
+	    {
+		try
+		{
+		    if (ChildIdentifiers.ContainsKey(cid))
+		    {
+			ChildIdentifiers[cid].Parent.Controls.Remove(ChildIdentifiers[cid]);
+			ChildIdentifiers[cid].Dispose();
+			ChildIdentifiers.Remove(cid);
+		    }
+
+		    return ChildIdentifiers.ContainsKey(cid);
+		}
+
+		catch
+		{
+		    return false;
+		}
+	    }
+
+	    public bool AddChild(Control child, int cid)
+	    {
+		try
+		{
+		    if (!ChildIdentifiers.ContainsKey(cid))
+		    {
+			WindowInstance.Controls.Add(child);
+
+			if (WindowInstance.Controls.Contains(child))
+			{
+			    ChildIdentifiers.Add(cid, child);
+			    return true;
+			}
+		    }
+
+		    return false;
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    public IEnumerable<Control> GetChildren(params int[] cids)
+	    {
+		foreach (int cid in cids)
+		{
+		    if (ChildIdentifiers.ContainsKey(cid))
+		    {
+			yield return ChildIdentifiers[cid];
+		    }
+		}
+	    }
+
+	    public Control GetChild(int cid)
+	    {
+		try
+		{
+		    if (ChildIdentifiers.ContainsKey(cid))
+		    {
+			return ChildIdentifiers[cid];
+		    }
+
+		    return null;
 		}
 
 		catch
