@@ -431,6 +431,19 @@ namespace DashFramework
 		}
 	    }
 
+	    public bool IsVisible()
+	    {
+		try
+		{
+		    return WindowInstance.Visible;
+		}
+
+		catch
+		{
+		    return false;
+		}
+	    }
+
 	    public bool SendToBack()
 	    {
 		try
@@ -549,6 +562,21 @@ namespace DashFramework
 		catch
 		{
 		    throw;
+		}
+	    }
+
+
+	    // Resize Integration:
+	    public Size GetWindowSize()
+	    {
+		try
+		{
+		    return WindowInstance.Size;
+		}
+
+		catch
+		{
+		    return Size.Empty;
 		}
 	    }
 	}
