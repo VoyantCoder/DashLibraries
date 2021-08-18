@@ -44,6 +44,21 @@ namespace DashFramework
 		}
 	    }
 
+	    public bool Initialized = false;
+
+	    public bool Registered()
+	    {
+		try
+		{
+		    return Initialized;
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
 	    public void SetWindowBorderStyle(FormBorderStyle BorderStyle)
 	    {
 		try
@@ -241,6 +256,11 @@ namespace DashFramework
 		    }
 
 		    Transform.Resize(WindowInstance, Size);
+
+		    if (!Initialized)
+		    {
+			Initialized = true;
+		    }
 		}
 
 		catch
