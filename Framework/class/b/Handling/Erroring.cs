@@ -8,7 +8,7 @@
 using System;
 using System.Drawing;
 
-using DashFramework.Dialogs.Dialog;
+//using DashFramework.Dialogs.Dialog;
 
 
 namespace DashFramework
@@ -41,13 +41,15 @@ namespace DashFramework
 
 	    public static void Utilize(string description, string title)
 	    {
-		DashDialog ErrorDialog = new DashDialog();
+		//DashDialog ErrorDialog = new DashDialog();
 
 		Color ContainerBCol = Color.FromArgb(9, 39, 66);
 		Color MenuBarBCol = Color.FromArgb(19, 36, 64);
 		Color AppBCol = Color.FromArgb(6, 17, 33);
 
-		ErrorDialog.Show(AppBCol, Color.White, Size.Empty, description, title, DashDialog.Buttons.OK);
+		//ErrorDialog.Show(AppBCol, Color.White, Size.Empty, description, title, DashDialog.Buttons.OK);
+
+		System.Windows.Forms.MessageBox.Show(description, title);
 
 		Environment.Exit(-1);
 	    }
