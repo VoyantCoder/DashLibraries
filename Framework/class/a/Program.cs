@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
+using DashFramework.DialogSet.Dialogs;
 using DashFramework.Erroring;
 using DashFramework.Forms;
 
@@ -22,19 +23,18 @@ namespace DashFramework
 	    {
 		Window = new DashWindow();
 
-		Size AppSize = new Size(475, 400);
-
-		string AppTitle = ("DashFramework");
-
 		Color AppMCol = Color.FromArgb(8, 34, 46);
 		Color AppBCol = Color.White;
+		Size AppSize = new Size(475, 400);
+		string AppTitle = ("DashFramework");
 
-		Window.InitializeWindow(AppSize, AppTitle, AppBCol, AppMCol, barClose: false, appMenuBar: false);
+		Window.Integrate(DashWindowPosition.Center, AppSize, AppBCol, AppMCol, 
+		    false, 0, AppMCol, Color.White, resources.Resources.LOGO, $"{AppTitle}");
 
 		MainGUI = new MainGUI();
 		MainGUI.Initiator(Window);
 
-		Application.Run(Window);
+		Application.Run(Window.Instance());
 	    }
 
 	    catch (Exception E)
