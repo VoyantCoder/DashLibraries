@@ -249,6 +249,7 @@ namespace DashFramework
 
 		    WindowInstance.StartPosition = FormStartPosition.Manual;
 		    WindowInstance.BackColor = BackColor;
+		    WindowInstance.Icon = resources.Resources.ICON;
 
 		    if (DisableWindowsBorder)
 		    {
@@ -400,7 +401,7 @@ namespace DashFramework
 			Size MenubarSize = new Size(Size.Width, 28);
 			Point MenubarLocation = new Point(0, 0);
 
-			MenubarInstance.Integrate(WindowInstance, MenubarSize, MenubarLocation, MenuBarBackColor, "Dash Window",
+			MenubarInstance.Integrate(WindowInstance, MenubarSize, MenubarLocation, MenuBarBackColor, MenuBarTitle,
 			    MenuBarForeColor, TitlePosition.LeftMiddle, MenuBarIcon, IconPosition.LeftMiddle, ButtonSet.Close);
 
 			Menubar().SetMenubarDraggability();
