@@ -414,7 +414,7 @@ namespace DashFramework
 			Integrator.Label(Panel1, Label1, TitleSize, TitlePosition, 
 			    Panel1.BackColor, TitleFColor, TitleText, FontTypeId, FontPoints);
 
-			this.ExTitlePosition = TitleLoca;
+			ExTitlePosition = TitleLoca;
 		    });
 		}
 
@@ -562,8 +562,6 @@ namespace DashFramework
 
 		    Point Icon2Position = new Point(Icon1Position.X, Icon1.Top);
 		    Integrator.Image(Panel1.Parent, Icon2, Icon.Size, Icon2Position, IconBackColor, Icon);
-
-		    MessageBox.Show($"Top2: {Icon2.Top}, Top1: {Icon1.Top}");
 		}
 
 		catch
@@ -1212,6 +1210,26 @@ namespace DashFramework
 		    {
 			Transform.Round(Panel1, BorderRadius);
 		    }
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+
+	    // Obtainers:
+	    public Color MenubarColor()
+	    {
+		try
+		{
+		    if (Panel1.Parent != null)
+		    {
+			return Panel1.BackColor;
+		    }
+
+		    return Color.Empty;
 		}
 
 		catch
