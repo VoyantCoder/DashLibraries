@@ -23,6 +23,11 @@ namespace DashFramework
 	    Top, Bottom, Right, Left, Center
 	}
 
+	public enum ToolbarTemplate
+	{
+	    SaveLoadOpen, OkayCancel, Close
+	}
+
 	public class Toolbar
 	{
 	    readonly Transformer Transform = new Transformer();
@@ -604,6 +609,228 @@ namespace DashFramework
 		    if (Children.Length > 0)
 		    {
 			AddChildren(Children);
+		    }
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+
+	    //Template Integration:
+	    readonly List<Button> ButtonCache = new List<Button>();
+
+	    public IEnumerable<Button>GetTemplateBabies()
+	    {
+		foreach (Button Button in ButtonCache)
+		{
+		    yield return Button;
+		}
+	    }
+
+	    readonly DashPanel TemplateContainer = new DashPanel();
+
+	    void UpdateButtonCache()
+	    {
+		try
+		{
+		    ButtonCache.Clear();
+
+		    List<Button> ControlCache = new List<Button>();
+
+		    foreach (Control A in TemplateContainer.Controls)
+		    {
+			if (A is Button)
+			{
+			    ControlCache.Add((Button)A);
+			}
+		    }
+
+		    ButtonCache.AddRange(ControlCache);
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+	    
+	    void ResizeTemplateContainer()
+	    {
+		try
+		{
+		    Size PreferredSize()
+		    {
+			try
+			{
+			    if (TemplateContainer.Controls.Count > 0)
+			    {
+				Control Control = TemplateContainer.Controls[TemplateContainer.Controls.Count - 1];
+				return new Size(Control.Left + Control.Width, Control.Parent.Height);
+			    }
+
+			    return new Size(0, 0);
+			}
+
+			catch
+			{
+			    throw;
+			}
+		    }
+
+		    Transform.Resize(TemplateContainer, PreferredSize());
+
+		    Point GetCenter()
+		    {
+			try
+			{
+			    int y = (TemplateContainer.Parent.Height - TemplateContainer.Height) / 2;
+			    int x = (TemplateContainer.Parent.Width - TemplateContainer.Width) / 2;
+
+			    if (y < 0)
+			    {
+				y = 0;
+			    }
+
+			    if (x < 0)
+			    {
+				x = 0;
+			    }
+
+			    return new Point(x, y);
+			}
+
+			catch
+			{
+			    throw;
+			}
+		    }
+
+		    TemplateContainer.Location = GetCenter();
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    readonly Simplifiers.Quickify QuickyInjector = new Simplifiers.Quickify();
+
+	    public void IntegrateTemplate(ToolbarTemplate Template, bool ResetExisting = true, string info = "[Only works for bottom bars]")
+	    {
+		try
+		{
+		    Sorters.SortCode(("Startup Flags"), () =>
+		    {
+			if (Panel1.Parent == null)
+			{
+			    return;
+			}
+
+			else if (ResetExisting)
+			{
+			    if (TemplateContainer.Controls.Count > 0)
+			    {
+				foreach (Control Control in TemplateContainer.Controls)
+				{
+				    Control.Dispose();
+				}
+
+				TemplateContainer.Controls.Clear();
+			    }
+			}
+		    });
+
+		    Sorters.SortCode(("Quickify Settings"), () =>
+		    {
+			QuickyInjector.BttnParent = TemplateContainer;
+			QuickyInjector.BttnSize = new Size(95, Panel1.Height - 10); // 5 from top
+			QuickyInjector.BttnBorder = true;
+
+			QuickyInjector.BttnBCol = Panel1.BackColor;
+			QuickyInjector.BttnFCol = Color.White;
+
+			QuickyInjector.BttnFpts = 10;
+			QuickyInjector.BttnFid = 1;
+		    });
+
+		    Sorters.SortCode(("Template Container"), () =>
+		    {
+			Size ContainerSize = new Size(10, Panel1.Height - 10);
+			Point ContainerLoca = new Point(-1, 5);
+			Color ContainerBackColor = Panel1.BackColor;
+
+			Integrator.Panel(Panel1, TemplateContainer, ContainerSize, ContainerLoca, ContainerBackColor);
+		    });
+
+		    void Hook1()
+		    {
+			try
+			{
+			    Sorters.SortCode(("SaveLoadOpen Template"), () =>
+			    {
+				QuickyInjector.QuickButton(new Button(), "Save", new Point(0, 0));
+				QuickyInjector.QuickButton(new Button(), "Load", new Point(105, 0));
+				QuickyInjector.QuickButton(new Button(), "Open", new Point(210, 0));
+
+				ResizeTemplateContainer();
+				UpdateButtonCache();
+			    });
+			}
+
+			catch
+			{
+			    throw;
+			}
+		    }
+
+		    void Hook2()
+		    {
+			try
+			{
+			    Sorters.SortCode(("OkayCancel Template"), () =>
+			    {
+				QuickyInjector.QuickButton(new Button(), "Close", new Point(105, 0));
+				QuickyInjector.QuickButton(new Button(), "Okay", new Point(0, 0));
+
+				ResizeTemplateContainer();
+				UpdateButtonCache();
+			    });
+			}
+
+			catch
+			{
+			    throw;
+			}
+		    }
+		    
+		    void Hook3()
+		    {
+			try
+			{
+			    Sorters.SortCode(("Close Template"), () =>
+			    {
+				QuickyInjector.QuickButton(new Button(), "Close", new Point(0, 0));
+
+				ResizeTemplateContainer();
+				UpdateButtonCache();
+			    });
+			}
+
+			catch
+			{
+			    throw;
+			}
+		    }
+
+		    switch (Template)
+		    {
+			case ToolbarTemplate.SaveLoadOpen: Hook1(); break;
+			case ToolbarTemplate.OkayCancel: Hook2(); break;
+			case ToolbarTemplate.Close: Hook3(); break;
 		    }
 		}
 
