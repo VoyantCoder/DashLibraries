@@ -251,14 +251,34 @@ namespace DashFramework
 
 
 	    // Bordering Integration:
+	    readonly MenuBar MenubarInstance = new MenuBar();
+
+	    public MenuBar Menubar()
+	    {
+		try
+		{
+		    if (MenubarInstance.HasMenubarBeenAdded())
+		    {
+			return MenubarInstance;
+		    }
+
+		    return null;
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
 	    public void DrawWindowBorder(Color Color, int Thickness)
 	    {
 		try
 		{
-		    Size Size = new Size(WindowInstance.Width - 2, WindowInstance.Height - 2);
+		    Size Size = new Size(WindowInstance.Width - (Thickness - 1), WindowInstance.Height - (Thickness - 1));
 		    Point Location = new Point(0, 0);
 
-		    if (Menubar().HasMenubarBeenAdded())
+		    if (Menubar() != null)
 		    {
 			Location.Y = Menubar().GetMenubarSize().Height + Menubar().GetMenubarLocation().Y;
 		    }
@@ -346,26 +366,6 @@ namespace DashFramework
 
 
 	    // Menubar Integration:
-	    readonly MenuBar MenubarInstance = new MenuBar();
-
-	    public MenuBar Menubar()
-	    {
-		try
-		{
-		    if (MenubarInstance.HasMenubarBeenAdded())
-		    {
-			return MenubarInstance;
-		    }
-
-		    return null;
-		}
-
-		catch
-		{
-		    throw;
-		}
-	    }
-
 	    public void Integrate(DashWindowPosition Position, Size Size, Color BackColor, Color BorderColor, bool RoundSides, DashWindowRoundRadius RoundRadius, Color MenuBarBackColor, Color MenuBarForeColor, Image MenuBarIcon, string MenuBarTitle, bool DisableWindowsBorder = true)
 	    {
 		try
@@ -380,7 +380,7 @@ namespace DashFramework
 			Size MenubarSize = new Size(Size.Width, 28);
 			Point MenubarLocation = new Point(0, 0);
 
-			Menubar().Integrate(WindowInstance, MenubarSize, MenubarLocation, MenuBarBackColor, "Dash Window",
+			MenubarInstance.Integrate(WindowInstance, MenubarSize, MenubarLocation, MenuBarBackColor, "Dash Window",
 			    MenuBarForeColor, TitlePosition.LeftMiddle, MenuBarIcon, IconPosition.LeftMiddle, ButtonSet.Close);
 
 			Menubar().SetMenubarDraggability();
