@@ -258,6 +258,17 @@ namespace DashFramework
 		    }
 		}
 
+		public IEnumerable<T> GetAllNulls()
+		{
+		    foreach (T Entry in Data)
+		    {
+			if (Entry == null || Entry.Equals(null))
+			{
+			    yield return Entry;
+			}
+		    }
+		}
+
 		public Dictionary<int, T> GetAllNoneNulls(string Info = "[stored as: (index, value)]")
 		{
 		    try
@@ -278,6 +289,17 @@ namespace DashFramework
 		    catch
 		    {
 			throw;
+		    }
+		}
+
+		public IEnumerable<T> GetAllNoneNulls()
+		{
+		    foreach (T Entry in Data)
+		    {
+			if (Entry != null && !Entry.Equals(null))
+			{
+			    yield return Entry;
+			}
 		    }
 		}
 	    }
