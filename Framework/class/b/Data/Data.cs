@@ -21,6 +21,269 @@ namespace DashFramework
 {
     namespace Data
     {
+	namespace Types
+	{
+	    public class FixedList<T>
+	    {
+		readonly List<T> Data = new List<T>();
+
+
+		// Index Accessibility:
+		public T this[int index, string o]
+		{
+		    get
+		    {
+			if (Data.Count > index)
+			{
+			    return Data[index];
+			}
+
+			return default(T);
+		    }
+
+		    set
+		    {
+			if (Data.Count > index)
+			{
+			    Data[index] = value;
+			}
+		    }
+		}
+
+
+		// Base Methods:
+		public bool Remove(T Entry)
+		{
+		    try
+		    {
+			if (Data.Contains(Entry))
+			{
+			    Data.Remove(Entry);
+			    return true;
+			}
+
+			return false;
+		    }
+
+		    catch
+		    {
+			return false;
+		    }
+		}
+
+		public bool Remove(int Index)
+		{
+		    try
+		    {
+			if (Data.Count > Index)
+			{
+			    Data.RemoveAt(Index);
+			    return true;
+			}
+
+			return false;
+		    }
+
+		    catch
+		    {
+			return false;
+		    }
+		}
+
+		public bool Set(int Index, T Entry, bool Overwrite = true)
+		{
+		    try
+		    {
+			if (Data.Count <= Index)
+			{
+			    return false;
+			}
+
+			else if (Data[Index].Equals(Entry))
+			{
+			    if (!Overwrite)
+			    {
+				return false;
+			    }
+			}
+
+			else
+			{
+			    Data[Index] = Entry;
+			}
+
+			return true;
+		    }
+
+		    catch
+		    {
+			return false;
+		    }
+		}
+
+		public bool Add(T Entry, bool IgnoreExistence = true)
+		{
+		    try
+		    {
+			if (Data.Contains(Entry))
+			{
+			    if (!IgnoreExistence)
+			    {
+				return false;
+			    }
+			}
+
+			else
+			{
+			    Data.Add(Entry);
+			}
+
+			return true;
+		    }
+
+		    catch
+		    {
+			return false;
+		    }
+		}
+
+		public bool AddRange(bool AllowNulls = false, params T[] Entries)
+		{
+		    try
+		    {
+			if (Entries.Length > 0)
+			{
+			    if (!AllowNulls)
+			    {
+				foreach (T Entry in Entries)
+				{
+				    if (Entry != null)
+				    {
+					Data.Add(Entry);
+				    }
+				}
+			    }
+
+			    else
+			    {
+				Data.AddRange(Entries);
+			    }
+
+			    return true;
+			}
+
+			return false;
+		    }
+
+		    catch
+		    {
+			return false;
+		    }
+		}
+		
+		public void Clear()
+		{
+		    try
+		    {
+			Data.Clear();
+		    }
+
+		    catch
+		    {
+			throw;
+		    }
+		}
+
+
+		// Utility Methods:
+		public List<T> Cache()
+		{
+		    try
+		    {
+			return Data;
+		    }
+
+		    catch
+		    {
+			throw;
+		    }
+		}
+
+		public Array ToArray()
+		{
+		    try
+		    {
+			return Data.ToArray();
+		    }
+
+		    catch
+		    {
+			throw;
+		    }
+		}
+
+		public List<T> ToList()
+		{
+		    try
+		    {
+			return Data;
+		    }
+
+		    catch
+		    {
+			throw;
+		    }
+		}
+
+		public Dictionary<int, T> GetAllNulls(string Info = "[stored as: (index, value)]")
+		{
+		    try
+		    {
+			var Nulls = new Dictionary<int, T>();
+			
+			for (int k = 0; k < Data.Count; k += 1)
+			{
+			    if (Data[k] == null || Data[k].Equals(null))
+			    {
+				Nulls.Add(k, Data[k]);
+			    }
+			}
+
+			return Nulls;
+		    }
+
+		    catch
+		    {
+			throw;
+		    }
+		}
+
+		public Dictionary<int, T> GetAllNoneNulls(string Info = "[stored as: (index, value)]")
+		{
+		    try
+		    {
+			var Nulls = new Dictionary<int, T>();
+
+			for (int k = 0; k < Data.Count; k += 1)
+			{
+			    if (Data[k] != null && !Data[k].Equals(null))
+			    {
+				Nulls.Add(k, Data[k]);
+			    }
+			}
+
+			return Nulls;
+		    }
+
+		    catch
+		    {
+			throw;
+		    }
+		}
+	    }
+	}
+ 
+
 	public class DataTools
 	{
 	    // Date & Times:
