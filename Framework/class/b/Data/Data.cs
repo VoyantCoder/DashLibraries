@@ -29,10 +29,15 @@ namespace DashFramework
 
 
 		// Index Accessibility:
+		public int Sets = 0;
+		public int Gets = 0;
+
 		public T this[int index, string o]
 		{
 		    get
 		    {
+			Gets += 1;
+
 			if (Data.Count > index)
 			{
 			    return Data[index];
@@ -43,6 +48,8 @@ namespace DashFramework
 
 		    set
 		    {
+			Sets += 1;
+
 			if (Data.Count > index)
 			{
 			    Data[index] = value;
@@ -52,6 +59,8 @@ namespace DashFramework
 
 
 		// Base Methods:
+		public int Removes = 0;
+
 		public bool Remove(T Entry)
 		{
 		    try
@@ -59,6 +68,8 @@ namespace DashFramework
 			if (Data.Contains(Entry))
 			{
 			    Data.Remove(Entry);
+			    Removes += 1;
+
 			    return true;
 			}
 
@@ -78,6 +89,8 @@ namespace DashFramework
 			if (Data.Count > Index)
 			{
 			    Data.RemoveAt(Index);
+			    Removes += 1;
+
 			    return true;
 			}
 
@@ -89,7 +102,7 @@ namespace DashFramework
 			return false;
 		    }
 		}
-
+		
 		public bool Set(int Index, T Entry, bool Overwrite = true)
 		{
 		    try
@@ -110,6 +123,7 @@ namespace DashFramework
 			else
 			{
 			    Data[Index] = Entry;
+			    Sets += 1;
 			}
 
 			return true;
@@ -120,6 +134,8 @@ namespace DashFramework
 			return false;
 		    }
 		}
+
+		public int Adds = 0;
 
 		public bool Add(T Entry, bool IgnoreExistence = true)
 		{
@@ -136,6 +152,7 @@ namespace DashFramework
 			else
 			{
 			    Data.Add(Entry);
+			    Adds += 1;
 			}
 
 			return true;
@@ -162,11 +179,14 @@ namespace DashFramework
 					Data.Add(Entry);
 				    }
 				}
+
+				Adds += 1;
 			    }
 
 			    else
 			    {
 				Data.AddRange(Entries);
+				Adds += 1;
 			    }
 
 			    return true;
@@ -180,12 +200,15 @@ namespace DashFramework
 			return false;
 		    }
 		}
-		
+
+		public int Clears = 0;
+
 		public void Clear()
 		{
 		    try
 		    {
 			Data.Clear();
+			Clears += 1;
 		    }
 
 		    catch
@@ -283,6 +306,8 @@ namespace DashFramework
 			    }
 			}
 
+			Gets += 1;
+
 			return Nulls;
 		    }
 
@@ -301,6 +326,8 @@ namespace DashFramework
 			    yield return Entry;
 			}
 		    }
+
+		    Gets += 1;
 		}
 	    }
 	}
