@@ -600,6 +600,21 @@ namespace DashFramework
 		    return Size.Empty;
 		}
 	    }
+
+	    
+	    // Coloring Integration:
+	    public void SetWindowBackColor(Color Color)
+	    {
+		try
+		{
+		    Instance().BackColor = Color;
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
 	}
     }
 }
