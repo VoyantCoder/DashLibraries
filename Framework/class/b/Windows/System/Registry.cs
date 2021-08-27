@@ -107,6 +107,7 @@ namespace DashFramework
 		    return false;
 		}
 	    }
+
 	    public void SetRootLocation(REGISTRY_ROOTS Root)
 	    {
 		try
@@ -148,6 +149,7 @@ namespace DashFramework
 		    return false;
 		}
 	    }
+
 	    public IEnumerable<bool> SubKeyExists(REGISTRY_ROOTS Root, params string[] Nodes)
 	    {
 		foreach (string Node in Nodes)
@@ -158,12 +160,11 @@ namespace DashFramework
 
 
 	    // Summary:
-	    //	Insert values under the given sub key(s).
-	    public bool InsertValue(RegistryKey Key, string EntryName, object Value)
+	    //	Validate the existence of the given registry value(s).
+	    public bool ValueExists(RegistryKey Key, string EntryName)
 	    {
 		try
 		{
-		    Key.SetValue(EntryName, Value);
 		    return (Key.GetValue(EntryName) != null);
 		}
 
@@ -172,16 +173,13 @@ namespace DashFramework
 		    throw;
 		}
 	    }
-	    public IEnumerable<bool> InsertValue(RegistryKey Key, params (string, object)[] Pairs)
+
+	    public IEnumerable<bool> ValueExists(RegistryKey Key, params string[] EntryNames)
 	    {
-		foreach ((string, object) Pair in Pairs)
+		foreach (string EntryName in EntryNames)
 		{
-		    yield return InsertValue(Key, Pair.Item1, Pair.Item2);
+		    yield return ValueExists(Key, EntryName);
 		}
-	    }
-	    public IEnumerable<bool> InsertValues(RegistryKey Key, params (string, object)[] Pairs)
-	    {
-		return InsertValue(Key, Pairs);
 	    }
 
 
@@ -209,6 +207,7 @@ namespace DashFramework
 		    return false;
 		}
 	    }
+
 	    public IEnumerable<bool> RemoveValue(REGISTRY_ROOTS Root, string Node, params string[] Names)
 	    {
 		foreach (string Name in Names)
@@ -216,9 +215,54 @@ namespace DashFramework
 		    yield return RemoveValue(Root, Node, Name);
 		}
 	    }
-	    public IEnumerable<bool> RemoveValues(REGISTRY_ROOTS Root, string Node, params string[] Names)
+
+
+	    // Summary:
+	    //	Get the given value(s).
+	    public object GetValue(RegistryKey Key, string Node)
 	    {
-		return RemoveValue(Root, Node, Names);
+		try
+		{
+		    return Key.GetValue(Node, null);
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    public IEnumerable<object> GetValue(RegistryKey Key, params string[] Nodes)
+	    {
+		foreach (string Node in Nodes)
+		{
+		    yield return GetValue(Key, Node);
+		}
+	    }
+
+
+	    // Summary:
+	    //	Insert values under the given sub key(s).
+	    public bool InsertValue(RegistryKey Key, string EntryName, object Value)
+	    {
+		try
+		{
+		    Key.SetValue(EntryName, Value);
+		    return (Key.GetValue(EntryName) != null);
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    public IEnumerable<bool> InsertValue(RegistryKey Key, params (string, object)[] Pairs)
+	    {
+		foreach ((string, object) Pair in Pairs)
+		{
+		    yield return InsertValue(Key, Pair.Item1, Pair.Item2);
+		}
 	    }
 
 
@@ -234,28 +278,22 @@ namespace DashFramework
 
 		catch
 		{
-		    throw;
+		    return null;
 		}
 	    }
-	    public IEnumerable<RegistryKey> CreateSubKeys(REGISTRY_ROOTS Root, params string[] Nodes)
-	    {
-		foreach (string Node in Nodes)
-		{
-		    yield return CreateSubKey(Root, Node);
-		}
-	    }
+
 	    public RegistryKey CreateSubKey(REGISTRY_ROOTS Root, string Node, params (string, object)[] Pairs)
 	    {
 		try
 		{
 		    RegistryKey Key = CreateSubKey(Root, Node);
-		    InsertValues(Key, Pairs);
+		    InsertValue(Key, Pairs).Count();
 		    return Key;
 		}
 
 		catch
 		{
-		    throw;
+		    return null;
 		}
 	    }
 
@@ -277,18 +315,12 @@ namespace DashFramework
 		    throw;
 		}
 	    }
-	    public IEnumerable<bool> ExCreateSubKeys(REGISTRY_ROOTS Root, params string[] Nodes)
-	    {
-		for (int k = 0; k < Nodes.Length; k += 1)
-		{
-		    yield return ExCreateSubKey(Root, Nodes[k]);
-		}
-	    }
+
 	    public IEnumerable<bool> ExCreateSubKey(REGISTRY_ROOTS Root, string Node, params (string, object)[] Pairs)
 	    {
 		using (RegistryKey Key = CreateSubKey(Root, Node))
 		{
-		    return InsertValues(Key, Pairs);
+		    return InsertValue(Key, Pairs);
 		}
 	    }
 
@@ -300,6 +332,7 @@ namespace DashFramework
 	        User.DeleteSubKey(Node, false);
 	        return (!SubKeyExists(Root, Node));
 	    }
+
 	    public IEnumerable<bool> RemoveSubKey(REGISTRY_ROOTS Root, params string[] Nodes)
 	    {
 		foreach (string Node in Nodes)
@@ -307,10 +340,6 @@ namespace DashFramework
 		    User.DeleteSubKey(Node, false);
 		    yield return (!SubKeyExists(Root, Node));
 		}
-	    }
-	    public IEnumerable<bool> RemoveSubKeys(REGISTRY_ROOTS Root, params string[] Nodes)
-	    {
-		return RemoveSubKey(Root, Nodes);
 	    }
 
 
@@ -359,16 +388,13 @@ namespace DashFramework
 		    return false;
 		}
 	    }
+
 	    public IEnumerable<bool> RenameSubKey(REGISTRY_ROOTS Root, params (string, string)[] Nodes)
 	    {
 		foreach ((string, string) Node in Nodes)
 		{
 		    yield return RenameSubKey(Root, Node.Item1, Node.Item2);
 		}
-	    }
-	    public IEnumerable<bool> RenameSubKeys(REGISTRY_ROOTS Root, params (string, string)[] Nodes)
-	    {
-	        return RenameSubKey(Root, Nodes);
 	    }
 	}
     }
