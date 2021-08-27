@@ -14,8 +14,6 @@ using System.Collections.Generic;
 using DashFramework.DashResources;
 using DashFramework.Erroring;
 
-using DashFramework.resources; // {safe_projectname}
-
 
 namespace DashFramework
 {
