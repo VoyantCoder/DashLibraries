@@ -25,12 +25,16 @@ namespace DashFramework
 {
     namespace DashControls.Customs
     {
+	// Summary:
+	//  drop menu item functionalities:
 	public class FancyItem
 	{
 	    public DashPanel LicensePlate = new DashPanel();
 	    public Label License = new Label();
 	}
 
+	// Summary:
+	//  runtime settings structure:
 	public struct Settings
 	{
 	    public static bool HasCheckBoxInit;
@@ -97,14 +101,16 @@ namespace DashFramework
 	    public static int FontId = 1;
 	}
 
+	// Summary:
+	//  base class functionalities:
 	public class FancyDropMenu
 	{
 	    //Integrator Base 1 (Base Functionality):
 	    readonly ControlIntegrator Integrate = new ControlIntegrator();
 	    readonly PlainSorters Sorters = new PlainSorters();
-	    
+
 	    readonly DashPanel Panel1 = new DashPanel();
-	    
+
 	    public virtual void Hide()
 	    {
 		try
@@ -122,8 +128,8 @@ namespace DashFramework
 	    {
 		try
 		{
-	    	    Panel1.BringToFront();
-	    	    Panel1.Show();
+		    Panel1.BringToFront();
+		    Panel1.Show();
 		}
 
 		catch
@@ -159,7 +165,7 @@ namespace DashFramework
 			Size Size = new Size(ItemWidth + 4, 10);
 			Integrate.Panel(Parent, Panel1, Size, Location, BackColor);
 		    });
-		    
+
 		    Settings.ForeColor = ForeColor;
 		    Settings.BackColor = BackColor;
 		    Settings.ItemWidth = ItemWidth;
@@ -176,7 +182,6 @@ namespace DashFramework
 
 		return true;
 	    }
-
 
 	    //Integrator Base 2 (Add Children):
 	    public readonly List<(FancyItem, Action)> AddedItems = new List<(FancyItem, Action)>();
@@ -250,7 +255,7 @@ namespace DashFramework
 
 		    Size Size1 = new Size(Width + 4, Height + 4);
 		    Size Size2 = new Size(Width, Height);
-		    
+
 		    Transform.Resize(Panel1, Size1);
 		    Transform.Resize(Panel2, Size2);
 		}
@@ -295,7 +300,7 @@ namespace DashFramework
 			Point Location = NextLicensePlateLocation();
 			Color BackColor = Settings.BackColor;
 			Size Size = LicensePlateSize();
-			
+
 			Integrate.Panel(Panel2, MrFancyItem.LicensePlate, Size, Location, BackColor);
 		    });
 
@@ -308,7 +313,7 @@ namespace DashFramework
 			int FontSize = Settings.FontSize;
 			int FontId = Settings.FontId;
 
-			Integrate.Label(MrFancyItem.LicensePlate, MrFancyItem.License, Size.Empty, 
+			Integrate.Label(MrFancyItem.LicensePlate, MrFancyItem.License, Size.Empty,
 			    Location, BackColor, ForeColor, $"{Name}", FontId, FontSize);
 
 			AddedItems.Add((MrFancyItem, Code));
@@ -370,7 +375,6 @@ namespace DashFramework
 		return true;
 	    }
 
-
 	    //Integrator Base 3 (Add Children with Runnable):
 	    public FancyItem GetLatestItem()
 	    {
@@ -424,7 +428,7 @@ namespace DashFramework
 		    {
 			return false;
 		    }
-		    
+
 		    for (int k = 0; k < ItemSets.Length; k += 1)
 		    {
 			FancyItem Object = AddedItems[k].Item1;
@@ -448,6 +452,117 @@ namespace DashFramework
 		}
 
 		return true;
+	    }
+	}
+
+	static class FancyDropSubMenu
+	{
+	    public static void Integrate(this FancyDropMenu I, int a, int b)
+	    {
+		try
+		{
+		    // Integrate sub menu
+		}
+		
+		catch
+		{
+		    throw;
+		}
+	    }
+	}
+
+	static class FancyDropMenuCheckBox
+	{
+	    public static void Integrate(this FancyDropMenu I, int parameters)
+	    {
+		try
+		{
+		    // Integrate checkboxes
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+	}
+
+	// Summary:
+	//  color related functionalities:
+	static class FancyDropMenuColors
+	{
+	    public static void ConfigureColors(this FancyDropMenu I)
+	    {
+
+	    }
+	}
+
+	// Summary:
+	//  visibility related functionalities:
+	static class FancyDropMenuVisibility
+	{
+	    public static void RegisterVisibleTrigger(this FancyDropMenu instance, params Control[] Triggers)
+	    {
+		try
+		{
+		    void Register(Control Trigger)
+		    {
+			try
+			{
+			    Trigger.MouseEnter += (s, e) =>
+			    {
+				instance.Show();
+			    };
+			}
+
+			catch
+			{
+			    throw;
+			}
+		    }
+
+		    foreach (Control Trigger in Triggers)
+		    {
+			Register(Trigger);
+		    }
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    public static void RegisterInvisibleTrigger(this FancyDropMenu instance, params Control[] Triggers)
+	    {
+		try
+		{
+		    void Register(Control Trigger)
+		    {
+			try
+			{
+			    Trigger.MouseEnter += (s, e) =>
+			    {
+				instance.Hide();
+			    };
+			}
+
+			catch
+			{
+			    throw;
+			}
+		    }
+
+		    foreach (Control Trigger in Triggers)
+		    {
+			Register(Trigger);
+		    }
+		}
+
+		catch
+		{
+		    throw;
+		}
 	    }
 	}
     }
