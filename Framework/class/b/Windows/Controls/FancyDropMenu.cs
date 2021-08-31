@@ -455,48 +455,6 @@ namespace DashFramework
 	    }
 	}
 
-	static class FancyDropSubMenu
-	{
-	    public static void Integrate(this FancyDropMenu I, int a, int b)
-	    {
-		try
-		{
-		    // Integrate sub menu
-		}
-		
-		catch
-		{
-		    throw;
-		}
-	    }
-	}
-
-	static class FancyDropMenuCheckBox
-	{
-	    public static void Integrate(this FancyDropMenu I, int parameters)
-	    {
-		try
-		{
-		    // Integrate checkboxes
-		}
-
-		catch
-		{
-		    throw;
-		}
-	    }
-	}
-
-	// Summary:
-	//  color related functionalities:
-	static class FancyDropMenuColors
-	{
-	    public static void ConfigureColors(this FancyDropMenu I)
-	    {
-
-	    }
-	}
-
 	// Summary:
 	//  visibility related functionalities:
 	static class FancyDropMenuVisibility
