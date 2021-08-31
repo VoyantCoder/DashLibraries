@@ -109,7 +109,7 @@ namespace DashFramework
 	    readonly ControlIntegrator Integrate = new ControlIntegrator();
 	    readonly PlainSorters Sorters = new PlainSorters();
 
-	    readonly DashPanel Panel1 = new DashPanel();
+	    public readonly DashPanel Panel1 = new DashPanel();
 
 	    public virtual void Hide()
 	    {
@@ -452,6 +452,83 @@ namespace DashFramework
 		}
 
 		return true;
+	    }
+	}
+
+	// Summary:
+	//  Submenu related functionalities:
+	static class RegularSubMenu
+	{
+	    public static bool MenuInstalled()
+	    {
+		try
+		{
+		    return Settings.HasBaseInit;
+		}
+
+		catch
+		{
+		    return false;
+		}
+	    }
+	    
+	    public static void InstallSubMenu(this RegularDropMenu inst, Color BackColor = default(Color), Color ForeColor = default(Color), int ItemWidth = 100)
+	    {
+		try
+		{
+		    if (!MenuInstalled())
+		    {
+			return;
+		    }
+		    
+
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    public static void InstallSubMenu(this RegularDropMenu inst, Color BackColor, Color ForeColor, Size ItemSize, params string[] ItemNames)
+	    {
+		try
+		{
+		    if (!MenuInstalled())
+		    {
+			return;
+		    }
+
+		    inst.Integrator();
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    public static void InstallSubMenu(this RegularDropMenu inst, Color BackColor, Color ForeColor, Size ItemSize, params (string, Action)[] ItemSets)
+	    {
+		try
+		{
+		    if (!MenuInstalled())
+		    {
+			return;
+		    }
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    public static void Integrator(this RegularDropMenu inst)
+	    {
+		// (Control Parent, Point Location, Color BackColor = default(Color), Color ForeColor = default(Color), int ItemWidth = 100)
+		// (Control Parent, Point Location, Color BackColor, Color ForeColor, Size ItemSize, params string[] ItemNames)
+		// (Control Parent, Point Location, Color BackColor, Color ForeColor, Size ItemSize, params (string, Action)[] ItemSets)
 	    }
 	}
 
