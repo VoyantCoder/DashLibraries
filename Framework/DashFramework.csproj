@@ -60,6 +60,7 @@
     <Compile Include="class\b\Test\Copy.cs" />
     <Compile Include="class\b\Windows\Controls.cs" />
     <Compile Include="class\b\Windows\Controls\CheckBox.cs" />
+    <Compile Include="class\b\Windows\Controls\CheckBoxDropMenu.cs" />
     <Compile Include="class\b\Windows\Controls\RegularDropMenu.cs" />
     <Compile Include="class\b\Windows\Controls\ClickDropMenu.cs" />
     <Compile Include="class\b\Windows\Controls\CustomScrollbar.cs" />
