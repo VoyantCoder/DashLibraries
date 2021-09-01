@@ -339,10 +339,17 @@ namespace DashFramework
 
 
 	    // Color Related:
-	    public string RGBString(Color cc) => ($"{cc.R}, {cc.G}, {cc.B}");
+	    public string RGBString(Color cc) => ($"{cc.R},{cc.G},{cc.B}");
 
 	    public Color NegativeRGB(int minus, Color origin)
 	    {
+		if (origin.R - minus < 0)
+		    minus = 0;
+		else if (origin.G - minus < 0)
+		    minus = 0;
+		else if (origin.B - minus < 0)
+		    minus = 0;
+
 		return
 		(
 		    Color.FromArgb
@@ -356,6 +363,13 @@ namespace DashFramework
 
 	    public Color PositiveRGB(int plus, Color origin)
 	    {
+		if (origin.R + plus > 255)
+		    plus = 0;
+		else if (origin.G + plus > 255)
+		    plus = 0;
+		else if (origin.B + plus > 255)
+		    plus = 0;
+
 		return
 		(
 		    Color.FromArgb
