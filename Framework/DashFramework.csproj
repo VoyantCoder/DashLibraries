@@ -59,22 +59,22 @@
     <Compile Include="class\b\Handling\CodeSorting.cs" />
     <Compile Include="class\b\Test\Copy.cs" />
     <Compile Include="class\b\Windows\Controls.cs" />
-    <Compile Include="class\b\Windows\Controls\CheckBox.cs" />
-    <Compile Include="class\b\Windows\Controls\CheckBoxDropMenu.cs" />
-    <Compile Include="class\b\Windows\Controls\RegularDropMenu.cs" />
-    <Compile Include="class\b\Windows\Controls\ClickDropMenu.cs" />
-    <Compile Include="class\b\Windows\Controls\CustomScrollbar.cs" />
-    <Compile Include="class\b\Windows\Controls\DashListBox.cs">
+    <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu.cs" />
+    <Compile Include="class\b\Windows\Controls\DropMenu\ClickDropMenu.cs" />
+    <Compile Include="class\b\Windows\Controls\DropMenu\RegularDropMenu.cs" />
+    <Compile Include="class\b\Windows\Controls\Misc\CheckBox.cs" />
+    <Compile Include="class\b\Windows\Controls\Misc\CustomScrollbar.cs" />
+    <Compile Include="class\b\Windows\Controls\Misc\DashListBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="class\b\Windows\Controls\DashPanel.cs">
+    <Compile Include="class\b\Windows\Controls\Misc\DashPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="class\b\Windows\Controls\DashTreeView.cs">
+    <Compile Include="class\b\Windows\Controls\Misc\DashTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="class\b\Windows\Controls\LabelPage.cs" />
-    <Compile Include="class\b\Windows\Controls\MessageContainer.cs" />
+    <Compile Include="class\b\Windows\Controls\Misc\LabelPage.cs" />
+    <Compile Include="class\b\Windows\Controls\Misc\MessageContainer.cs" />
     <Compile Include="class\b\Windows\Dialog.cs" />
     <Compile Include="class\b\Windows\ControlTools.cs" />
     <Compile Include="class\b\Handling\AsyncSafe.cs" />
