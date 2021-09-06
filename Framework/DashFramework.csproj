@@ -56,10 +56,17 @@
     <Compile Include="class\a\Program.cs" />
     <Compile Include="class\b\Data\Data.cs" />
     <Compile Include="class\b\Data\Resources.cs" />
-    <Compile Include="class\b\Handling\CodeSorting.cs" />
+    <Compile Include="class\b\Handling\CodeBlocks\AsyncSafe.cs" />
+    <Compile Include="class\b\Handling\CodeBlocks\CodeSorting.cs" />
+    <Compile Include="class\b\Handling\CodeBlocks\Runnables.cs" />
+    <Compile Include="class\b\Handling\Misc\Erroring.cs" />
+    <Compile Include="class\b\Handling\Misc\IInteract.cs" />
     <Compile Include="class\b\Test\Copy.cs" />
     <Compile Include="class\b\Windows\Controls.cs" />
-    <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu.cs" />
+    <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\CheckBoxDropMenu.cs" />
+    <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\Extension.cs" />
+    <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\Layout.cs" />
+    <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\Objects.cs" />
     <Compile Include="class\b\Windows\Controls\DropMenu\ClickDropMenu.cs" />
     <Compile Include="class\b\Windows\Controls\DropMenu\RegularDropMenu.cs" />
     <Compile Include="class\b\Windows\Controls\Misc\CheckBox.cs" />
@@ -77,14 +84,8 @@
     <Compile Include="class\b\Windows\Controls\Misc\MessageContainer.cs" />
     <Compile Include="class\b\Windows\Dialog.cs" />
     <Compile Include="class\b\Windows\ControlTools.cs" />
-    <Compile Include="class\b\Handling\AsyncSafe.cs" />
-    <Compile Include="class\b\Handling\Erroring.cs" />
-    <Compile Include="class\b\Handling\IInteract.cs" />
-    <Compile Include="class\b\Handling\Runnables.cs" />
     <Compile Include="class\b\Networking\Networking.cs" />
-    <Compile Include="class\b\Windows\Forms\DashWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="class\b\Windows\Forms\DashWindow.cs" />
     <Compile Include="class\b\Windows\Forms\MenuBar.cs" />
     <Compile Include="class\b\Windows\Forms\ToolBar.cs" />
     <Compile Include="class\b\Windows\System\Registry.cs" />
