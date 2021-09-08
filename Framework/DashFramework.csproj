@@ -59,6 +59,7 @@
     <Compile Include="class\b\Handling\CodeBlocks\AsyncSafe.cs" />
     <Compile Include="class\b\Handling\CodeBlocks\CodeSorting.cs" />
     <Compile Include="class\b\Handling\CodeBlocks\Runnables.cs" />
+    <Compile Include="class\b\Threading\InsertyThread.cs" />
     <Compile Include="class\b\Handling\Misc\Erroring.cs" />
     <Compile Include="class\b\Handling\Misc\IInteract.cs" />
     <Compile Include="class\b\Test\Copy.cs" />
