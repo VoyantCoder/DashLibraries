@@ -68,6 +68,7 @@
     <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\Extension.cs" />
     <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\Layout.cs" />
     <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\Objects.cs" />
+    <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\Sub.cs" />
     <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\Visibility.cs" />
     <Compile Include="class\b\Windows\Controls\DropMenu\ClickDropMenu.cs" />
     <Compile Include="class\b\Windows\Controls\DropMenu\RegularDropMenu.cs" />
