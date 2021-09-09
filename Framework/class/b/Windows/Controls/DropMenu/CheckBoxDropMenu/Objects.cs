@@ -23,10 +23,13 @@ namespace DashFramework
 	{
 	    public partial class CBDropMenu
 	    {
-		public readonly DashPanel Layer1 = new DashPanel();
-		public readonly DashPanel Layer2 = new DashPanel();
-		public readonly DashPanel Layer3 = new DashPanel();
-		public readonly DashPanel Layer4 = new DashPanel();
+		public readonly DashPanel Layer1 = new DashPanel();//Sub Holder
+		public readonly DashPanel Layer2 = new DashPanel();//Main Holder
+		public readonly DashPanel Layer3 = new DashPanel();//Item Holder
+		public readonly DashPanel Layer4 = new DashPanel();//CheckBox Holder
+
+		public readonly List<CheckBox> DropMenuBoxes = new List<CheckBox>();
+		public readonly List<Entry> DropMenuEntries = new List<Entry>();
 
 		public class CheckBox
 		{
@@ -39,6 +42,8 @@ namespace DashFramework
 		{
 		    public readonly DashPanel LicensePlate = new DashPanel();
 		    public readonly Label License = new Label();
+
+		    public DashPanel Item() => LicensePlate;
 
 		    public Entry()
 		    {
@@ -56,7 +61,7 @@ namespace DashFramework
 
 		public readonly ControlIntegrator Integrate = new ControlIntegrator();
 		public readonly PlainSorters Sorters = new PlainSorters();
-
+		
 		public struct ExInfo
 		{
 		    public static bool Added = false;
