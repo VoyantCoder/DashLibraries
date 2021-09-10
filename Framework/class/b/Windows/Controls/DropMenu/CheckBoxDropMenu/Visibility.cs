@@ -8,27 +8,55 @@ using System.Collections.Generic;
 
 namespace DashFramework
 {
-    namespace DashControls
+    namespace DashControls.Customs
     {
-	namespace Customs
+	public partial class CBDropMenu
 	{
-	    public partial class CBDropMenu
+	    public void SetVisibilityTrigger(bool Show, params Control[] Controls)
 	    {
-		public void SetVisibilityTrigger(bool Show, params Control[] Objects)
+		try
 		{
-		    try
+		    void EventHandler(Control Control)
 		    {
-			foreach (Control Object in Objects)
+			try
 			{
-			    if (Show) Object.Enter += (s, e) => this.Show();
-			    else Object.Enter += (s, e) => Hide();
+			    Control.MouseEnter += (s, e) =>
+			    {
+				try
+				{
+				    if (Show)
+				    {
+					this.Show();
+				    }
+
+				    else
+				    {
+					this.Hide();
+				    }
+				}
+
+				catch
+				{
+				    throw;
+				}
+			    };
+			}
+
+			catch
+			{
+			    throw;
 			}
 		    }
 
-		    catch
+		    foreach (Control Control in Controls)
 		    {
-			throw;
+			EventHandler(Control);
 		    }
+		}
+
+		catch
+		{
+		    throw;
 		}
 	    }
 	}
