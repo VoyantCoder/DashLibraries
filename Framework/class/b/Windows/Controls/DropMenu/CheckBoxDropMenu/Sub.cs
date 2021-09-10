@@ -13,7 +13,7 @@ namespace DashFramework
     {
 	public partial class CBDropMenu
 	{
-	    public class SubMenus : List<CBDropMenu>
+	    public class SubMenuList : List<CBDropMenu>
 	    {
 		public CBDropMenu GetMenu(int Id)
 		{
@@ -34,8 +34,8 @@ namespace DashFramework
 		}
 	    }
 
-	    readonly SubMenus SubMenu = new SubMenus();
-
+	    public readonly SubMenuList SubMenus = new SubMenuList();
+	   
 	    public bool AddSubMenu(int ItemId, Color BackColor1, Color BackColor2, 
 		Color BackColor3, Color ForeColor, int MenuWidth, params (string, Action)[] Children)
 	    {
@@ -46,58 +46,57 @@ namespace DashFramework
 		{
 		    Sorters.SortCode(("Sub Menu"), () =>
 		    {
-			Point Location = new Point(0, Item.Top + Layer3.Top);
-
-			SubMenu.Integrator(Layer1, Location, BackColor1,
+			Point Location = new Point(Layer2.Width, Item.Top + Layer3.Top - 2);
+			
+			bool resu = SubMenu.Integrator(Layer1, Location, BackColor1,
 			    BackColor2, BackColor3, ForeColor, MenuWidth, Children);
+
+			int a = SubMenu.Layer1.Left;
+			int b = SubMenu.Layer1.Width;
+
+			MessageBox.Show($@"Resu: {resu}, L2 Width: {Layer2.Width}, a: {a}, b: {b}, a+b: {a + b}");
 		    });
 
 		    Sorters.SortCode(("Hooks"), () =>
 		    {
 			foreach (Entry Entry in DropMenuEntries)
 			{
-			    if (Entry.Item().Equals(Item))
+			    SubMenu.SetVisibilityTrigger(Entry.Item()
+				.Equals(Item), Entry.License, Entry.LicensePlate);
+			}
+
+			void SetHook(params Control[] Controls)
+			{
+			    try
 			    {
-				Entry.Item().MouseEnter += (s, e) =>
+				foreach (Control Control in Controls)
 				{
-				    Layer1.Show();
-				};
-
-				void Hook(params Control[] Controls)
-				{
-				    try
+				    Control.MouseEnter += (s, e) =>
 				    {
-					foreach (Control Control in Controls)
+					int a = SubMenu.Layer1.Width;
+					int b = Layer1.Width;
+					int c = Layer3.Width + Layer3.Left + 2;
+
+					if (b == c)
 					{
-					    Control.MouseEnter += (s, e) =>
-					    {
-						try
-						{
-						    // See if E == the object now hovering or not.
-						    MessageBox.Show($"{e.GetType().ToString()}");
-						    SubMenu.Hide();
-						}
-
-						catch
-						{
-						    throw;
-						}
-					    };
+					    Size Size = new Size(a + b, Layer1.Height);
+					    Transform.Resize(Layer1, Size);
 					}
-				    }
-
-				    catch
-				    {
-					throw;
-				    }
+				    };
 				}
+			    }
 
-				Hook(Layer1, Layer2, Layer3, Layer4);
+			    catch
+			    {
+				throw;
 			    }
 			}
+
+			Entry Temp = DropMenuEntries[ItemId];
+			SetHook(Temp.License, Temp.LicensePlate);
 		    });
 
-		    this.SubMenu.Add(SubMenu);
+		    SubMenus.Add(SubMenu);
 		}
 
 		catch
@@ -105,7 +104,7 @@ namespace DashFramework
 		    return false;
 		}
 		
-		return this.SubMenu.Contains(SubMenu);
+		return SubMenus.Contains(SubMenu);
 	    }
 
 	    public bool AddSubMenu(Entry Item, Color BackColor1, Color BackColor2, 
