@@ -68,7 +68,7 @@ namespace DashFramework
 
 				IEnumerable<Control> Hook4()
 				{
-				    foreach (Entry Item in DropMenuItems)
+				    foreach (Entry Item in DropMenuEntries)
 				    {
 					yield return Item.LicensePlate;
 				    }
@@ -76,7 +76,7 @@ namespace DashFramework
 
 				IEnumerable<Control> Hook5()
 				{
-				    foreach (Entry Item in DropMenuItems)
+				    foreach (Entry Item in DropMenuEntries)
 				    {
 					yield return Item.License;
 				    }
@@ -84,33 +84,53 @@ namespace DashFramework
 
 				List<Control> Controls = new List<Control>();
 
-				void Add(params Control[] Adds) => Controls.AddRange(Adds);
+				void Add2(IEnumerable<Control> Adds) => Controls.AddRange(Adds);
+				void Add1(params Control[] Adds) => Controls.AddRange(Adds);
 
 				switch (Target)
 				{
-				    case MenuBarColor.CheckBoxOutter: return Hook1().ToList();
-				    case MenuBarColor.CheckBoxInner: return Hook2().ToList();
-				    case MenuBarColor.CheckBoxBasis: return Hook3().ToList();
-				    case MenuBarColor.LicensePlate: return Hook4().ToList();
-				    case MenuBarColor.License: return Hook5().ToList();
-				    case MenuBarColor.Layer1: Add(Layer1); break;
-				    case MenuBarColor.Layer2: Add(Layer2); break;
-				    case MenuBarColor.Layer3: Add(Layer3); break;
+				    case MenuBarColor.CheckBoxOutter: Add2(Hook1()); break;
+				    case MenuBarColor.CheckBoxInner: Add2(Hook2()); break;
+				    case MenuBarColor.CheckBoxBasis: Add2(Hook3()); break;
+				    case MenuBarColor.LicensePlate: Add2(Hook4()); break;
+				    case MenuBarColor.License: Add2(Hook5()); break;
+				    case MenuBarColor.Layer1: Add1(Layer1); break;
+				    case MenuBarColor.Layer2: Add1(Layer2); break;
+				    case MenuBarColor.Layer3: Add1(Layer3); break;
 				}
 
 				return Controls;
 			    }
 
+			    void Color(Control Control) => Control.BackColor = Color1;
+
 			    foreach (Control Control in SpecifiedControls())
 			    {
 				switch (Event)
 				{
-				    case MenuBarColorEvent.Enter: Control.MouseEnter += (s, e) => Control.BackColor = Color1; break;
-				    case MenuBarColorEvent.Hover: Control.MouseHover += (s, e) => Control.BackColor = Color1; break;
-				    case MenuBarColorEvent.Leave: Control.MouseLeave += (s, e) => Control.BackColor = Color1; break;
-				    case MenuBarColorEvent.Down: Control.MouseDown += (s, e) => Control.BackColor = Color1; break;
-				    case MenuBarColorEvent.Up: Control.MouseUp += (s, e) => Control.BackColor = Color1; break;
-				    case MenuBarColorEvent.Current: Control.BackColor = Color1; break;
+				    case MenuBarColorEvent.Enter:
+					Control.MouseEnter += 
+					    (s, e) => Color(Control);
+					break;
+				    case MenuBarColorEvent.Hover:
+					Control.MouseHover += 
+					    (s, e) => Color(Control);
+					break;
+				    case MenuBarColorEvent.Leave:
+					Control.MouseLeave += 
+					    (s, e) => Color(Control);
+					break;
+				    case MenuBarColorEvent.Down:
+					Control.MouseDown += 
+					    (s, e) => Color(Control);
+					break;
+				    case MenuBarColorEvent.Up:
+					Control.MouseUp += 
+					    (s, e) => Color(Control);
+					break;
+				    case MenuBarColorEvent.Current:
+					Color(Control);
+					break;
 				}
 			    }
 			}
@@ -183,7 +203,7 @@ namespace DashFramework
 			{
 			    try
 			    {
-				foreach (Entry Item in DropMenuItems)
+				foreach (Entry Item in DropMenuEntries)
 				{
 				    Item.LicensePlate.BackColor = Color;
 				}
@@ -199,7 +219,7 @@ namespace DashFramework
 			{
 			    try
 			    {
-				foreach (Entry Item in DropMenuItems)
+				foreach (Entry Item in DropMenuEntries)
 				{
 				    Item.License.BackColor = Color;
 				    Item.License.ForeColor = Color2;
