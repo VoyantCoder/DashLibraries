@@ -47,14 +47,9 @@ namespace DashFramework
 		    Sorters.SortCode(("Sub Menu"), () =>
 		    {
 			Point Location = new Point(Layer2.Width, Item.Top + Layer3.Top - 2);
-			
-			bool resu = SubMenu.Integrator(Layer1, Location, BackColor1,
+
+			SubMenu.Integrator(Layer1, Location, BackColor1,
 			    BackColor2, BackColor3, ForeColor, MenuWidth, Children);
-
-			int a = SubMenu.Layer1.Left;
-			int b = SubMenu.Layer1.Width;
-
-			MessageBox.Show($@"Resu: {resu}, L2 Width: {Layer2.Width}, a: {a}, b: {b}, a+b: {a + b}");
 		    });
 
 		    Sorters.SortCode(("Hooks"), () =>
