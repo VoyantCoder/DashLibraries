@@ -25,7 +25,7 @@ namespace DashFramework
 
 		Color AppMCol = Color.FromArgb(8, 34, 46);
 		Color AppBCol = Color.White;
-		Size AppSize = new Size(475, 400);
+		Size AppSize = new Size(675, 400);
 		string AppTitle = ("DashFramework");
 
 		Window.Integrate(DashWindowPosition.Center, AppSize, AppBCol, AppMCol, 
