@@ -56,6 +56,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -69,11 +71,17 @@
   <ItemGroup>
     <Compile Include="class\a\MainGUI.cs" />
     <Compile Include="class\a\Program.cs" />
-    <Compile Include="class\b\Data\Data.cs" />
-    <Compile Include="class\b\Data\Resources.cs" />
+    <Compile Include="class\b\Data\External\Files.cs" />
+    <Compile Include="class\b\Data\Internal\Data.cs" />
+    <Compile Include="class\b\Data\Internal\Lists.cs" />
+    <Compile Include="class\b\Data\Internal\Resources.cs" />
+    <Compile Include="class\b\Data\Internal\Values.cs" />
     <Compile Include="class\b\Handling\CodeBlocks\AsyncSafe.cs" />
     <Compile Include="class\b\Handling\CodeBlocks\CodeSorting.cs" />
     <Compile Include="class\b\Handling\CodeBlocks\Runnables.cs" />
+    <Compile Include="class\b\Networking\Class1.cs" />
+    <Compile Include="class\b\Networking\Data.cs" />
+    <Compile Include="class\b\Networking\Domain.cs" />
     <Compile Include="class\b\Threading\InsertyThread.cs" />
     <Compile Include="class\b\Handling\Other\Erroring.cs" />
     <Compile Include="class\b\Handling\Other\IInteract.cs" />
@@ -154,5 +162,6 @@
   <ItemGroup>
     <None Include="resources\image\LOGO.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
