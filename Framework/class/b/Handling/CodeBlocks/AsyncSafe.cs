@@ -12,48 +12,51 @@ using DashFramework.Runnables;
 
 namespace DashFramework
 {
-    public class AsyncSendMessage
+    namespace AsyncSafety
     {
-	// AsyncLists
-	// AsyncControlInteraction
-	// ....
-
-	Runnable runnables = new Runnable();// needs work before use.
-
-	public delegate void runnableDelegate();
-	public runnableDelegate messageHandler;
-	public int updateInterval = 350;
-
-	public AsyncSendMessage()
+	public class AsyncSendMessage
 	{
-	    runnables.RunTaskLaterAsynchronously
-	    (
-		null,
+	    // AsyncLists
+	    // AsyncControlInteraction
+	    // ....
 
-		() =>
-		{
-		    foreach (string message in messageQueue)
+	    Runnable runnables = new Runnable();// needs work before use.
+
+	    public delegate void runnableDelegate();
+	    public runnableDelegate messageHandler;
+	    public int updateInterval = 350;
+
+	    public AsyncSendMessage()
+	    {
+		runnables.RunTaskLaterAsynchronously
+		(
+		    null,
+
+		    () =>
 		    {
-			if (messageHandler == null)
+			foreach (string message in messageQueue)
 			{
-			    continue;
+			    if (messageHandler == null)
+			    {
+				continue;
+			    }
+
+			    messageHandler();
 			}
+		    },
 
-			messageHandler();
-		    }
-		},
-
-		updateInterval,
-		true
-	    );
-	}
+		    updateInterval,
+		    true
+		);
+	    }
 
 
-	readonly List<string> messageQueue = new List<string>();
+	    readonly List<string> messageQueue = new List<string>();
 
-	public void Send(string content)
-	{
-	    messageQueue.Add(content);
+	    public void Send(string content)
+	    {
+		messageQueue.Add(content);
+	    }
 	}
     }
 }

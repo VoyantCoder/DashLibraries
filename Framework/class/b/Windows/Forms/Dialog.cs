@@ -9,14 +9,11 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-using DashFramework.DashControls.Customs;
-using DashFramework.DashResources;
 using DashFramework.DashControls;
 using DashFramework.ControlTools;
 using DashFramework.Erroring;
 using DashFramework.Sorters;
 using DashFramework.Forms;
-using DashFramework.Data;
 
 
 namespace DashFramework
