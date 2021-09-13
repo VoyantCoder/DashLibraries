@@ -2,8 +2,8 @@
 ##
 ## I figured, why not publish the Framework I use to build my applications?  It is open source anyways ;)
 ##
-> The Dash Framework is currently undergoing maintenance even though update 4.0 was already ready for use.  No worries though, no known bugs are present for as far as I know right now, however; if you do find any, please let me know at KvinneKraft@protonmail.com.  
+> First off, if you come across any pieces of code which you feel like could use some enhancement, let me know.  I am always out for new useable knowledge.  You can create an issue on here or reach out to me at KvinneKraft(at)protonmail(dot)com.
 > 
-> Many changes are planned down on paper, many commitments were made previously but they do not show up on public record so I figured it was about time to change that.  Look at the development of this project as it comes along.  I have 15+ expansions planned as of now, the list grows everyday.  So, stay tuned, lol!
+> The codes within this repository will be updated frequently.  Which means that the format used for a class two months ago may not seem as familiar now.  I am forever changing, after all, I do not believe in constant values.  Anything which I define can be redefined.  Therefore, my way of coding fluctuates all over the place.  It shows me how much progression I have made.  To use the skills you possess for work is one thing, but to elaborate on these skills and to strive towards the improvement of your ability to make use of these skills is another story.  I want to learn, I refuse to stay stuck to one way of coding, or one way of living period.
 > 
-> If you have any questions and or suggestions, also feel free to hit me up at the email given above.  I am a busy creature so I tend to take a bit of time to respond, at maximum it may take me 3 days.  Anyways, I wish you a good day and have fun looking around here.  Bye!  -Dashie
+> There are so many spectra, so many aspects, why limit my sight to just a few trees if I can also walk through the entire forest and actually experience its being as completely fundamental?  As a metaphor for my own existence.  Plant...grow...harvest...replant....
