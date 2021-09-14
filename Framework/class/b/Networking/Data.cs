@@ -1,5 +1,5 @@
 ﻿//
-// -Dashie
+// Author: Dashie
 
 #pragma warning disable IDE1006
 
