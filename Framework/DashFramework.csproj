@@ -79,9 +79,11 @@
     <Compile Include="class\b\Handling\CodeBlocks\AsyncSafe.cs" />
     <Compile Include="class\b\Handling\CodeBlocks\CodeSorting.cs" />
     <Compile Include="class\b\Handling\CodeBlocks\Runnables.cs" />
+    <Compile Include="class\b\Networking\PortScan.cs" />
     <Compile Include="class\b\Networking\Sockets.cs" />
     <Compile Include="class\b\Networking\Data.cs" />
     <Compile Include="class\b\Networking\Domain.cs" />
+    <Compile Include="class\b\Networking\Web.cs" />
     <Compile Include="class\b\Threading\InsertyThread.cs" />
     <Compile Include="class\b\Handling\Other\Erroring.cs" />
     <Compile Include="class\b\Handling\Other\IInteract.cs" />
@@ -110,7 +112,6 @@
     <Compile Include="class\b\Windows\Controls\Other\MessageContainer.cs" />
     <Compile Include="class\b\Windows\Forms\Dialog.cs" />
     <Compile Include="class\b\Windows\Controls\ControlTools.cs" />
-    <Compile Include="class\b\Networking\Networking.cs" />
     <Compile Include="class\b\Windows\Forms\DashWindow.cs" />
     <Compile Include="class\b\Windows\Forms\MenuBar.cs" />
     <Compile Include="class\b\Windows\Forms\ToolBar.cs" />
