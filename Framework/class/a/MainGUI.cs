@@ -2,6 +2,7 @@
 // Version: 1.0
 
 
+using System.Windows.Forms;
 
 using DashFramework.Forms;
 
@@ -14,7 +15,6 @@ namespace DashFramework
 	{
 	    try
 	    {
-		
 	    }
 
 	    catch
