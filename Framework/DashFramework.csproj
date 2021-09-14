@@ -79,7 +79,7 @@
     <Compile Include="class\b\Handling\CodeBlocks\AsyncSafe.cs" />
     <Compile Include="class\b\Handling\CodeBlocks\CodeSorting.cs" />
     <Compile Include="class\b\Handling\CodeBlocks\Runnables.cs" />
-    <Compile Include="class\b\Networking\Class1.cs" />
+    <Compile Include="class\b\Networking\Sockets.cs" />
     <Compile Include="class\b\Networking\Data.cs" />
     <Compile Include="class\b\Networking\Domain.cs" />
     <Compile Include="class\b\Threading\InsertyThread.cs" />
