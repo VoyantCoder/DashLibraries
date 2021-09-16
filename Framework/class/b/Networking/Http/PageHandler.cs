@@ -5,7 +5,9 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 using System.Collections.Generic;
 
 
@@ -45,14 +47,14 @@ namespace DashFramework
 			{
 			    FileName = FileName.Substring(1, FileName.Length - 1);
 			}
-
-			return true;
 		    }
 
 		    catch
 		    {
 			return false;
 		    }
+
+		    return true;
 		}
 
 		public bool AddPage(byte[] HTMLSource, string Directory = "/", string FileName = "index.html")
@@ -65,14 +67,14 @@ namespace DashFramework
 			}
 
 			UrlPageCache.Add(Directory + FileName, HTMLSource);
-
-			return true;
 		    }
 
 		    catch
 		    {
 			return false;
 		    }
+
+		    return true;
 		}
 
 		public bool AddPage(byte[] HTMLSource, string Directory, string FileName, Action Code)
@@ -88,8 +90,46 @@ namespace DashFramework
 
 			UrlExecutionCache.Add(path, Code);
 			UrlPageCache.Add(path, HTMLSource);
+		    }
 
-			return true;
+		    catch
+		    {
+			return false;
+		    }
+
+		    return true;
+		}
+
+		// Summary:
+		//  modify pages
+		public bool RepathPage(string CurrentPath, string NewPath)
+		{
+		    try
+		    {
+			if (CurrentPath.Equals(NewPath))
+			{
+			    return true;
+			}
+
+			if (UrlPageCache.ContainsKey(CurrentPath))
+			{
+			    byte[] html = UrlPageCache[CurrentPath];
+
+			    if (UrlExecutionCache.ContainsKey(CurrentPath))
+			    {
+				Action code = UrlExecutionCache[CurrentPath];
+
+				UrlExecutionCache.Remove(CurrentPath);
+				UrlExecutionCache.Add(NewPath, code);
+			    }
+
+			    UrlPageCache.Remove(CurrentPath);
+			    UrlPageCache.Add(NewPath, html);
+
+			    return true;
+			}
+
+			return false;
 		    }
 
 		    catch
@@ -98,14 +138,78 @@ namespace DashFramework
 		    }
 		}
 
-		// Summary:
-		//  modify pages
+		public bool SetPageHtml(string FullUrl, byte[] HTMLSource)
+		{
+		    try
+		    {
+			if (!UrlPageCache.ContainsKey(FullUrl))
+			{
+			    return false;
+			}
 
+			UrlPageCache[FullUrl] = HTMLSource;
+		    }
+
+		    catch
+		    {
+			return false;
+		    }
+
+		    return true;
+		}
+		
+		public bool SetOpenFileDialogDefaults(OpenFileDialog Diag)
+		{
+		    try
+		    {
+			Diag.InitialDirectory = Environment.CurrentDirectory;
+			Diag.Filter = "Any Source (*.*)|*.*";
+			Diag.Title = "Select your HTML file";
+			Diag.DefaultExt = "html";
+			Diag.RestoreDirectory = true;
+			Diag.CheckFileExists = true;
+			Diag.CheckPathExists = true;
+		    }
+
+		    catch
+		    {
+			return false;
+		    }
+
+		    return true;
+		}
+
+		public bool SetPageHtml(string FullUrl, bool CancelFalse = true)
+		{
+		    try
+		    {
+			using (var Diag = new OpenFileDialog())
+			{
+			    if (SetOpenFileDialogDefaults(Diag))
+			    {
+				if (Diag.ShowDialog() != DialogResult.OK)
+				{
+				    return !CancelFalse;
+				}
+
+				SetPageHtml(FullUrl, File
+				    .ReadAllBytes(Diag.FileName));
+			    }
+			}
+		    }
+
+		    catch
+		    {
+			return false;
+		    }
+
+		    return true;
+		}
 
 		// Summary:
 		//  starting the page handler
 		public Thread PageHandlerThread = null;
-
+		
 		void StartPageHandler()
 		{
 		    try
