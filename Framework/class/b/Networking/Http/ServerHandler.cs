@@ -64,7 +64,10 @@ namespace DashFramework
 					    }
 					}
 
-					StartPageHandler();
+					if (AutoStartPageHandler)
+					{
+					    StartPageHandler();
+					}
 				    }
 
 				    catch

@@ -221,11 +221,11 @@ namespace DashFramework
 				HttpListenerContext context = Listener.GetContext();
 				HttpListenerResponse response = context.Response;
 
-				string rawUrl = context.Request.RawUrl;
+				string ru = context.Request.RawUrl;
 
-				if (UrlPageCache.ContainsKey(rawUrl))
+				if (UrlPageCache.ContainsKey(ru))
 				{
-				    byte[] pageSource = UrlPageCache[rawUrl];
+				    byte[] pageSource = UrlPageCache[ru];
 
 				    response.ContentLength64 = pageSource.Length;
 
@@ -237,9 +237,12 @@ namespace DashFramework
 				    context.Response.Close();
 				}
 
-				if (UrlExecutionCache.ContainsKey(rawUrl))
+				if (AutoStartCodeHandler)
 				{
-				    UrlExecutionCache[rawUrl]();
+				    if (UrlExecutionCache.ContainsKey(ru))
+				    {
+					UrlExecutionCache[ru]();
+				    }
 				}
 			    }
 			});
