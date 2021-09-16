@@ -79,12 +79,13 @@
     <Compile Include="class\b\Handling\CodeBlocks\AsyncSafe.cs" />
     <Compile Include="class\b\Handling\CodeBlocks\CodeSorting.cs" />
     <Compile Include="class\b\Handling\CodeBlocks\Runnables.cs" />
-    <Compile Include="class\b\Networking\PortScan\PortScan.cs" />
+    <Compile Include="class\b\Networking\Http\PageHandler.cs" />
+    <Compile Include="class\b\Networking\Ports\PortScan.cs" />
     <Compile Include="class\b\Networking\Other\Sockets.cs" />
     <Compile Include="class\b\Networking\Other\Data.cs" />
     <Compile Include="class\b\Networking\Other\Domain.cs" />
-    <Compile Include="class\b\Networking\Other\Web.cs" />
-    <Compile Include="class\b\Networking\PortScan\Settings.cs" />
+    <Compile Include="class\b\Networking\Http\ServerHandler.cs" />
+    <Compile Include="class\b\Networking\Ports\Settings.cs" />
     <Compile Include="class\b\Threading\InsertyThread.cs" />
     <Compile Include="class\b\Handling\Other\Erroring.cs" />
     <Compile Include="class\b\Handling\Other\IInteract.cs" />
