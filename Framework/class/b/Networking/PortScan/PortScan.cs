@@ -19,14 +19,33 @@ namespace DashFramework
 	    {
 		public IEnumerable<(int, bool)> ScanPorts(string host, int[] ports, PSFormatType PortFormatType, int timeout = 1000)
 		{
-		    if (!IsIp(host) || !IsDuration(timeout))
+		    (int, bool) exit = (-1, false);
+
+		    if (DoCheckAddressFormat)
 		    {
-			yield return (-1, false);
+			if (!IsIp(host))
+			{
+			    yield return exit;
+			    yield break;
+			}
 		    }
 
-		    else if (ports == null || ports.Length < 1)
+		    if (DoCheckTimeout)
 		    {
-			yield return (-1, false);
+			if (!IsDuration(timeout))
+			{
+			    yield return exit;
+			    yield break;
+			}
+		    }
+
+		    if (DoCheckPortFormat)
+		    {
+			if (ports == null || ports.Length < 1)
+			{
+			    yield return exit;
+			    yield break;
+			}
 		    }
 
 		    switch (PortFormatType)
@@ -65,7 +84,8 @@ namespace DashFramework
 		    {
 			if (ports.Length != 2 || ports[0] >= ports[1])
 			{
-			    yield return (-1, false);
+			    yield return exit;
+			    yield break;
 			}
 			
 			for (int p = ports[0]; p <= ports[1]; p += 1)
