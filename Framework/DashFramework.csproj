@@ -79,7 +79,8 @@
     <Compile Include="class\b\Handling\CodeBlocks\AsyncSafe.cs" />
     <Compile Include="class\b\Handling\CodeBlocks\CodeSorting.cs" />
     <Compile Include="class\b\Handling\CodeBlocks\Runnables.cs" />
-    <Compile Include="class\b\Networking\Http\Data.cs" />
+    <Compile Include="class\b\Networking\Http\Data\Header.cs" />
+    <Compile Include="class\b\Networking\Http\Data\UserAgent.cs" />
     <Compile Include="class\b\Networking\Http\PageHandler.cs" />
     <Compile Include="class\b\Networking\Http\Settings.cs" />
     <Compile Include="class\b\Networking\Ports\PortScan.cs" />
