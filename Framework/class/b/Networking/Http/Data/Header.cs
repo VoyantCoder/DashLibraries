@@ -3,7 +3,8 @@
 
 
 using System.Text;
-using System.Linq;
+
+using DashFramework.Data.Special;
 
 
 namespace DashFramework
@@ -23,11 +24,13 @@ namespace DashFramework
 	    
 	    public partial class HttpServer
 	    {
-		private Network network = new Network();
-		private int components = 7;
+		private readonly Specialities Speciality = new Specialities();
+		private readonly Network network = new Network();
 
 		public int MaxContentLength = 10000;
 		public int MaxCookieLength = 100;
+
+		private int components = 7;
 
 		public string GetRandomHeader(string host)
 		{
@@ -51,7 +54,7 @@ namespace DashFramework
 				string version = versions[Random(versions.Length)];
 				string method = methods[Random(methods.Length)];
 
-				Append($"{method} / HTTP/{version}");
+				Append(string.Format("{0} / HTTP/{1}", method, version));
 			    }
 
 			    catch
@@ -64,7 +67,7 @@ namespace DashFramework
 			{
 			    try
 			    {
-				Append($"Host: {host}");
+				Append(string.Format("Host: {0}", host));
 			    }
 
 			    catch
@@ -77,7 +80,8 @@ namespace DashFramework
 			{
 			    try
 			    {
-				Append($"Content-Length: {Random(MaxContentLength)}");
+				int c = Random(MaxContentLength);
+				Append(string.Format("Content-Length: {0}", c));
 			    }
 
 			    catch
@@ -90,7 +94,8 @@ namespace DashFramework
 			{
 			    try
 			    {
-				Append($"User-Agent: {GetRandomUA()}");
+				string u = GetRandomUA();
+				Append(string.Format("User-Agent: {0}", u));
 			    }
 
 			    catch
@@ -103,15 +108,8 @@ namespace DashFramework
 			{
 			    try
 			    {
-				string cookie()
-				{
-				    string selection = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
-				    return new string(Enumerable.Repeat(selection, Random(MaxCookieLength))
-					.Select(a => a[rand.Next(a.Length)]).ToArray());
-				}
-
-				Append($"Cookie: {cookie()}");
+				string c = Speciality.GetRandomString(MaxCookieLength);
+				Append(string.Format("Cookie: {0}", c));
 			    }
 
 			    catch
