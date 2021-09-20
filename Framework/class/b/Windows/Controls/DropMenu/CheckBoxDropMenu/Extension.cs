@@ -4,53 +4,50 @@
 
 namespace DashFramework
 {
-    namespace DashControls
+    namespace DashControls.Customs
     {
-	namespace Customs
+	public partial class CBDropMenu
 	{
-	    public partial class CBDropMenu
+	    public void Show(bool force = false)
 	    {
-		public void Show(bool force = false)
+		try
 		{
-		    try
+		    if (Layer1.Visible)
 		    {
-			if (Layer1.Visible)
+			if (!force)
 			{
-			    if (!force)
-			    {
-				return;
-			    }
+			    return;
 			}
-
-			Layer1.Show();
-			Layer1.BringToFront();
 		    }
 
-		    catch
-		    {
-			throw;
-		    }
+		    Layer1.Show();
+		    Layer1.BringToFront();
 		}
 
-		public void Hide(bool force = false)
+		catch
 		{
-		    try
+		    throw;
+		}
+	    }
+
+	    public void Hide(bool force = false)
+	    {
+		try
+		{
+		    if (!Layer1.Visible)
 		    {
-			if (!Layer1.Visible)
+			if (!force)
 			{
-			    if (!force)
-			    {
-				return;
-			    }
+			    return;
 			}
-
-			Layer1.Hide();
 		    }
 
-		    catch
-		    {
-			throw;
-		    }
+		    Layer1.Hide();
+		}
+
+		catch
+		{
+		    throw;
 		}
 	    }
 	}

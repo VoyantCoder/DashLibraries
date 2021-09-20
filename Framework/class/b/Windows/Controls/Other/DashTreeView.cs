@@ -13,59 +13,56 @@ using DashFramework.Erroring;
 
 namespace DashFramework
 {
-    namespace DashControls
+    namespace DashControls.Customs
     {
-	namespace Customs
+	public class DashTreeView : TreeView
 	{
-	    public class DashTreeView : TreeView
+	    public void AddNode(string name)
 	    {
-		public void AddNode(string name)
+		try
 		{
-		    try
-		    {
-			TreeNode node = new TreeNode(name);
+		    TreeNode node = new TreeNode(name);
 
-			Nodes.Add(node);
+		    Nodes.Add(node);
+		    Update();
+		}
+
+		catch (Exception E)
+		{
+		    throw (ErrorHandler.GetException(E));
+		}
+	    }
+
+
+	    public void RemoveNode(string node)
+	    {
+		try
+		{
+		    if (Nodes.ContainsKey(node))
+		    {
+			Nodes.RemoveByKey(node);
 			Update();
-		    }
-
-		    catch (Exception E)
-		    {
-			throw (ErrorHandler.GetException(E));
 		    }
 		}
 
-
-		public void RemoveNode(string node)
+		catch (Exception E)
 		{
-		    try
-		    {
-			if (Nodes.ContainsKey(node))
-			{
-			    Nodes.RemoveByKey(node);
-			    Update();
-			}
-		    }
+		    throw (ErrorHandler.GetException(E));
+		}
+	    }
 
-		    catch (Exception E)
-		    {
-			throw (ErrorHandler.GetException(E));
-		    }
+
+	    public void ResetNodes()
+	    {
+		try
+		{
+		    Nodes.Clear();
+		    Update();
 		}
 
-
-		public void ResetNodes()
+		catch (Exception E)
 		{
-		    try
-		    {
-			Nodes.Clear();
-			Update();
-		    }
-
-		    catch (Exception E)
-		    {
-			throw (ErrorHandler.GetException(E));
-		    }
+		    throw (ErrorHandler.GetException(E));
 		}
 	    }
 	}

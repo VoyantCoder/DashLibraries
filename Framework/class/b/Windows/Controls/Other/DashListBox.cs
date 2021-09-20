@@ -10,53 +10,50 @@ using System.Windows.Forms;
 
 namespace DashFramework
 {
-    namespace DashControls
+    namespace DashControls.Customs
     {
-	namespace Customs
+	public class DashListBox : ListBox
 	{
-	    public class DashListBox : ListBox
+	    public void Add(object obj)
 	    {
-		public void Add(object obj)
+		Items.Add(obj);
+	    }
+
+
+	    public void Remove(int Id = 0)
+	    {
+		if (Items.Count > Id)
 		{
-		    Items.Add(obj);
+		    Items.RemoveAt(Id);
 		}
+	    }
 
 
-		public void Remove(int Id = 0)
+	    public string Get(int Id = -1, object Item = null)
+	    {
+		if (Id > -1)
 		{
-		    if (Items.Count > Id)
+		    if (Items.Count > -1)
 		    {
-			Items.RemoveAt(Id);
+			return Items[Id].ToString();
 		    }
 		}
 
-
-		public string Get(int Id = -1, object Item = null)
+		else if (Item != null)
 		{
-		    if (Id > -1)
+		    if (Items.Contains(Item))
 		    {
-			if (Items.Count > -1)
-			{
-			    return Items[Id].ToString();
-			}
+			return Items[Items.IndexOf(Item)].ToString();
 		    }
-
-		    else if (Item != null)
-		    {
-			if (Items.Contains(Item))
-			{
-			    return Items[Items.IndexOf(Item)].ToString();
-			}
-		    }
-
-		    return string.Empty;
 		}
 
+		return string.Empty;
+	    }
 
-		public bool IsNull()
-		{
-		    return (this == null);
-		}
+
+	    public bool IsNull()
+	    {
+		return (this == null);
 	    }
 	}
     }

@@ -13,23 +13,20 @@ using DashFramework.Erroring;
 
 namespace DashFramework
 {
-    namespace DashControls
+    namespace DashControls.Customs
     {
-	namespace Customs
+	public class DashPanel : Panel
 	{
-	    public class DashPanel : Panel
+	    public void AddChild(Control control)
 	    {
-		public void AddChild(Control control)
+		try
 		{
-		    try
-		    {
-			Controls.Add(control);
-		    }
+		    Controls.Add(control);
+		}
 
-		    catch (Exception E)
-		    {
-			throw (ErrorHandler.GetException(E));
-		    }
+		catch (Exception E)
+		{
+		    throw (ErrorHandler.GetException(E));
 		}
 	    }
 	}
