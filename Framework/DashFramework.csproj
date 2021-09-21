@@ -41,7 +41,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>app\</OutputPath>
@@ -115,8 +115,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="class\b\Windows\Controls\Other\LabelPage.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\MessageContainer.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\Notification.cs" />
+    <Compile Include="class\b\Windows\Controls\Other\Notification\Notification.cs" />
+    <Compile Include="class\b\Windows\Controls\Other\Notification\Settings.cs" />
+    <Compile Include="class\b\Windows\Controls\Other\Notification\Timer.cs" />
     <Compile Include="class\b\Windows\Controls\Tools\Apply.cs" />
     <Compile Include="class\b\Windows\Controls\Tools\DirectInteract.cs" />
     <Compile Include="class\b\Windows\Controls\Tools\Externalities.cs" />
