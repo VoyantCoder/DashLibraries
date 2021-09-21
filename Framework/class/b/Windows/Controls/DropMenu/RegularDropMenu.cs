@@ -17,7 +17,7 @@ using DashFramework.Sorters;
 
 namespace DashFramework
 {
-    namespace DashControls.Customs
+    namespace DashControls.Controls
     {
 	// Summary:
 	//  drop menu item functionalities:

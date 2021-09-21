@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
-using DashFramework.DashControls.Customs;
+using DashFramework.DashControls.Controls;
 using DashFramework.DashResources;
 using DashFramework.DashControls;
 using DashFramework.ControlTools;

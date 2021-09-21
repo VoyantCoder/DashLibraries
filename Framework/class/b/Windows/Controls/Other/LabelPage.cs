@@ -16,7 +16,7 @@ using DashFramework.Erroring;
 
 namespace DashFramework
 {
-    namespace DashControls.Customs
+    namespace DashControls.Controls
     {
 	public class LabelPage
 	{

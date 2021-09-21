@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace DashFramework
 {
-    namespace DashControls.Customs
+    namespace DashControls.Controls
     {
 	public partial class CBDropMenu
 	{

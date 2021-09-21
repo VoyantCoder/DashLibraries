@@ -12,7 +12,7 @@ using DashFramework.ControlTools;
 
 namespace DashFramework
 {
-    namespace DashControls.Customs
+    namespace DashControls.Controls
     {
 	public partial class CBDropMenu
 	{

@@ -2,22 +2,16 @@
 // Version: 1.0
 
 
-using System;
-using System.Linq;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
-using DashFramework.DashControls.Customs;
-using DashFramework.DashControls;
-using DashFramework.ControlTools;
 using DashFramework.Sorters;
-using DashFramework.Data;
 
 
 namespace DashFramework
 {
-    namespace DashControls.Customs
+    namespace DashControls.Controls
     {
 	public partial class CBDropMenu
 	{

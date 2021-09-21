@@ -16,7 +16,7 @@ using DashFramework.Sorters;
 
 namespace DashFramework
 {
-    namespace DashControls.Customs
+    namespace DashControls.Controls
     {
 	public class ClickDropMenu
 	{

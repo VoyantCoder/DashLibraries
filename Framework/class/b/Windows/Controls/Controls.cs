@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-using DashFramework.DashControls.Customs;
+using DashFramework.DashControls.Controls;
 using DashFramework.DashResources;
 using DashFramework.ControlTools;
 using DashFramework.Erroring;
