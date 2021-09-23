@@ -94,6 +94,7 @@
     <Compile Include="class\b\Handling\Other\Erroring.cs" />
     <Compile Include="class\b\Handling\Other\IInteract.cs" />
     <Compile Include="class\b\Test\Copy.cs" />
+    <Compile Include="class\b\DashSpecial\Herbal\Loader.cs" />
     <Compile Include="class\b\Windows\Controls\Controls.cs" />
     <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\CheckBoxDropMenu.cs" />
     <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\Extension.cs" />
@@ -139,6 +140,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="class\b\DashSpecial\Herbal\strains.template" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
