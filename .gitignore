@@ -24,3 +24,6 @@ Framework/obj/Release/TempPE/resources.Resources.Designer.cs.dll
 Framework/obj/Release/DashFramework.csproj.FileListAbsolute.txt
 Framework/obj/Release/DashFramework.resources.Resources.resources
 Framework/.vs/config/applicationhost.config
+Framework/app/strains.dash
+Framework/class/a/MainGUI.cs
+Framework/class/a/MainGUI.cs

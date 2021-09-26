@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
+using DashFramework.ControlTools;
 using DashFramework.Sorters;
 
 
@@ -15,13 +16,24 @@ namespace DashFramework
     {
 	public partial class CBDropMenu
 	{
+	    public readonly List<CheckBox> DropMenuBoxes = new List<CheckBox>();
+	    public readonly List<Entry> DropMenuEntries = new List<Entry>();
+
+	    public struct ExcessInfo
+	    {
+		public bool Added;
+
+		public void Toggle()
+		{
+		    Added = (Added ==
+			true ? false : true);
+		}
+	    } ExcessInfo ExInfo;
+
 	    readonly DashPanel Layer1 = new DashPanel();//Sub Holder
 	    readonly DashPanel Layer2 = new DashPanel();//Main Holder
 	    readonly DashPanel Layer3 = new DashPanel();//Item Holder
 	    readonly DashPanel Layer4 = new DashPanel();//CheckBox Holder
-
-	    public readonly List<CheckBox> DropMenuBoxes = new List<CheckBox>();
-	    public readonly List<Entry> DropMenuEntries = new List<Entry>();
 
 	    public class CheckBox
 	    {
@@ -52,7 +64,9 @@ namespace DashFramework
 	    }
 
 	    readonly ControlIntegrator Integrate = new ControlIntegrator();
+	    readonly Transformer Transform = new Transformer();
 	    readonly PlainSorters Sorters = new PlainSorters();
+	    readonly DataTools DataTool = new DataTools();
 	}
     }
 }
