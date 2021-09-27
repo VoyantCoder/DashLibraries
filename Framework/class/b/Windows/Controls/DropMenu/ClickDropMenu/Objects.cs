@@ -2,11 +2,11 @@
 // Author: Dashie
 
 
-using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
+using DashFramework.ControlTools.Algorithms;
 using DashFramework.ControlTools;
 using DashFramework.Sorters;
 
@@ -18,7 +18,7 @@ namespace DashFramework
 	public partial class ClickDropMenu
 	{
 	    public readonly List<DropItem> ItemStack = new List<DropItem>();
-
+	    
 	    public class DropItem
 	    {
 		public readonly Label Item = new Label();
@@ -47,6 +47,7 @@ namespace DashFramework
 	    }
 
 	    readonly ControlIntegrator Controls = new ControlIntegrator();
+	    readonly OutsmartLoops Loopsies = new OutsmartLoops();
 	    readonly Transformer Transform = new Transformer();
 	    readonly PlainSorters Sorter = new PlainSorters();
 	}
