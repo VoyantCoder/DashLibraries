@@ -4,8 +4,6 @@
 
 using System.Text;
 
-using DashFramework.Data.Special;
-
 
 namespace DashFramework
 {
@@ -24,14 +22,6 @@ namespace DashFramework
 	    
 	    public partial class HttpServer
 	    {
-		private readonly Specialities Speciality = new Specialities();
-		private readonly Network network = new Network();
-
-		public int MaxContentLength = 10000;
-		public int MaxCookieLength = 100;
-
-		private int components = 7;
-
 		public string GetRandomHeader(string host)
 		{
 		    try

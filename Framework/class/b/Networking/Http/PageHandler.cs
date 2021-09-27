@@ -5,10 +5,8 @@
 using System;
 using System.IO;
 using System.Net;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using System.Collections.Generic;
 
 
 namespace DashFramework
@@ -19,11 +17,6 @@ namespace DashFramework
 	{
 	    public partial class HttpServer
 	    {
-		// Summary:
-		//  add pages
-		readonly Dictionary<string, Action> UrlExecutionCache = new Dictionary<string, Action>();
-		readonly Dictionary<string, byte[]> UrlPageCache = new Dictionary<string, byte[]>();
-
 		public bool ValidPageArguments(ref string Directory, ref string FileName)
 		{
 		    try
@@ -99,9 +92,7 @@ namespace DashFramework
 
 		    return true;
 		}
-
-		// Summary:
-		//  modify pages
+		
 		public bool RepathPage(string CurrentPath, string NewPath)
 		{
 		    try
@@ -205,10 +196,6 @@ namespace DashFramework
 
 		    return true;
 		}
-
-		// Summary:
-		//  starting the page handler
-		public Thread PageHandlerThread = null;
 		
 		void StartPageHandler()
 		{

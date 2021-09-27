@@ -2,7 +2,6 @@
 // Author: Dashie
 
 
-using System.Net;
 using System.Text;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -16,8 +15,6 @@ namespace DashFramework
 	{
 	    public partial class HttpServer
 	    {
-		// Summary:
-		//  Anything with stopping the server
 		public void Stop()
 		{
 		    try
@@ -33,9 +30,7 @@ namespace DashFramework
 			throw;
 		    }
 		}
-
-		// Summary:
-		//  Anything with starting the server
+		
 		public void Start(bool LaunchInBrowser)
 		{
 		    try
@@ -84,11 +79,6 @@ namespace DashFramework
 			throw;
 		    }
 		}
-
-		// Summary:
-		//  Initiation related.  Default procedures
-		public HttpListener Listener = new HttpListener();
-		string ServerPrefix;
 
 		public HttpServer(string host = "127.0.0.1", int port = 80, bool startListener = true)
 		{
