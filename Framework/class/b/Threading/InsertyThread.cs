@@ -11,9 +11,7 @@ namespace DashFramework
 	{
 	    Thread MainThread = default(Thread);
 	    Action Code = default(Action);
-
-	    delegate void ThreadRunnable();
-
+	    
 	    void InsertCode(Action Code)
 	    {
 		try
