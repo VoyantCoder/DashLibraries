@@ -18,15 +18,8 @@ namespace DashFramework
 {
     namespace DashControls.Controls
     {
-	public class LabelPage
+	public partial class LabelPage
 	{
-	    readonly ControlIntegrator Control = new ControlIntegrator();
-	    readonly ResourceTools ResourceTool = new ResourceTools();
-	    readonly Transformer Transform = new Transformer();
-	    readonly DataTools DataTool = new DataTools();
-
-	    public readonly PictureBox S1Container1 = new PictureBox();
-
 	    private void Init1(PictureBox Capsule, Size ContainerSize, Point ContainerLoca)
 	    {
 		try
@@ -40,15 +33,6 @@ namespace DashFramework
 		    throw (ErrorHandler.GetException(E));
 		}
 	    }
-
-
-	    private readonly PictureBox S2Container1 = new PictureBox();
-
-	    private readonly Label S2Label1 = new Label();
-	    private readonly Label S2Label2 = new Label();
-
-	    private int S2PageID = 1;
-	    private int S2Pages = 0;
 
 	    private void SetPageCount(string PageData, Size ConSize)
 	    {
@@ -97,13 +81,6 @@ namespace DashFramework
 		}
 	    }
 
-
-	    private readonly PictureBox S3Container1 = new PictureBox();
-	    private readonly PictureBox S3Container2 = new PictureBox();
-
-	    private readonly Button S3Button1 = new Button();
-	    private readonly Button S3Button2 = new Button();
-
 	    private void S3ChangePage(bool Forward)
 	    {
 		try
@@ -139,8 +116,6 @@ namespace DashFramework
 		}
 	    }
 
-
-	    private readonly Label S3Label1 = new Label();
 	    private void Init3(string Title)
 	    {
 		try
@@ -182,10 +157,6 @@ namespace DashFramework
 		    throw (ErrorHandler.GetException(E));
 		}
 	    }
-
-
-	    private readonly PictureBox S4Container1 = new PictureBox();
-	    private readonly Label S4Label1 = new Label();
 
 	    private void Init4(string Message, Color LabelBCol, Color LabelFCol)
 	    {

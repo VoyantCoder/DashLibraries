@@ -5,9 +5,6 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-using DashFramework.ControlTools;
-using DashFramework.Sorters;
-
 
 namespace DashFramework
 {
@@ -15,13 +12,6 @@ namespace DashFramework
     {
 	public partial class Notification
 	{
-	    readonly ControlIntegrator Integrator = new ControlIntegrator();
-	    readonly PlainSorters Sorter = new PlainSorters();
-
-	    readonly DashPanel Panel1 = new DashPanel();
-	    readonly Label Label1 = new Label();
-	    readonly Label Label2 = new Label();
-
 	    public void Integration(Control parent)
 	    {
 		try
@@ -139,11 +129,8 @@ namespace DashFramework
 		{
 		    return false;
 		}
-
 		return true;
 	    }
-
-	    readonly DataTools DataTool = new DataTools();
 
 	    public void SetText(string title, string description)
 	    {
@@ -199,7 +186,6 @@ namespace DashFramework
 		{
 		    return false;
 		}
-
 		return true;
 	    }
 
@@ -247,11 +233,8 @@ namespace DashFramework
 		{
 		    return false;
 		}
-
 		return true;
 	    }
-
-	    Transformer transform = new Transformer();
 	    
 	    public void SetSize(Size size)
 	    {
@@ -306,7 +289,6 @@ namespace DashFramework
 		{
 		    return false;
 		}
-
 		return true;
 	    }
 	}

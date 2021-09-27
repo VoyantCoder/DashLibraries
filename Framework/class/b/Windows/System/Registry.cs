@@ -1,8 +1,5 @@
-﻿// Sector Name:
+﻿
 // Author: Dashie
-
-
-#pragma warning disable IDE1006
 
 
 using System.IO;
@@ -15,16 +12,7 @@ namespace DashFramework
 {
     namespace Systems
     {
-	public enum REGISTRY_ROOTS
-	{
-	    CLASSES_ROOT, CURRENT_USER,
-	    LOCAL_MACHINE, USERS, CURRENT_CONFIG,
-	    PERFORMANCE_DATA
-	}
-
-	// Change strings to object.s
-
-	public class EasyRegistry
+	public partial class EasyRegistry
 	{
 	    // Summary:
 	    //	Export registry values to the given file.  Will be created if it does not exist.
@@ -76,8 +64,6 @@ namespace DashFramework
 
 	    // Summary:
 	    //	For updating the user manually.  SetRoot(...) is more suitable.
-	    public RegistryKey User = Registry.CurrentUser;
-
 	    public bool UpdateUser(RegistryKey User)
 	    {
 		try

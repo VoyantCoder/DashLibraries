@@ -8,35 +8,13 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-using DashFramework.ControlTools;
-using DashFramework.Sorters;
-
 
 namespace DashFramework
 {
     namespace DashControls.Controls
     {
-	public class DashCheckBox
+	public partial class DashCheckBox
 	{
-	    //Controls:
-	    public readonly DashPanel Panel1 = new DashPanel();
-	    public readonly DashPanel Panel2 = new DashPanel();
-
-
-	    //Obtainers:
-	    public DashPanel GetCheckBoxOutter() => Panel1;
-	    public DashPanel GetCheckBoxInner() => Panel2;
-
-
-	    //Color Presets:
-	    public Color CheckBoxUncheckColor = Color.Black;
-	    public Color CheckBoxCheckColor = Color.Gray;
-	    public Color CheckBoxDefaultColor = Color.Gray;
-
-	    public Color MarkBoxUncheckedColor = Color.Navy;
-	    public Color MarkBoxCheckedColor = Color.Green;
-	    public Color MarkBoxDefaultColor = Color.DarkGray;
-
 	    public void UpdateColor(Color[] CheckBox = null, Color[] MarkBox = null, bool UpdateNow = true, string Order = ("Unchecked, Checked, Default"))
 	    {
 		try
@@ -72,14 +50,6 @@ namespace DashFramework
 		}
 	    }
 
-
-	    //Sizing:
-	    public int CheckBoxHeight = 16;
-	    public int CheckBoxWidth = 16;
-
-	    public int MarkBoxHeight = 8;
-	    public int MarkBoxWidth = 8;
-
 	    public void UpdateSize(Size A, Size B)
 	    {
 		try
@@ -99,9 +69,7 @@ namespace DashFramework
 		    throw;
 		}
 	    }
-
-
-	    //Coordination:
+	    
 	    public void UpdateLocation(Point Location)
 	    {
 		try
@@ -117,13 +85,7 @@ namespace DashFramework
 		    throw;
 		}
 	    }
-
-
-	    //Core:
-	    readonly ControlIntegrator Integrate = new ControlIntegrator();
-	    readonly Transformer Transform = new Transformer();
-	    readonly PlainSorters Sorter = new PlainSorters();
-
+	    
 	    public void AddCheckBox(Control Parent, Point Location, bool Round = false, int RoundRadius = 12)
 	    {
 		Sorter.SortCode(("Containers"), () =>
@@ -176,19 +138,6 @@ namespace DashFramework
 		    Panel2.Click += (s, e) => CheckBoxEvent();
 		});
 	    }
-
-
-	    //Hook Execution:
-	    static void DefaultRunnable() =>
-		MessageBox.Show("Standard Runnable Message for CheckBox", "Standard Message");
-
-	    public delegate void Runnable();
-
-	    public Runnable OnUncheck = DefaultRunnable;
-	    public Runnable OnCheck = DefaultRunnable;
-
-	    public void SetOnUncheck(Runnable ToThis) => OnUncheck = ToThis;
-	    public void SetOncheck(Runnable ToThis) => OnCheck = ToThis;
 	}
     }
 }
