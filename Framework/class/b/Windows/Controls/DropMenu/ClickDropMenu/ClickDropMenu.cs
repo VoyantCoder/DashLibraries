@@ -273,37 +273,19 @@ namespace DashFramework
 		};
 	    }
 	    
-	    public void RegisterVisibilityTrigger(Control ShowTrigger, params Control[] HideTrigger)
+	    public void RegisterVisibilityTrigger(Control showTrigger, params Control[] hideTriggers)
 	    {
 		try
-		{//integrate here
-		    Sorter.SortCode(("Hide Trigger Setup"), () =>
+		{
+		    foreach (Control control in hideTriggers)
 		    {
-			foreach (Control ParentA in HideTrigger)
+			foreach (Control sub in Loopsies.GetSubControls(control))
 			{
-			    AddTrigger(ParentA);
-
-			    foreach (Control ParentB in ParentA.Controls)
-			    {
-				AddTrigger(ParentB);
-
-				foreach (Control ParentC in ParentB.Controls)
-				{
-				    AddTrigger(ParentC);
-
-				    foreach (Control ParentD in ParentC.Controls)
-				    {
-					AddTrigger(ParentD);
-				    }
-				}
-			    }
+			    AddTrigger(sub);//changed to ^^^
 			}
-		    });
+		    }
 
-		    Sorter.SortCode(("Show Trigger Setup"), () =>
-		    {
-			AddTrigger(ShowTrigger, false);
-		    });
+		    AddTrigger(showTrigger, false);
 		}
 
 		catch
