@@ -1,4 +1,4 @@
-﻿// Sector Name:
+﻿ 
 // Author: Dashie
 
 

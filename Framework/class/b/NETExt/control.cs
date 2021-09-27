@@ -16,7 +16,7 @@ namespace DashFramework
 	{
 	    readonly static Extern ext = new Extern();
 
-	    public static void SetUrl(this Control i, Control control, string dest)
+	    public static void SetUrl(this Control control, string dest)
 	    {
 		try
 		{
@@ -41,7 +41,7 @@ namespace DashFramework
 	    }
 
 
-	    public static void RegisterClickEvent(this Control i, Control control, Action code)
+	    public static void RegisterClickEvent(this Control control, Action code)
 	    {
 		try
 		{

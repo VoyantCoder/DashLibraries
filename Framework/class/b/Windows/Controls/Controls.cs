@@ -1,33 +1,22 @@
-// Sector Name:
+
 // Author: Dashie
-
-
-#pragma warning disable IDE1006
 
 
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 using DashFramework.DashControls.Controls;
-using DashFramework.DashResources;
-using DashFramework.ControlTools;
-using DashFramework.Erroring;
-using DashFramework.Sorters;
+using DashFramework.NETExtensions;
 
 
 namespace DashFramework
 {
     namespace DashControls
     {
-	public class ControlIntegrator
+	public partial class ControlIntegrator
 	{
-	    readonly DirectInteract Direct = new DirectInteract();
-	    readonly Transformer Transform = new Transformer();
-	    readonly PlainSorters Sorters = new PlainSorters();
-
 	    public void CheckBox(Control Top, PictureBox Container1, PictureBox Container2, Size Size, Point Loca, Color DeselectedBCol, [Optional] Color SelectedBCol, [Optional] bool Select, bool Add = true)
 	    {
 		try
@@ -63,20 +52,16 @@ namespace DashFramework
 			    Container2.BackColor = Col;
 			};
 
-			Direct.RegisterClickEvent(Container1, UpdateColor);
-			Direct.RegisterClickEvent(Container2, UpdateColor);
+			Container1.RegisterClickEvent(UpdateColor);
+			Container2.RegisterClickEvent(UpdateColor);
 		    });
 		}
 
-		catch (Exception E)
+		catch 
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
-
-
-	    readonly ResourceTools ResourceTool = new ResourceTools();
-	    readonly DataTools DataTool = new DataTools();
 
 	    public void RichTextBox(Control Top, RichTextBox Object, Size ObjectSize, Point ObjectLocation, Color ObjectBCol, Color ObjectFCol, int FontTypeID, int FontSize, bool ReadOnly = false, bool MultiLine = false, bool ScrollBar = false, bool TabStop = false, bool Add = true)
 	    {
@@ -105,14 +90,11 @@ namespace DashFramework
 		    }
 		}
 
-		catch (Exception E)
+		catch 
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
-
-
-	    public readonly Dictionary<TextBox, int> TextBoxContainers = new Dictionary<TextBox, int>();
 
 	    public void TextBox(Control Top, TextBox Object, Size ObjectSize, Point ObjectLocation, Color ObjectBCol, Color ObjectFCol, int FontTypeID, int FontSize, bool ReadOnly = false, bool Multiline = false, bool ScrollBar = false, bool FixedSize = true, bool TabStop = false, bool Add = true)
 	    {
@@ -177,9 +159,9 @@ namespace DashFramework
 		    }
 		}
 
-		catch (Exception E)
+		catch 
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -201,9 +183,9 @@ namespace DashFramework
 		    }
 		}
 
-		catch (Exception E)
+		catch 
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -225,9 +207,9 @@ namespace DashFramework
 		    }
 		}
 
-		catch (Exception E)
+		catch 
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -254,9 +236,9 @@ namespace DashFramework
 		    }
 		}
 
-		catch (Exception E)
+		catch 
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -287,9 +269,9 @@ namespace DashFramework
 		    }
 		}
 
-		catch (Exception E)
+		catch 
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -322,9 +304,9 @@ namespace DashFramework
 		    }
 		}
 
-		catch (Exception E)
+		catch 
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -354,9 +336,9 @@ namespace DashFramework
 		    }
 		}
 
-		catch (Exception E)
+		catch 
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 	}
