@@ -63,9 +63,9 @@ namespace DashFramework
 	    {
 		try
 		{
-		    UUIMenubarBackColor(mbarBackColor);
 		    UUITextForeColor(foreColor);
 		    UUIBackColor(muiBackColor);
+		    UUIMenubarBackColor(mbarBackColor);
 
 		    DefaultProcedure(title, false);
 		}
