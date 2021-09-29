@@ -214,7 +214,7 @@ namespace DashFramework
 	    }
 
 
-	    public void Button(Control Top, Button Object, Size ObjectSize, Point ObjectLocation, Color ObjectBCol, Color ObjectFCol, int FontTypeID, int FontSize, string ButtonText, bool TabStop = false, bool Add = true)
+	    public void Button(Control Top, Button Object, Size ObjectSize, Point ObjectLocation, Color ObjectBCol, Color ObjectFCol, string ButtonText, int FontTypeID = 1, int FontSize = 10, bool TabStop = false, bool Add = true)
 	    {
 		try
 		{
