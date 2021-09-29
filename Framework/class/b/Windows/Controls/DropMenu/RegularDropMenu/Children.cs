@@ -94,11 +94,13 @@ namespace DashFramework
 	    {
 		try
 		{
-		    if (!Sorters.SortBooleanCode(("Oh, yes"), () =>
+		    Exception False = new Exception("");
+
+		    if (!Sort.BSort(("Oh, yes"), () =>
 		    {
 			if (!Settings.GetStatus(1))
 			{
-			    return false;
+			    throw False;
 			}
 
 			else
@@ -107,19 +109,17 @@ namespace DashFramework
 			    {
 				if (!RegisterItemContainer())
 				{
-				    return false;
+				    throw False;
 				}
 
 				Settings.ToggleInit(2);
 			    }
-
-			    return true;
 			}
 		    })) return false;
 
 		    FancyItem MrFancyItem = new FancyItem();
 
-		    Sorters.SortCode(("License Plate"), () =>
+		    Sort.Sort(("License Plate"), () =>
 		    {
 			Point Location = NextLicensePlateLocation();
 			Color BackColor = Settings.BackColor;
@@ -128,7 +128,7 @@ namespace DashFramework
 			Integrate.Panel(Panel2, MrFancyItem.LicensePlate, Size, Location, BackColor);
 		    });
 
-		    Sorters.SortCode(("License"), () =>
+		    Sort.Sort(("License"), () =>
 		    {
 			Color BackColor = Settings.BackColor;
 			Color ForeColor = Settings.ForeColor;
