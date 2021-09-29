@@ -15,12 +15,12 @@ namespace DashFramework
 	    {
 		try
 		{
-		    Sorters.SortCode(("dependency"), () =>
+		    Sort.Sort(("dependency"), () =>
 		    {
 			Integrate(Position, Size, BackColor, BorderColor, RoundSides, RoundRadius, DisableWindowsBorder);
 		    });
 
-		    Sorters.SortCode(("integration extension"), () =>
+		    Sort.Sort(("integration extension"), () =>
 		    {
 			Size MenubarSize = new Size(Size.Width, 28);
 			Point MenubarLocation = new Point(0, 0);

@@ -21,7 +21,7 @@ namespace DashFramework
 	    {
 		try
 		{
-		    Sorters.SortCode(("Main Container"), () =>
+		    Sort.Sort(("Main Container"), () =>
 		    {
 			Image(Top, Container1, Size, Loca, DeselectedBCol, Add: Add);
 		    });
@@ -29,7 +29,7 @@ namespace DashFramework
 		    Size.Height -= 4;
 		    Size.Width -= 4;
 
-		    Sorters.SortCode(("Child Objects"), () =>
+		    Sort.Sort(("Child Objects"), () =>
 		    {
 			Image(Container1, Container2, Size, new Point(2, 2), DeselectedBCol);
 

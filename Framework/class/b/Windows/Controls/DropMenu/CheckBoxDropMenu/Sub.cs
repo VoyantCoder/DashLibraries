@@ -43,7 +43,7 @@ namespace DashFramework
 
 		try
 		{
-		    Sorters.SortCode(("Sub Menu"), () =>
+		    Sort.Sort(("Sub Menu"), () =>
 		    {
 			Point Location = new Point(Layer2.Width, Item.Top + Layer3.Top - 2);
 
@@ -51,7 +51,7 @@ namespace DashFramework
 			    BackColor2, BackColor3, ForeColor, MenuWidth, Children);
 		    });
 
-		    Sorters.SortCode(("Hooks"), () =>
+		    Sort.Sort(("Hooks"), () =>
 		    {
 			foreach (Entry Entry in DropMenuEntries)
 			{

@@ -36,12 +36,12 @@ namespace DashFramework
 	    {
 		try
 		{
-		    Sorters.SortCode(("dependency"), () =>
+		    Sort.Sort(("dependency"), () =>
 		    {
 			Integrate(Position, Size, BackColor, BorderColor, DisableWindowsBorder);
 		    });
 
-		    Sorters.SortCode(("integration extension"), () =>
+		    Sort.Sort(("integration extension"), () =>
 		    {
 			if (RoundSides)
 			{

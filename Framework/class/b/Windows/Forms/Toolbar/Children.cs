@@ -71,7 +71,7 @@ namespace DashFramework
 			    {
 				try
 				{
-				    Sorters.SortCode(("On Hover"), () =>
+				    Sort.Sort(("On Hover"), () =>
 				    {
 					Cntrl.MouseEnter += (s, e) => SetColor(Cntrl, OnHover[1]);
 					Cntrl.MouseLeave += (s, e) => SetColor(Cntrl, OnHover[0]);
@@ -88,7 +88,7 @@ namespace DashFramework
 			    {
 				try
 				{
-				    Sorters.SortCode(("On Down"), () =>
+				    Sort.Sort(("On Down"), () =>
 				    {
 					Cntrl.MouseDown += (s, e) => SetColor(Cntrl, OnDown[1]);
 					Cntrl.MouseUp += (s, e) => SetColor(Cntrl, OnDown[0]);
@@ -105,7 +105,7 @@ namespace DashFramework
 			    {
 				try
 				{
-				    Sorters.SortCode(("On Click"), () =>
+				    Sort.Sort(("On Click"), () =>
 				    {
 					Cntrl.Click += (s, e) => SetColor(Cntrl, OnDown[1]);
 					Cntrl.MouseUp += (s, e) => SetColor(Cntrl, OnDown[0]);

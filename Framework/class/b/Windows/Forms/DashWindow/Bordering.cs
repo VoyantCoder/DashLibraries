@@ -54,13 +54,13 @@ namespace DashFramework
 	    {
 		try
 		{
-		    Sorters.SortCode(("dependency"), () =>
+		    Sort.Sort(("dependency"), () =>
 		    {
 			Integrate(Position, Size, BackColor, DisableWindowsBorder);
 		    });
 
 
-		    Sorters.SortCode(("integration extension"), () =>
+		    Sort.Sort(("integration extension"), () =>
 		    {
 			if (BorderColor != null)
 			{

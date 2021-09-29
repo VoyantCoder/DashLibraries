@@ -47,7 +47,7 @@ namespace DashFramework
 	    {
 		try
 		{
-		    Sorters.SortCode(("Title and Description"), () =>
+		    Sort.Sort(("Title and Description"), () =>
 		    {
 			Size DescriptionSize = DataTool.GetFontSize(description, 12);
 			Size TitleSize = DataTool.GetFontSize(title, 22);
@@ -62,7 +62,7 @@ namespace DashFramework
 			Title.Text = title;
 		    });
 
-		    Sorters.SortCode(("Window Sizing"), () =>
+		    Sort.Sort(("Window Sizing"), () =>
 		    {
 			int height = 28 + 15 + 20 + 15 + Title.Height + Description.Height;
 			int width = WindowInstance.GetWindowSize().Width;

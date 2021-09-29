@@ -16,7 +16,7 @@ namespace DashFramework
 	    {
 		try
 		{
-		    Sorter.SortCode("Display Container", () =>
+		    Sort.Sort("Display Container", () =>
 		    {
 			if (defaultSize.Width == -1)
 			{
@@ -27,7 +27,7 @@ namespace DashFramework
 			    defaultSize, new Point(-1, -1), backColor);
 		    });
 
-		    Sorter.SortCode("Title/Description", () =>
+		    Sort.Sort("Title/Description", () =>
 		    {
 			void ResizeEventHandler(Control control)
 			{

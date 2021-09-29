@@ -110,7 +110,7 @@ namespace DashFramework
 	    {
 		try
 		{
-		    Sorters.SortCode(("Startup Flags"), () =>
+		    Sort.Sort(("Startup Flags"), () =>
 		    {
 			if (Panel1.Parent == null)
 			{
@@ -131,7 +131,7 @@ namespace DashFramework
 			}
 		    });
 
-		    Sorters.SortCode(("Quickify Settings"), () =>
+		    Sort.Sort(("Quickify Settings"), () =>
 		    {
 			QuickyInjector.BttnParent = Panel2;
 			QuickyInjector.BttnSize = new Size(95, Panel1.Height - 10); // 5 from top
@@ -144,7 +144,7 @@ namespace DashFramework
 			QuickyInjector.BttnFid = 1;
 		    });
 
-		    Sorters.SortCode(("Template Container"), () =>
+		    Sort.Sort(("Template Container"), () =>
 		    {
 			Size ContainerSize = new Size(10, Panel1.Height - 10);
 			Point ContainerLoca = new Point(-1, 5);
@@ -157,7 +157,7 @@ namespace DashFramework
 		    {
 			try
 			{
-			    Sorters.SortCode(("SaveLoadOpen Template"), () =>
+			    Sort.Sort(("SaveLoadOpen Template"), () =>
 			    {
 				QuickyInjector.QuickButton(new Button(), "Save", new Point(0, 0));
 				QuickyInjector.QuickButton(new Button(), "Load", new Point(105, 0));
@@ -178,7 +178,7 @@ namespace DashFramework
 		    {
 			try
 			{
-			    Sorters.SortCode(("OkayCancel Template"), () =>
+			    Sort.Sort(("OkayCancel Template"), () =>
 			    {
 				QuickyInjector.QuickButton(new Button(), "Close", new Point(105, 0));
 				QuickyInjector.QuickButton(new Button(), "Okay", new Point(0, 0));
@@ -198,7 +198,7 @@ namespace DashFramework
 		    {
 			try
 			{
-			    Sorters.SortCode(("Close Template"), () =>
+			    Sort.Sort(("Close Template"), () =>
 			    {
 				QuickyInjector.QuickButton(new Button(), "Close", new Point(0, 0));
 

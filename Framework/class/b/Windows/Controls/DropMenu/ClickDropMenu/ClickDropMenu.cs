@@ -53,7 +53,7 @@ namespace DashFramework
 
 	    public void InsertItem(DropItem item, string name)
 	    {
-		Sorter.SortCode(("Insert item into Container"), () =>
+		Sort.Sort(("Insert item into Container"), () =>
 		{
 		    try
 		    {
@@ -77,7 +77,7 @@ namespace DashFramework
 		    }
 		});
 
-		Sorter.SortCode(("Adjust Size"), () =>
+		Sort.Sort(("Adjust Size"), () =>
 		{
 		    try
 		    {
@@ -93,7 +93,7 @@ namespace DashFramework
 
 	    public void AddItem(params string[] names)
 	    {
-		Sorter.SortCode(("Add items to Container"), () =>
+		Sort.Sort(("Add items to Container"), () =>
 		{
 		    try
 		    {
@@ -240,7 +240,7 @@ namespace DashFramework
 
 	    public void Integrate(Control ContainerParent, Point ContainerLoca, Color UpperBCol, Color LowerBCol)
 	    {
-		Sorter.SortCode(("Container Insertions"), () =>
+		Sort.Sort(("Container Insertions"), () =>
 		{
 		    try
 		    {

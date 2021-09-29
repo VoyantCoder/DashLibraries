@@ -44,7 +44,7 @@ namespace DashFramework
 		    {
 			try
 			{
-			    Sorters.SortCode(("Close Button Resizing"), () =>
+			    Sort.Sort(("Close Button Resizing"), () =>
 			    {
 				Button1.Left = Panel1.Width - Size[0].Width;
 				Transform.Resize(Button1, Size[0]);
@@ -61,7 +61,7 @@ namespace DashFramework
 		    {
 			try
 			{
-			    Sorters.SortCode(("Close/Min Button Resizing"), () =>
+			    Sort.Sort(("Close/Min Button Resizing"), () =>
 			    {
 				Button2.Left = Panel1.Width - (Size[0].Width * 2);
 				Button1.Left = Panel1.Width - (Size[0].Width);
@@ -81,7 +81,7 @@ namespace DashFramework
 		    {
 			try
 			{
-			    Sorters.SortCode(("Custom Button Resizing"), () =>
+			    Sort.Sort(("Custom Button Resizing"), () =>
 			    {
 				if (CustomButtons.Count < Size.Length)
 				{
@@ -228,7 +228,7 @@ namespace DashFramework
 		    {
 			try
 			{
-			    Sorters.SortCode(("On Close"), () =>
+			    Sort.Sort(("On Close"), () =>
 			    {
 				Button1.Click += (s, e) =>
 				{
@@ -255,7 +255,7 @@ namespace DashFramework
 		    {
 			try
 			{
-			    Sorters.SortCode(("On Minimize & Close"), () =>
+			    Sort.Sort(("On Minimize & Close"), () =>
 			    {
 				Button2.Click += (s, e) =>
 				{
@@ -282,7 +282,7 @@ namespace DashFramework
 		    {
 			try
 			{
-			    Sorters.SortCode(("On Custom"), () =>
+			    Sort.Sort(("On Custom"), () =>
 			    {
 				if (CustomButtons.Count >= Index && Index > -1)
 				{
@@ -361,7 +361,7 @@ namespace DashFramework
 			{
 			    try
 			    {
-				Sorters.SortCode(("On Hover"), () =>
+				Sort.Sort(("On Hover"), () =>
 				{
 				    Cntrl.MouseEnter += (s, e) => SetColor(Cntrl, OnHover[1]);
 				    Cntrl.MouseHover += (s, e) => SetColor(Cntrl, OnHover[1]);
@@ -379,7 +379,7 @@ namespace DashFramework
 			{
 			    try
 			    {
-				Sorters.SortCode(("On Down"), () =>
+				Sort.Sort(("On Down"), () =>
 				{
 				    Cntrl.MouseDown += (s, e) => SetColor(Cntrl, OnDown[1]);
 				    Cntrl.MouseUp += (s, e) => SetColor(Cntrl, OnDown[0]);
@@ -396,7 +396,7 @@ namespace DashFramework
 			{
 			    try
 			    {
-				Sorters.SortCode(("On Click"), () =>
+				Sort.Sort(("On Click"), () =>
 				{
 				    Cntrl.MouseClick += (s, e) => SetColor(Cntrl, OnDown[1]);
 				    Cntrl.MouseDown += (s, e) => SetColor(Cntrl, OnDown[0]);
@@ -483,12 +483,12 @@ namespace DashFramework
 	    {
 		try
 		{
-		    Sorters.SortCode(("Top Call"), () =>
+		    Sort.Sort(("Top Call"), () =>
 		    {
 			Integrate(Parent, BarSize, BarLoca, BarBColor, TitleText, TitleFColor, TitlePos, Icon, IconPos);
 		    });
 
-		    Sorters.SortCode(("Button Integration"), () =>
+		    Sort.Sort(("Button Integration"), () =>
 		    {
 			void OptionalRepositioning()
 			{
@@ -536,7 +536,7 @@ namespace DashFramework
 			{
 			    try
 			    {
-				Sorters.SortCode(("Close Button"), () =>
+				Sort.Sort(("Close Button"), () =>
 				{
 				    ResetExistingButtons();
 
@@ -560,7 +560,7 @@ namespace DashFramework
 			{
 			    try
 			    {
-				Sorters.SortCode(("Close & Minimize Buttons"), () =>
+				Sort.Sort(("Close & Minimize Buttons"), () =>
 				{
 				    Size ButtonSize = new Size(75, Panel1.Height);
 				    Point ButtonLoca = new Point(Panel1.Width - 150, 0);
@@ -584,7 +584,7 @@ namespace DashFramework
 			{
 			    try
 			    {
-				Sorters.SortCode(("Custom Button(s)"), () =>
+				Sort.Sort(("Custom Button(s)"), () =>
 				{
 				    ResetExistingButtons();
 

@@ -88,7 +88,7 @@ namespace DashFramework
 	    
 	    public void AddCheckBox(Control Parent, Point Location, bool Round = false, int RoundRadius = 12)
 	    {
-		Sorter.SortCode(("Containers"), () =>
+		Sort.Sort(("Containers"), () =>
 		{
 		    Size Panel1Size = new Size(CheckBoxWidth, CheckBoxHeight);
 		    Size Panel2Size = new Size(MarkBoxWidth, MarkBoxHeight);
@@ -105,7 +105,7 @@ namespace DashFramework
 		    }
 		});
 
-		Sorter.SortCode(("Hook Handler Setup"), () =>
+		Sort.Sort(("Hook Handler Setup"), () =>
 		{
 		    void CheckBoxEvent()
 		    {

@@ -246,12 +246,12 @@ namespace DashFramework
 	    {
 		try
 		{
-		    Sorters.SortCode(("Top Call"), () =>
+		    Sort.Sort(("Top Call"), () =>
 		    {
 			Integrate(Parent, BarSize, BarLoca, BarBColor);
 		    });
 
-		    Sorters.SortCode(("Label Integration"), () =>
+		    Sort.Sort(("Label Integration"), () =>
 		    {
 			Size TitleSize = DataTool.GetFontSize(TitleText, FontPoints, FontTypeId);
 			Point TitlePosition = GetTitlePosition(TitleLoca, TitleText);

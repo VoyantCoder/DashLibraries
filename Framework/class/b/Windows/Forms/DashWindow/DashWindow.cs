@@ -65,7 +65,7 @@ namespace DashFramework
 		    {
 			try
 			{
-			    Sorters.SortCode(("Bottom"), () =>
+			    Sort.Sort(("Bottom"), () =>
 			    {
 				int y = MonitorHeight - Size.Height - 30;
 				int x = (MonitorWidth - Size.Width) / 2;
@@ -87,7 +87,7 @@ namespace DashFramework
 		    {
 			try
 			{
-			    Sorters.SortCode(("Center"), () =>
+			    Sort.Sort(("Center"), () =>
 			    {
 				int y = (MonitorHeight - Size.Height) / 2;
 				int x = (MonitorWidth - Size.Width) / 2;
@@ -109,7 +109,7 @@ namespace DashFramework
 		    {
 			try
 			{
-			    Sorters.SortCode(("Right"), () =>
+			    Sort.Sort(("Right"), () =>
 			    {
 				int y = (MonitorHeight - Size.Height) / 2;
 				int x = MonitorWidth - Size.Width - 30;
@@ -131,7 +131,7 @@ namespace DashFramework
 		    {
 			try
 			{
-			    Sorters.SortCode(("Left"), () =>
+			    Sort.Sort(("Left"), () =>
 			    {
 				int y = (MonitorWidth - Size.Width) / 2;
 
@@ -152,7 +152,7 @@ namespace DashFramework
 		    {
 			try
 			{
-			    Sorters.SortCode(("Top"), () =>
+			    Sort.Sort(("Top"), () =>
 			    {
 				int x = (MonitorWidth - Size.Width) / 2;
 				SetLocation(x + 30);

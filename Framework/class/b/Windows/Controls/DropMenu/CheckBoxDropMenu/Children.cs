@@ -104,7 +104,7 @@ namespace DashFramework
 		    Point EntryLocation = GetNextItemLocation();
 		    int EntryHeight() => 30;
 
-		    Sorters.SortCode("License Plate", () =>
+		    Sort.Sort("License Plate", () =>
 		    {
 			Size Size = new Size(Layer3.Width, EntryHeight());
 
@@ -122,7 +122,7 @@ namespace DashFramework
 			DropMenuEntries.Add(Entry);
 		    });
 
-		    Sorters.SortCode("Check Box", () =>
+		    Sort.Sort("Check Box", () =>
 		    {
 			Size GetBaseSize(int Width, int Height)
 			{
