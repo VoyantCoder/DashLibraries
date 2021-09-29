@@ -142,8 +142,8 @@ namespace DashFramework
 
 		    var ButtonSize = new Size(45, 26);
 
-		    Control.Button(S3Container2, S3Button1, ButtonSize, Button1Loca, ContainerBCol, Color.White, 1, 9, ("<"));
-		    Control.Button(S3Container2, S3Button2, ButtonSize, Button2Loca, ContainerBCol, Color.White, 1, 9, (">"));
+		    Control.Button(S3Container2, S3Button1, ButtonSize, Button1Loca, ContainerBCol, Color.White, ("<"), 1, 9);
+		    Control.Button(S3Container2, S3Button2, ButtonSize, Button2Loca, ContainerBCol, Color.White, (">"), 1, 9);
 
 		    S3Button1.Click += (s, e) => S3ChangePage(false);
 		    S3Button2.Click += (s, e) => S3ChangePage(true);
