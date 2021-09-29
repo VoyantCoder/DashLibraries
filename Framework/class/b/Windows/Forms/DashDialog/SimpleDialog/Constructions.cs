@@ -26,7 +26,7 @@ namespace DashFramework
 		    }
 
 		    Register(HeadLabel, 16);
-		    Register(BodyLabel, 13);
+		    Register(BodyLabel, 11);
 		}
 
 		catch
