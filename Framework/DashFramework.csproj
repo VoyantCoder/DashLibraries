@@ -80,6 +80,9 @@
     <Compile Include="class\b\Handling\CodeBlocks\AsyncSafe.cs" />
     <Compile Include="class\b\Handling\CodeBlocks\CodeSorting.cs" />
     <Compile Include="class\b\Handling\CodeBlocks\Runnables.cs" />
+    <Compile Include="class\b\Handling\Other\Erroring\Dialog.cs" />
+    <Compile Include="class\b\Handling\Other\Erroring\Helper.cs" />
+    <Compile Include="class\b\Handling\Other\Erroring\Objects.cs" />
     <Compile Include="class\b\NETExt\control.cs" />
     <Compile Include="class\b\NETExt\string.cs" />
     <Compile Include="class\b\Networking\Http\Data\Header.cs" />
@@ -95,8 +98,8 @@
     <Compile Include="class\b\Networking\Ports\Settings.cs" />
     <Compile Include="class\b\Data\Special\Generators.cs" />
     <Compile Include="class\b\Threading\InsertyThread.cs" />
-    <Compile Include="class\b\Handling\Other\Erroring.cs" />
-    <Compile Include="class\b\Handling\Other\IInteract.cs" />
+    <Compile Include="class\b\Handling\Other\Erroring\Constructor.cs" />
+    <Compile Include="class\b\Handling\Other\Interact\CurrentInstance.cs" />
     <Compile Include="class\b\DashSpecial\Herbal\Loader.cs" />
     <Compile Include="class\b\Windows\Controls\Controls.cs" />
     <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\CheckBoxDropMenu.cs" />
@@ -140,6 +143,8 @@
     <Compile Include="class\b\Windows\Controls\Tools\Extern.cs" />
     <Compile Include="class\b\Windows\Controls\Tools\Simplifiers.cs" />
     <Compile Include="class\b\Windows\Controls\Tools\Transformer.cs" />
+    <Compile Include="class\b\Windows\Forms\DashDialog\SimpleDialog\Constructions.cs" />
+    <Compile Include="class\b\Windows\Forms\DashDialog\SimpleDialog\Objects.cs" />
     <Compile Include="class\b\Windows\Forms\DashDialog\SimpleDialog\SimpleDialog.cs" />
     <Compile Include="class\b\Windows\Forms\DashWindow\Bordering.cs" />
     <Compile Include="class\b\Windows\Forms\DashWindow\Children.cs" />
@@ -149,10 +154,6 @@
     <Compile Include="class\b\Windows\Forms\DashWindow\Unnamed.cs" />
     <Compile Include="class\b\Windows\Forms\DashWindow\Visibility.cs" />
     <Compile Include="class\b\Windows\Forms\Forms.cs" />
-    <Compile Include="class\b\Windows\Forms\DashDialog\SimpleDialog\Objects.cs" />
-    <Compile Include="class\b\Windows\Forms\DashDialog\SimpleDialog\Shortcuts.cs" />
-    <Compile Include="class\b\Windows\Forms\DashDialog\SimpleDialog\Templates.cs" />
-    <Compile Include="class\b\Windows\Forms\DashDialog\SimpleDialog\Visibility.cs" />
     <Compile Include="class\b\Windows\Forms\DashWindow\DashWindow.cs" />
     <Compile Include="class\b\Windows\Forms\MenuBar\Buttons.cs" />
     <Compile Include="class\b\Windows\Forms\MenuBar\Icons.cs" />
