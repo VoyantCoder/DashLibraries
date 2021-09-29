@@ -27,9 +27,9 @@ namespace DashFramework
 		    Dialog.Location = new Point(X, Y);
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    ErrorHandler.JustDoIt(E);
+		    throw;
 		}
 	    }
 

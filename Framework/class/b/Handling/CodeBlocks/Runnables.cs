@@ -40,9 +40,9 @@ namespace DashFramework
 					    execute();
 					}
 
-					catch (Exception E)
+					catch
 					{
-					    throw (ErrorHandler.GetException(E));
+					    throw;
 					}
 				    }
 				)
@@ -58,9 +58,9 @@ namespace DashFramework
 		    { IsBackground = true }.Start();
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -76,16 +76,16 @@ namespace DashFramework
 			    execute();
 			}
 
-			catch (Exception E)
+			catch
 			{
-			    throw (ErrorHandler.GetException(E));
+			    throw;
 			}
 		    }));
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -107,9 +107,9 @@ namespace DashFramework
 		    timer.Start();
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw ErrorHandler.GetException(E);
+		    throw;
 		}
 	    }
 
@@ -137,9 +137,9 @@ namespace DashFramework
 						execute();
 					    }
 
-					    catch (Exception E)
+					    catch
 					    {
-						throw (ErrorHandler.GetException(E));
+						throw;
 					    }
 					}
 				    )
@@ -161,9 +161,9 @@ namespace DashFramework
 		    timer.Start();
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw ErrorHandler.GetException(E);
+		    throw;
 		}
 	    }
 	}

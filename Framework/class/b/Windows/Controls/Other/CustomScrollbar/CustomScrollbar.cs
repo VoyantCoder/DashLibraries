@@ -68,9 +68,9 @@ namespace DashFramework
 		    }
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    ;
 		}
 	    }
 
@@ -91,9 +91,9 @@ namespace DashFramework
 		    RegMouseEventHandler();
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    ;
 		}
 	    }
 
@@ -107,9 +107,9 @@ namespace DashFramework
 		    SetCollection();
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    ErrorHandler.JustDoIt(E);
+		    throw;
 		}
 	    }
 	}

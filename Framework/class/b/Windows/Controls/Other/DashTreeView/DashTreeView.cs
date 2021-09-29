@@ -27,9 +27,9 @@ namespace DashFramework
 		    Update();
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -45,9 +45,9 @@ namespace DashFramework
 		    }
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -60,9 +60,9 @@ namespace DashFramework
 		    Update();
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 	}

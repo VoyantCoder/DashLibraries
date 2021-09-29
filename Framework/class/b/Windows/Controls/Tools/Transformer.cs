@@ -39,9 +39,9 @@ namespace DashFramework
 		    }
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -85,17 +85,17 @@ namespace DashFramework
 
 			    Object.Region = new Region(GraphicsPath);
 			}
-
-			catch (Exception E)
+			
+			catch
 			{
-			    throw (ErrorHandler.GetException(E));
+			    throw;
 			}
 		    };
 		}
-
-		catch (Exception E)
+		
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -110,9 +110,9 @@ namespace DashFramework
 		    PaintRectangle(Con, Ptw, Size, Loca, BCol);
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    ErrorHandler.JustDoIt(E);
+		    throw;
 		}
 	    }
 

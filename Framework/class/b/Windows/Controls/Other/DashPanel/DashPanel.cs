@@ -24,9 +24,9 @@ namespace DashFramework
 		    Controls.Add(control);
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 	}

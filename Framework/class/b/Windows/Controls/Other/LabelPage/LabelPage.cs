@@ -28,9 +28,9 @@ namespace DashFramework
 		    Transform.Round(S1Container1, 6);
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -47,9 +47,9 @@ namespace DashFramework
 		    .Height / ConSize.Height) + 1;
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -75,9 +75,9 @@ namespace DashFramework
 		    Control.Label(S2Container1, S2Label1, Label1Size, Label1Loca, S2Container1.BackColor, Color.White, ("Page:"), 1, 9);
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -110,9 +110,9 @@ namespace DashFramework
 		    S2Label2.Text = $"{S2PageID}" + S2Label2.Text.Substring(1, 2);
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -152,9 +152,9 @@ namespace DashFramework
 		    Transform.Round(S3Button2, 6);
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -176,9 +176,9 @@ namespace DashFramework
 		    Control.Label(S4Container1, S4Label1, LabelSize, LabelLoca, LabelBCol, LabelFCol, LabelText, 1, 9);
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -192,10 +192,10 @@ namespace DashFramework
 		    Init3(ContainerSetup.Item1);
 		    Init4(LabelSetup.Item3, LabelSetup.Item1, LabelSetup.Item2);
 		}
-
-		catch (Exception E)
+		
+		catch
 		{
-		    ErrorHandler.JustDoIt(E);
+		    throw;
 		}
 	    }
 	}

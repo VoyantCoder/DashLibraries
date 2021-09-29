@@ -35,9 +35,9 @@ namespace DashFramework
 			Control.TextBox(TextBoxParent, TextBox, Size, Loca, TextBoxBCol, TextBoxFCol, 1, FontHeight);
 		    }
 
-		    catch (Exception E)
+		    catch
 		    {
-			throw (ErrorHandler.GetException(E));
+			throw;
 		    }
 		}
 
@@ -50,9 +50,9 @@ namespace DashFramework
 			return new Size(Width, Height);
 		    }
 
-		    catch (Exception E)
+		    catch
 		    {
-			throw (ErrorHandler.GetException(E));
+			throw;
 		    }
 		}
 
@@ -69,9 +69,9 @@ namespace DashFramework
 			Control.Label(LabelParent, Label, Size, Loca, LabelBCol, LabelFCol, Text, 1, FontHeight);
 		    }
 
-		    catch (Exception E)
+		    catch
 		    {
-			throw (ErrorHandler.GetException(E));
+			throw;
 		    }
 		}
 
@@ -85,9 +85,9 @@ namespace DashFramework
 			return TextRenderer.MeasureText(Text, Font);
 		    }
 
-		    catch (Exception E)
+		    catch
 		    {
-			throw (ErrorHandler.GetException(E));
+			throw;
 		    }
 		}
 
@@ -104,9 +104,9 @@ namespace DashFramework
 			return new Point(X, Y);
 		    }
 
-		    catch (Exception E)
+		    catch
 		    {
-			throw (ErrorHandler.GetException(E));
+			throw;
 		    }
 		}
 	    }
@@ -207,9 +207,9 @@ namespace DashFramework
 			if (BttnBorder) Transform.Round(button, 6);
 		    }
 
-		    catch (Exception E)
+		    catch
 		    {
-			throw (ErrorHandler.GetException(E));
+			throw;
 		    }
 		}
 
@@ -240,9 +240,9 @@ namespace DashFramework
 				PictureBox ? txtbox.Parent : txtbox, 6);
 		    }
 
-		    catch (Exception E)
+		    catch
 		    {
-			throw (ErrorHandler.GetException(E));
+			throw;
 		    }
 		}
 
@@ -265,9 +265,9 @@ namespace DashFramework
 			    LblFCol, text, LblFid, LblFpts);
 		    }
 
-		    catch (Exception E)
+		    catch
 		    {
-			throw (ErrorHandler.GetException(E));
+			throw;
 		    }
 		}
 	    }

@@ -39,9 +39,9 @@ namespace DashFramework
 		    return lines;
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -61,9 +61,9 @@ namespace DashFramework
 		    return obj;
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -91,9 +91,9 @@ namespace DashFramework
 		    return obj;
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 

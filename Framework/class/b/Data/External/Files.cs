@@ -36,13 +36,13 @@ namespace DashFramework
 		    }
 
 		    return true;
-		}
+		} 
 
-		catch (Exception E)
+		catch
 		{
 		    if (exceptionFail)
 		    {
-			ErrorHandler.GetException(E);
+			throw;
 		    }
 		}
 

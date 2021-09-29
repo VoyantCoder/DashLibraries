@@ -33,9 +33,9 @@ namespace DashFramework
 		    SetButtonColor(RightNow);
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -53,9 +53,9 @@ namespace DashFramework
 		    TxtBox.Text = ($"{such}");
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -67,9 +67,9 @@ namespace DashFramework
 		    For.Dock = DockStyle;
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 
@@ -90,9 +90,9 @@ namespace DashFramework
 		    }
 		}
 
-		catch (Exception E)
+		catch
 		{
-		    throw (ErrorHandler.GetException(E));
+		    throw;
 		}
 	    }
 	}
