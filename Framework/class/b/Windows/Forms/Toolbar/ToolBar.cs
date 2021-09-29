@@ -142,7 +142,7 @@ namespace DashFramework
 		    {
 			void Apply(Control ToMe)
 			{
-			    Appliance.ApplyDraggability(ToMe, Panel1.Parent);
+			    Appliance.MakeDraggable(ToMe, Panel1.Parent);
 			}
 
 			foreach (Control A in Panel1.Controls)
