@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using DashFramework.DashResources;
 using DashFramework.DashControls;
 using DashFramework.Erroring;
+using DashFramework.Data;
 
 
 namespace DashFramework
@@ -202,7 +203,7 @@ namespace DashFramework
 		    try
 		    {
 			Controls.Button(parent, button, BttnSize,
-			    loca, BttnBCol, BttnFCol, BttnFid, BttnFpts, text);
+			    loca, BttnBCol, BttnFCol, text, BttnFid, BttnFpts);
 
 			if (BttnBorder) Transform.Round(button, 6);
 		    }

@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 using DashFramework.DashResources;
 using DashFramework.ControlTools;
+using DashFramework.Data;
 
 
 namespace DashFramework

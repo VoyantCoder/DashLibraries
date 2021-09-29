@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 using DashFramework.ControlTools;
 using DashFramework.Sorters;
+using DashFramework.Data;
 
 
 namespace DashFramework
