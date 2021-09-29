@@ -49,7 +49,7 @@ namespace DashFramework
 	    readonly ControlIntegrator Controls = new ControlIntegrator();
 	    readonly OutsmartLoops Loopsies = new OutsmartLoops();
 	    readonly Transformer Transform = new Transformer();
-	    readonly PlainSorters Sorter = new PlainSorters();
+	    readonly GenericSorter Sort = new GenericSorter();
 	}
     }
 }

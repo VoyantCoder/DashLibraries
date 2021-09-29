@@ -20,7 +20,7 @@ namespace DashFramework
 
 	    readonly ResourceTools ResourceTool = new ResourceTools();
 	    readonly Transformer Transform = new Transformer();
-	    readonly PlainSorters Sorters = new PlainSorters();
+	    readonly GenericSorter Sort = new GenericSorter();
 	    readonly DataTools DataTool = new DataTools();
 	}
     }

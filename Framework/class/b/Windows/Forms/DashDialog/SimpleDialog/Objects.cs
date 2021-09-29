@@ -23,7 +23,7 @@ namespace DashFramework
 	public partial class SimpleDialog
 	{
 	    readonly ControlIntegrator Integrator = new ControlIntegrator();
-	    readonly PlainSorters Sorters = new PlainSorters();
+	    readonly GenericSorter Sort = new GenericSorter();
 
 	    readonly DashWindow WindowInstance = new DashWindow();
 

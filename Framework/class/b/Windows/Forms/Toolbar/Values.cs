@@ -37,9 +37,9 @@ namespace DashFramework
 	    readonly ControlIntegrator Integrator = new ControlIntegrator();
 
 	    readonly Transformer Transform = new Transformer();
-	    readonly PlainSorters Sorters = new PlainSorters();
+	    readonly GenericSorter Sort = new GenericSorter();
 
-	    readonly Apply Appliance = new Apply();
+	    readonly Appliance Appliance = new Appliance();
 	    public delegate void ChildRun();
 	}
     }

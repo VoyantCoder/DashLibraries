@@ -26,7 +26,7 @@ namespace DashFramework
 	{
 	    readonly Dictionary<int, Control> ChildIdentifiers = new Dictionary<int, Control>();
 
-	    readonly PlainSorters Sorters = new PlainSorters();
+	    readonly GenericSorter Sort = new GenericSorter();
 	    readonly Transformer Transform = new Transformer();
 
 	    readonly MenuBar MenubarInstance = new MenuBar();

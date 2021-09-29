@@ -65,7 +65,7 @@ namespace DashFramework
 
 	    readonly ControlIntegrator Integrate = new ControlIntegrator();
 	    readonly Transformer Transform = new Transformer();
-	    readonly PlainSorters Sorters = new PlainSorters();
+	    readonly GenericSorter Sort = new GenericSorter();
 	    readonly DataTools DataTool = new DataTools();
 	}
     }
