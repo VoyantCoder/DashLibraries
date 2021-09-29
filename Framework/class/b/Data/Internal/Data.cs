@@ -17,116 +17,119 @@ using DashFramework.Erroring;
 
 namespace DashFramework
 {
-    public class DataTools
+    namespace Data
     {
-	// Date & Times:
-	public string GetCurrentDate() => DateTime.Now.ToLongDateString();
-	public string GetCurrentTime() => DateTime.Now.ToLongTimeString();
-
-
-	// Color Related:
-	public string RGBString(Color cc) => ($"{cc.R},{cc.G},{cc.B}");
-
-	public Color NegativeRGB(int minus, Color origin)
+	public class DataTools
 	{
-	    if (origin.R - minus < 0)
-		minus = 0;
-	    else if (origin.G - minus < 0)
-		minus = 0;
-	    else if (origin.B - minus < 0)
-		minus = 0;
+	    // Date & Times:
+	    public string GetCurrentDate() => DateTime.Now.ToLongDateString();
+	    public string GetCurrentTime() => DateTime.Now.ToLongTimeString();
 
-	    return
-	    (
-		Color.FromArgb
+
+	    // Color Related:
+	    public string RGBString(Color cc) => ($"{cc.R},{cc.G},{cc.B}");
+
+	    public Color NegativeRGB(int minus, Color origin)
+	    {
+		if (origin.R - minus < 0)
+		    minus = 0;
+		else if (origin.G - minus < 0)
+		    minus = 0;
+		else if (origin.B - minus < 0)
+		    minus = 0;
+
+		return
 		(
-		    origin.R - minus,
-		    origin.G - minus,
-		    origin.B - minus
-		)
-	    );
-	}
+		    Color.FromArgb
+		    (
+			origin.R - minus,
+			origin.G - minus,
+			origin.B - minus
+		    )
+		);
+	    }
 
-	public Color PositiveRGB(int plus, Color origin)
-	{
-	    if (origin.R + plus > 255)
-		plus = 0;
-	    else if (origin.G + plus > 255)
-		plus = 0;
-	    else if (origin.B + plus > 255)
-		plus = 0;
+	    public Color PositiveRGB(int plus, Color origin)
+	    {
+		if (origin.R + plus > 255)
+		    plus = 0;
+		else if (origin.G + plus > 255)
+		    plus = 0;
+		else if (origin.B + plus > 255)
+		    plus = 0;
 
-	    return
-	    (
-		Color.FromArgb
+		return
 		(
-		    origin.R + plus,
-		    origin.G + plus,
-		    origin.B + plus
-		)
-	    );
-	}
-
-	public Size ResizeSize(Size Original, int X, int Y, bool Add = true)
-	{
-	    Original.Height += Y;
-	    Original.Width += X;
-
-	    if (!Add)
-	    {
-		Original.Height -= (2 * Y);
-		Original.Width -= (2 * X);
+		    Color.FromArgb
+		    (
+			origin.R + plus,
+			origin.G + plus,
+			origin.B + plus
+		    )
+		);
 	    }
 
-	    return (Original);
-	}
-
-	public Size SubstractSize(int Amount, Size Size)
-	{
-	    return new Size(Size.Width - Amount, Size.Height - Amount);
-	}
-
-
-	// Coordinate Related:
-	public Point GetCenterFor(Control This, Control BasedOn, bool FromLeft = true, bool FromTop = true, int X = -1, int Y = -1)
-	{
-	    try
+	    public Size ResizeSize(Size Original, int X, int Y, bool Add = true)
 	    {
-		int x = FromLeft ? (BasedOn.Width - This.Width) / 2 : (X != -1 ? X : 0);
-		int y = FromTop ? (BasedOn.Height - This.Height) / 2 : (Y != -1 ? Y : 0);
+		Original.Height += Y;
+		Original.Width += X;
 
-		return new Point(x, y);
+		if (!Add)
+		{
+		    Original.Height -= (2 * Y);
+		    Original.Width -= (2 * X);
+		}
+
+		return (Original);
 	    }
 
-	    catch
+	    public Size SubstractSize(int Amount, Size Size)
 	    {
-		return Point.Empty;
-	    }
-	}
-
-
-	public Point OGetCenter(Control BasedOn, Control This, Point Coords)
-	{
-	    try
-	    {
-		int x = (Coords.X == -1 ? (BasedOn.Width - This.Width) / 2 : Coords.X);
-		int y = (Coords.Y == -1 ? (BasedOn.Height - This.Height) / 2 : Coords.Y);
-
-		return new Point(x, y);
+		return new Size(Size.Width - Amount, Size.Height - Amount);
 	    }
 
-	    catch
+
+	    // Coordinate Related:
+	    public Point GetCenterFor(Control This, Control BasedOn, bool FromLeft = true, bool FromTop = true, int X = -1, int Y = -1)
 	    {
-		return Point.Empty;
+		try
+		{
+		    int x = FromLeft ? (BasedOn.Width - This.Width) / 2 : (X != -1 ? X : 0);
+		    int y = FromTop ? (BasedOn.Height - This.Height) / 2 : (Y != -1 ? Y : 0);
+
+		    return new Point(x, y);
+		}
+
+		catch
+		{
+		    return Point.Empty;
+		}
 	    }
-	}
 
 
-	// Font Related:
-	readonly ResourceTools ResourceTool = new ResourceTools();
-	public Size GetFontSize(string Text, int Size = 10, int Id = 1)
-	{
-	    return TextRenderer.MeasureText(Text, ResourceTool.GetFont(Id, Size));
+	    public Point OGetCenter(Control BasedOn, Control This, Point Coords)
+	    {
+		try
+		{
+		    int x = (Coords.X == -1 ? (BasedOn.Width - This.Width) / 2 : Coords.X);
+		    int y = (Coords.Y == -1 ? (BasedOn.Height - This.Height) / 2 : Coords.Y);
+
+		    return new Point(x, y);
+		}
+
+		catch
+		{
+		    return Point.Empty;
+		}
+	    }
+
+
+	    // Font Related:
+	    readonly ResourceTools ResourceTool = new ResourceTools();
+	    public Size GetFontSize(string Text, int Size = 10, int Id = 1)
+	    {
+		return TextRenderer.MeasureText(Text, ResourceTool.GetFont(Id, Size));
+	    }
 	}
     }
 }
