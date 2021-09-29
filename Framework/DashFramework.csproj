@@ -144,6 +144,7 @@
     <Compile Include="class\b\Windows\Controls\Tools\Simplifiers.cs" />
     <Compile Include="class\b\Windows\Controls\Tools\Transformer.cs" />
     <Compile Include="class\b\Windows\Forms\DashDialog\SimpleDialog\Constructions.cs" />
+    <Compile Include="class\b\Windows\Forms\DashDialog\SimpleDialog\Helper.cs" />
     <Compile Include="class\b\Windows\Forms\DashDialog\SimpleDialog\Objects.cs" />
     <Compile Include="class\b\Windows\Forms\DashDialog\SimpleDialog\SimpleDialog.cs" />
     <Compile Include="class\b\Windows\Forms\DashWindow\Bordering.cs" />
