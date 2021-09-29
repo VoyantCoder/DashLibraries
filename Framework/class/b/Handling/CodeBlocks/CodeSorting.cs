@@ -10,38 +10,63 @@ namespace DashFramework
 {
     namespace Sorters
     {
-	public class PlainSorters
+	public class GenericSorter<T> 
 	{
-	    public delegate void VoidRun();//SORTER CLASS
-
-	    public void SortCode(string Tag, VoidRun runThis)
+	    public T Sort(string sectionName, Action code, bool throwException = false)
 	    {
 		try
 		{
-		    runThis();
-		}
-
-		catch (Exception E)
-		{
-		    ErrorHandler.JustDoIt(E);
-		}
-	    }
-
-
-	    public delegate bool BooleanRun();
-
-	    public bool SortBooleanCode(string Tag, BooleanRun runThis)
-	    {
-		try
-		{
-		    return runThis();
+		    code();
 		}
 
 		catch
 		{
+		    if (throwException)
+		    {
+			throw;
+		    }
+		}
+		return default(T);
+	    }
+
+	    public bool BSort(string sectionName, Action code, bool throwException = false)
+	    {
+		try
+		{
+		    code();
+		}
+
+		catch
+		{
+		    if (throwException)
+		    {
+			throw;
+		    }
+
 		    return false;
 		}
-	    }//
+
+		return true;
+	    }
+	}
+
+	public class GenericSorter : GenericSorter<int>
+	{
+	    public new void Sort(string sectionName, Action code, bool throwException = false)
+	    {
+		try
+		{
+		    code();
+		}
+
+		catch
+		{
+		    if (throwException)
+		    {
+			throw;
+		    }
+		}
+	    }
 	}
     }
 }
