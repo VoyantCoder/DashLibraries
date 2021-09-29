@@ -544,7 +544,7 @@ namespace DashFramework
 				    Point ButtonLoca = new Point(Panel1.Width - 75, 0);
 
 				    Integrator.Button(Panel1, Button1, ButtonSize, ButtonLoca,
-					BarBColor, TitleFColor, FontTypeId, FontPoints, "X");
+					BarBColor, TitleFColor, "X", FontTypeId, FontPoints);
 
 				    Button1.Click += (s, e) => DefaultCloseHook();
 				});
@@ -566,7 +566,7 @@ namespace DashFramework
 				    Point ButtonLoca = new Point(Panel1.Width - 150, 0);
 
 				    Integrator.Button(Panel1, Button2, ButtonSize, ButtonLoca,
-					BarBColor, TitleFColor, FontTypeId, FontPoints, "-");
+					BarBColor, TitleFColor, "-", FontTypeId, FontPoints);
 
 				    Button2.Click += (s, e) => DefaultMinimizeHook();
 
