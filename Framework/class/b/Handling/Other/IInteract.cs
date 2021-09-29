@@ -37,8 +37,8 @@ namespace DashFramework
 		Application.Exit();
 	    }
 
+	    readonly Extern Externality = new Extern();
 
-	    readonly Externalities Externality = new Externalities();
 	    public void Start()
 	    {
 		try
