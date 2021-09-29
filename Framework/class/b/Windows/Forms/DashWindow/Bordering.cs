@@ -54,19 +54,12 @@ namespace DashFramework
 	    {
 		try
 		{
-		    Sort.Sort(("dependency"), () =>
+		    Integrate(Position, Size, BackColor, DisableWindowsBorder);
+	
+		    if (BorderColor != null || BorderColor == Color.Empty)
 		    {
-			Integrate(Position, Size, BackColor, DisableWindowsBorder);
-		    });
-
-
-		    Sort.Sort(("integration extension"), () =>
-		    {
-			if (BorderColor != null)
-			{
-			    DrawWindowBorder(BorderColor, 2);
-			}
-		    });
+			DrawWindowBorder(BorderColor, 2);
+		    }
 		}
 
 		catch
