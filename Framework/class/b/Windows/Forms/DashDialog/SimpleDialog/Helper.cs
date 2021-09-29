@@ -6,6 +6,8 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
+using DashFramework.Forms;
+
 
 namespace DashFramework
 {
@@ -217,6 +219,19 @@ namespace DashFramework
 		}
 	    }
 
+	    public void SetButtonText(string text)
+	    {
+		try
+		{
+		    CloseBttn.Text = text;
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
 	    public void Show()
 	    {
 		try
@@ -236,13 +251,14 @@ namespace DashFramework
 		try
 		{
 		    SetContents(head, body);
-		    Show();
 		}
 
 		catch
 		{
 		    throw;
 		}
+
+		Show();
 	    }
 
 	    public void Hide()
@@ -251,6 +267,19 @@ namespace DashFramework
 		{
 		    Window.Hide();
 		    Window.SendToBack();
+		}
+
+		catch
+		{
+		    throw;
+		}
+	    }
+
+	    public DashWindow getWindow()
+	    {
+		try
+		{
+		    return Window;
 		}
 
 		catch
