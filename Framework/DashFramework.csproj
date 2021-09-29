@@ -113,6 +113,7 @@
     <Compile Include="class\b\Windows\Controls\DropMenu\RegularDropMenu\RegularDropMenu.cs" />
     <Compile Include="class\b\Windows\Controls\DropMenu\RegularDropMenu\SubMenu.cs" />
     <Compile Include="class\b\Windows\Controls\DropMenu\RegularDropMenu\Visibility.cs" />
+    <Compile Include="class\b\Windows\Controls\Objects.cs" />
     <Compile Include="class\b\Windows\Controls\Other\CheckBox\CheckBox.cs" />
     <Compile Include="class\b\Windows\Controls\Other\CheckBox\Hooks.cs" />
     <Compile Include="class\b\Windows\Controls\Other\CheckBox\Objects.cs" />
