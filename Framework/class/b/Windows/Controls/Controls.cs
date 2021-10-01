@@ -326,7 +326,7 @@ namespace DashFramework
 		    {
 			foreach (Control control in ChildObjects)
 			{
-			    Object.AddChild(control);
+			    Object.Controls.Add(control);
 			}
 		    }
 
