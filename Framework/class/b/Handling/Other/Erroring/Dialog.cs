@@ -2,9 +2,6 @@
 // Author: Dashie
 
 
-using System;
-using System.Drawing;
-
 using DashFramework.DashDialogs;
 
 
