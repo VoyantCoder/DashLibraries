@@ -5,6 +5,7 @@
 using System.Windows.Forms;
 using System.Collections.Generic;
 
+using DashFramework.ControlTools.Simplifiers;
 using DashFramework.DashControls.Controls;
 using DashFramework.DashControls;
 using DashFramework.ControlTools;
@@ -32,12 +33,11 @@ namespace DashFramework
 
 	    readonly DashPanel Panel1 = new DashPanel();
 	    readonly DashPanel Panel2 = new DashPanel();
-
-	    readonly Simplifiers.Quickify QuickyInjector = new Simplifiers.Quickify();
+	    
 	    readonly ControlIntegrator Integrator = new ControlIntegrator();
-
 	    readonly Transformer Transform = new Transformer();
 	    readonly GenericSorter Sort = new GenericSorter();
+	    readonly Quickify QuickyInjector = new Quickify();
 
 	    readonly Appliance Appliance = new Appliance();
 	    public delegate void ChildRun();
