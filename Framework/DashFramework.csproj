@@ -125,7 +125,14 @@
     <Compile Include="class\b\Windows\Controls\Other\DashListBox\DashListBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="class\b\Windows\Controls\Other\DashPanel\DashPanel.cs">
+    <Compile Include="class\b\Windows\Controls\Other\DashPanel\Children.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="class\b\Windows\Controls\Other\DashPanel\Constructor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="class\b\Windows\Controls\Other\DashPanel\Transparency.cs" />
+    <Compile Include="class\b\Windows\Controls\Other\DashPanel\Objects.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="class\b\Windows\Controls\Other\DashTreeView\DashTreeView.cs">
@@ -133,10 +140,20 @@
     </Compile>
     <Compile Include="class\b\Windows\Controls\Other\LabelPage\LabelPage.cs" />
     <Compile Include="class\b\Windows\Controls\Other\LabelPage\Objects.cs" />
+    <Compile Include="class\b\Windows\Controls\Other\Notification\Constructor.cs" />
     <Compile Include="class\b\Windows\Controls\Other\Notification\Notification.cs" />
     <Compile Include="class\b\Windows\Controls\Other\Notification\Objects.cs" />
     <Compile Include="class\b\Windows\Controls\Other\Notification\Settings.cs" />
     <Compile Include="class\b\Windows\Controls\Other\Notification\Timer.cs" />
+    <Compile Include="class\b\Windows\Controls\Other\TransLabel\Constructor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="class\b\Windows\Controls\Other\TransLabel\Objects.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="class\b\Windows\Controls\Other\TransLabel\Transparency.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="class\b\Windows\Controls\Tools\Other\Algorithm.cs" />
     <Compile Include="class\b\Windows\Controls\Tools\Other\Appliance.cs" />
     <Compile Include="class\b\Windows\Controls\Tools\Other\Useless.cs" />
