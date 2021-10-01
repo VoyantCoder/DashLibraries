@@ -27,6 +27,10 @@ namespace DashFramework
 			    defaultSize, new Point(-1, -1), backColor);
 		    });
 
+		    // overlapping text
+		    // colors still laggy
+		    // backcolor not working (transparent wrong?)
+
 		    Sort.Sort("Title/Description", () =>
 		    {
 			void ResizeEventHandler(Control control)
@@ -48,7 +52,7 @@ namespace DashFramework
 
 					Size size = new Size(Panel1.Size.Width, h1 + h2 + h3);
 					
-					transform.Resize(Panel1, size);
+					Transform.Resize(Panel1, size);
 				    }
 
 				    catch
@@ -69,7 +73,7 @@ namespace DashFramework
 			    try
 			    {
 				Integrator.Label(Panel1, label, new Size(1, 1), new
-				    Point(1, 1), Color.Black, foreColor, "", FontSize: fontSize);
+				    Point(1, 1), Color.Transparent, foreColor, "", FontSize: fontSize);
 
 				ResizeEventHandler(label);
 			    }
@@ -139,8 +143,8 @@ namespace DashFramework
 		    Size size2 = DataTool.GetFontSize(description, descriptionFontSize);
 		    Size size1 = DataTool.GetFontSize(title, titleFontSize);
 
-		    transform.Resize(Label1, size1);
-		    transform.Resize(Label2, size2);
+		    Transform.Resize(Label1, size1);
+		    Transform.Resize(Label2, size2);
 
 		    Label2.Text = description;
 		    Label1.Text = title;
@@ -242,7 +246,7 @@ namespace DashFramework
 		{
 		    if (!size.Equals(Panel1.Size))
 		    {
-			transform.Resize(Panel1, size);
+			Transform.Resize(Panel1, size);
 		    }
 		}
 

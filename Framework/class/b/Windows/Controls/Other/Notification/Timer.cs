@@ -16,9 +16,6 @@ namespace DashFramework
     {
 	public partial class Notification
 	{
-	    readonly System.Timers.Timer timer = new System.Timers.Timer() { AutoReset = false, Enabled = false, };
-	    readonly Runnable runnable = new Runnable();
-
 	    public void EnableAppearanceTimer(int Delay)
 	    {
 		try
@@ -36,35 +33,30 @@ namespace DashFramework
 			    {
 				try
 				{
-				    void sync(Action Code)
+				    void setOpacity(int opacity)
 				    {
 					try
 					{
-					    runnable.RunTaskSynchronously(Panel1.Parent, () =>
-					    {
-						Code();
-					    });
-					}
-
-					catch
-					{
-					    throw;
-					}
-				    }
-
-				    void recolor(Control control, int alpha)
-				    {
-					try
-					{
-					    Color color = Color.FromArgb
+					    Run.RunTaskSynchronously
 					    (
-						alpha,
-						backColor.R,
-						backColor.G,
-						backColor.B
-					    );
+						Panel1.Parent,
 
-					    sync(() => control.BackColor = color);
+						() =>
+						{
+						    if (opacity == -1)
+						    {
+							Panel1.Hide();
+							opacity = 255;
+						    }
+						    
+						    Panel1.BackColor = Color.FromArgb(opacity, Panel1.BackColor);
+						    Panel1.ForeColor = Color.FromArgb(opacity, Panel1.ForeColor);
+						    Label1.ForeColor = Color.FromArgb(opacity, Label1.ForeColor);
+						    Label2.ForeColor = Color.FromArgb(opacity, Label2.ForeColor);
+						    
+						    Panel1.Refresh();
+						}
+					    );
 					}
 
 					catch
@@ -73,26 +65,31 @@ namespace DashFramework
 					}
 				    }
 
-				    for (int a = 255; a >= 30; a -= 5)
-				    {//Slow, why?  Idek
-					recolor(Panel1, a);
-					recolor(Label1, a);
-					recolor(Label2, a);
-					
-					Thread.Sleep(50);
-				    }
-				    
-				    sync(() => Panel1.Hide());
+				    void Wait()
+				    {
+					try
+					{
+					    Thread.Sleep(50);
+					}
 
-				    recolor(Panel1, 254);
-				    recolor(Label1, 254);
-				    recolor(Label2, 254);
+					catch
+					{
+					    throw;
+					}
+				    }
+
+				    for (int a = 250; a > 40; a -= 5, Wait())
+				    {
+					setOpacity(a);
+				    }
+
+				    setOpacity(-1);
 				}
 
 				catch
 				{
 				    throw;
-				};
+				}
 
 				timer.Enabled = false;
 			    })
