@@ -50,7 +50,6 @@ namespace DashFramework
 		{
 		    dialog.UpdateColor(foreColor, DiagColorType.UIText);
 		    dialog.UpdateColor(backColor, DiagColorType.UI);
-
 		    StandardProcedure();
 		}
 
@@ -67,7 +66,6 @@ namespace DashFramework
 		    dialog.UpdateColor(foreColor, DiagColorType.UIText);
 		    dialog.UpdateColor(backColor, DiagColorType.UI);
 		    dialog.SetContents(headerText, descriptionText);
-
 		    StandardProcedure(true);
 		}
 
