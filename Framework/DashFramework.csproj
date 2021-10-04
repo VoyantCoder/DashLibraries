@@ -135,6 +135,7 @@
     <Compile Include="class\b\Windows\Controls\Other\DashPanel\Objects.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="class\b\Windows\Controls\Other\DashTable\DashTable.cs" />
     <Compile Include="class\b\Windows\Controls\Other\DashTreeView\DashTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
