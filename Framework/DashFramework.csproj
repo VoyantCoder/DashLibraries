@@ -97,10 +97,14 @@
     <Compile Include="class\b\Networking\Http\ServerHandler.cs" />
     <Compile Include="class\b\Networking\Ports\Settings.cs" />
     <Compile Include="class\b\Data\Special\Generators.cs" />
-    <Compile Include="class\b\Threading\InsertyThread.cs" />
+    <Compile Include="class\b\Threading\Other\InsertyThread.cs" />
     <Compile Include="class\b\Handling\Other\Erroring\Constructor.cs" />
     <Compile Include="class\b\Handling\Other\Interact\CurrentInstance.cs" />
     <Compile Include="class\b\DashSpecial\Herbal\Loader.cs" />
+    <Compile Include="class\b\Threading\Safe\SafeList\Accessor.cs" />
+    <Compile Include="class\b\Threading\Safe\SafeList\Constructor.cs" />
+    <Compile Include="class\b\Threading\Safe\SafeList\Objects.cs" />
+    <Compile Include="class\b\Threading\Safe\SafeList\Updater.cs" />
     <Compile Include="class\b\Windows\Controls\Controls.cs" />
     <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\CheckBoxDropMenu.cs" />
     <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\Children.cs" />
@@ -135,10 +139,6 @@
     <Compile Include="class\b\Windows\Controls\Other\DashPanel\Objects.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="class\b\Windows\Controls\Other\DashTable\Construction.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\DashTable\Constructors.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\DashTable\Helpers.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\DashTable\Objects.cs" />
     <Compile Include="class\b\Windows\Controls\Other\DashTreeView\DashTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -180,6 +180,8 @@
     <Compile Include="class\b\Windows\Forms\DashWindow\Visibility.cs" />
     <Compile Include="class\b\Windows\Forms\Forms.cs" />
     <Compile Include="class\b\Windows\Forms\DashWindow\DashWindow.cs" />
+    <Compile Include="class\b\Windows\Forms\HelperGUI\Constructor.cs" />
+    <Compile Include="class\b\Windows\Forms\HelperGUI\Objects.cs" />
     <Compile Include="class\b\Windows\Forms\MenuBar\Buttons.cs" />
     <Compile Include="class\b\Windows\Forms\MenuBar\Icons.cs" />
     <Compile Include="class\b\Windows\Forms\MenuBar\MenuBar.cs" />
