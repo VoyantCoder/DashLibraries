@@ -17,18 +17,19 @@ namespace DashFramework
             private List<T> mCollection = new List<T>();
 
             private int pCacheUpdateDelay = 10;
+            private int pElementCount = 0;
 
             public int CacheUpdateDelay
             {
-                get
-                {
-                    return pCacheUpdateDelay;
-                }
-
                 set
                 {
                     pCacheUpdateDelay = value;
                     pUpdater.Interval = value;
+                }
+
+                get
+                {
+                    return pCacheUpdateDelay;
                 }
             }
         }
