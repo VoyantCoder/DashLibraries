@@ -63,6 +63,7 @@ namespace DashFramework
                     {
                         textbox.TextAlign = HorizontalAlignment.Center;
                         textbox.BorderStyle = BorderStyle.None;
+                        textbox.WordWrap = true;
                     }
 
                     location = new Point(fixedBoxSpacing, fixedBoxSpacing);
@@ -83,6 +84,7 @@ namespace DashFramework
                 {
                     TextBox(parent, textbox, size, location, backColor, foreColor, fixedBoxSpacing, additionals);
 
+                    textbox.AcceptsTab = multiline;
                     textbox.Multiline = multiline;
                     textbox.Refresh();
 
