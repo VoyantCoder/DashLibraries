@@ -23,9 +23,9 @@ namespace DashFramework
 	    public DashPanel CheckBoxInner() => Panel2;
 	    
 	    //Color Presets:
-	    public Color CheckBoxUncheckColor = Color.Black;
+	    public Color CheckBoxUncheckedColor = Color.Black;
 	    public Color CheckBoxDefaultColor = Color.Gray;
-	    public Color CheckBoxCheckColor = Color.Gray;
+	    public Color CheckBoxCheckedColor = Color.Gray;
 
 	    public Color MarkBoxUncheckedColor = Color.Navy;
 	    public Color MarkBoxDefaultColor = Color.DarkGray;

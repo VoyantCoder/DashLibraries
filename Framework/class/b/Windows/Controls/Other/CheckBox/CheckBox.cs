@@ -2,9 +2,6 @@
 // Author: Dashie
 
 
-#pragma warning disable IDE1006
-
-
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -21,8 +18,8 @@ namespace DashFramework
 		{
 		    if (CheckBox != null && CheckBox.Length > 2)
 		    {
-			CheckBoxUncheckColor = CheckBox[0];
-			CheckBoxCheckColor = CheckBox[1];
+			CheckBoxUncheckedColor = CheckBox[0];
+			CheckBoxCheckedColor = CheckBox[1];
 			CheckBoxDefaultColor = CheckBox[2];
 
 			if (UpdateNow)
@@ -62,6 +59,12 @@ namespace DashFramework
 
 		    Transform.Resize(Panel1, A);
 		    Transform.Resize(Panel2, B);
+
+                    Panel2.Location = new Point
+                    (
+                        (Panel1.Width - Panel2.Width) / 2, 
+                        (Panel1.Height - Panel2.Height) / 2
+                    );
 		}
 
 		catch
@@ -113,16 +116,16 @@ namespace DashFramework
 			{
 			    if (Panel2.BackColor.Equals(MarkBoxCheckedColor))
 			    {
-				Panel2.BackColor = (MarkBoxUncheckedColor);
-				Panel1.BackColor = (CheckBoxUncheckColor);
+				Panel2.BackColor = MarkBoxUncheckedColor;
+				Panel1.BackColor = CheckBoxUncheckedColor;
 
 				OnCheck();
 			    }
 
 			    else
 			    {
-				Panel2.BackColor = (MarkBoxCheckedColor);
-				Panel1.BackColor = (CheckBoxCheckColor);
+				Panel2.BackColor = MarkBoxCheckedColor;
+				Panel1.BackColor = CheckBoxCheckedColor;
 
 				OnUncheck();
 			    }
