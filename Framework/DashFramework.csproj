@@ -101,7 +101,7 @@
     <Compile Include="class\b\Handling\Other\Erroring\Constructor.cs" />
     <Compile Include="class\b\Handling\Other\Interact\CurrentInstance.cs" />
     <Compile Include="class\b\DashSpecial\Herbal\Loader.cs" />
-    <Compile Include="class\b\Threading\Safe\SafeList\Accessor.cs" />
+    <Compile Include="class\b\Threading\Safe\SafeList\Additional.cs" />
     <Compile Include="class\b\Threading\Safe\SafeList\Constructor.cs" />
     <Compile Include="class\b\Threading\Safe\SafeList\Objects.cs" />
     <Compile Include="class\b\Threading\Safe\SafeList\Updater.cs" />
