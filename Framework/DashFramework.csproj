@@ -105,7 +105,8 @@
     <Compile Include="class\b\Threading\Safe\SafeList\Constructor.cs" />
     <Compile Include="class\b\Threading\Safe\SafeList\Objects.cs" />
     <Compile Include="class\b\Threading\Safe\SafeList\Updater.cs" />
-    <Compile Include="class\b\Windows\Controls\Controls.cs" />
+    <Compile Include="class\b\Windows\Controls\Integration\Additional\Caching.cs" />
+    <Compile Include="class\b\Windows\Controls\Integration\Additional\Helper.cs" />
     <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\CheckBoxDropMenu.cs" />
     <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\Children.cs" />
     <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\Extension.cs" />
@@ -120,7 +121,13 @@
     <Compile Include="class\b\Windows\Controls\DropMenu\RegularDropMenu\RegularDropMenu.cs" />
     <Compile Include="class\b\Windows\Controls\DropMenu\RegularDropMenu\SubMenu.cs" />
     <Compile Include="class\b\Windows\Controls\DropMenu\RegularDropMenu\Visibility.cs" />
-    <Compile Include="class\b\Windows\Controls\Objects.cs" />
+    <Compile Include="class\b\Windows\Controls\Integration\Additional\Objects.cs" />
+    <Compile Include="class\b\Windows\Controls\Integration\Types\Button.cs" />
+    <Compile Include="class\b\Windows\Controls\Integration\Types\CheckBox.cs" />
+    <Compile Include="class\b\Windows\Controls\Integration\Types\Label.cs" />
+    <Compile Include="class\b\Windows\Controls\Integration\Types\Panel.cs" />
+    <Compile Include="class\b\Windows\Controls\Integration\Types\PictureBox.cs" />
+    <Compile Include="class\b\Windows\Controls\Integration\Types\TextBox.cs" />
     <Compile Include="class\b\Windows\Controls\Other\CheckBox\CheckBox.cs" />
     <Compile Include="class\b\Windows\Controls\Other\CheckBox\Hooks.cs" />
     <Compile Include="class\b\Windows\Controls\Other\CheckBox\Objects.cs" />
