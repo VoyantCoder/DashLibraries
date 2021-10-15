@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-using DashFramework.DialogSet.Dialogs;
 using DashFramework.Erroring;
 using DashFramework.Forms;
 
@@ -10,37 +9,29 @@ namespace DashFramework
 {
     static class Program
     {
-	static DashWindow Window;
-	static MainGUI MainGUI;
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
 
-	[STAThread]
-	static void Main()
-	{
-	    Application.EnableVisualStyles();
-	    Application.SetCompatibleTextRenderingDefault(false);
+            try
+            {
+                DashWindow Window = new DashWindow();
 
-	    try
-	    {
-		Window = new DashWindow();
+                Window.Integrate(DashWindowPosition.Center, new Size(675, 400), Color.White, Color.FromArgb(8, 34, 46), false, 0, Color.FromArgb(8, 34, 46), Color.White, resources.Resources.LOGO, $"Dash Framework");
 
-		Color AppMCol = Color.FromArgb(8, 34, 46);
-		Color AppBCol = Color.White;
-		Size AppSize = new Size(675, 400);
-		string AppTitle = ("DashFramework");
+                MainGUI MainGUI = new MainGUI();
+                MainGUI.Initiator(Window);
 
-		Window.Integrate(DashWindowPosition.Center, AppSize, AppBCol, AppMCol, 
-		    false, 0, AppMCol, Color.White, resources.Resources.LOGO, $"{AppTitle}");
+                Application.Run(Window.Instance);
+            }
 
-		MainGUI = new MainGUI();
-		MainGUI.Initiator(Window);
-
-		Application.Run(Window.Instance());
-	    }
-
-	    catch (Exception E)
-	    {
-		ErrorHandler.JustDoIt(E);
-	    }
-	}
+            catch (Exception E)
+            {
+                HandleError handle = new HandleError();
+                handle.Handle(E);
+            }
+        }
     }
 }
