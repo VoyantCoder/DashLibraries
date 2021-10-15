@@ -11,55 +11,55 @@ namespace DashFramework
 {
     namespace ControlTools.Algorithms
     {
-	public partial class OutsmartLoops
-	{
-	    public List<Control> GetSubControls(Control parent)
-	    {
-		IEnumerable<Control> AsList(Control.ControlCollection collection)
-		{
-		    foreach (Control control in collection)
-		    {
-			yield return control;
-		    }
-		}
+        public partial class OutsmartLoops
+        {
+            public List<Control> GetSubControls(Control parent)
+            {
+                IEnumerable<Control> AsList(Control.ControlCollection collection)
+                {
+                    foreach (Control control in collection)
+                    {
+                        yield return control;
+                    }
+                }
 
-		List<Control> added = AsList(parent.Controls).ToList();
+                List<Control> added = AsList(parent.Controls).ToList();
 
-		try
-		{
-		    int r = 0;
+                try
+                {
+                    int r = 0;
 
-		    do
-		    {
-			r = added.Count;
+                    do
+                    {
+                        r = added.Count;
 
-			for (int a = 0; a < added.Count; a += 1)
-			{
-			    for (int b = 0; b < added[a].Controls.Count; b += 1)
-			    {
-				if (!added.Contains(added[a].Controls[b]))
-				{
-				    added.Add(added[a].Controls[b]);
-				}
-			    }
-			}
+                        for (int a = 0; a < added.Count; a += 1)
+                        {
+                            for (int b = 0; b < added[a].Controls.Count; b += 1)
+                            {
+                                if (!added.Contains(added[a].Controls[b]))
+                                {
+                                    added.Add(added[a].Controls[b]);
+                                }
+                            }
+                        }
 
-			if (added.Count == r)
-			{
-			    break;
-			}
-		    }
+                        if (added.Count == r)
+                        {
+                            break;
+                        }
+                    }
 
-		    while (true);
-		}
+                    while (true);
+                }
 
-		catch
-		{
-		    return null;
-		}
+                catch
+                {
+                    return null;
+                }
 
-		return added;
-	    }
-	}
+                return added;
+            }
+        }
     }
 }

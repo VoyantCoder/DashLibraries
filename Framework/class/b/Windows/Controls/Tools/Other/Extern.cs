@@ -12,53 +12,53 @@ namespace DashFramework
 {
     namespace ControlTools
     {
-	public class Extern
-	{
-	    public void StartProcess(string Path, bool UseShell = true, bool NoAppear = false)
-	    {
-		try
-		{
-		    using (Process proc = new Process())
-		    {
-			proc.StartInfo = new ProcessStartInfo()
-			{
-			    UseShellExecute = UseShell,
-			    CreateNoWindow = !NoAppear,
-			    FileName = Path,
-			};
+        public class Extern
+        {
+            public void StartProcess(string Path, bool UseShell = true, bool NoAppear = false)
+            {
+                try
+                {
+                    using (Process proc = new Process())
+                    {
+                        proc.StartInfo = new ProcessStartInfo()
+                        {
+                            UseShellExecute = UseShell,
+                            CreateNoWindow = !NoAppear,
+                            FileName = Path,
+                        };
 
-			proc.Start();
-		    }
-		}
+                        proc.Start();
+                    }
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
 
-	    public void OpenUrl(string Destination)
-	    {
-		try
-		{
-		    using (var Process = new Process())
-		    {
-			Process.StartInfo = new ProcessStartInfo()
-			{
-			    FileName = Destination,
-			    UseShellExecute = true,
-			};
+            public void OpenUrl(string Destination)
+            {
+                try
+                {
+                    using (var Process = new Process())
+                    {
+                        Process.StartInfo = new ProcessStartInfo()
+                        {
+                            FileName = Destination,
+                            UseShellExecute = true,
+                        };
 
-			Process.Start();
-		    }
-		}
+                        Process.Start();
+                    }
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
-	}
+                catch
+                {
+                    throw;
+                }
+            }
+        }
     }
 }
