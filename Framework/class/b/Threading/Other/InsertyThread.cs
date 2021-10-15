@@ -7,66 +7,66 @@ namespace DashFramework
 {
     namespace Threading
     {
-	public class InsertyThread
-	{
-	    Thread MainThread = default(Thread);
-	    Action Code = default(Action);
-	    
-	    void InsertCode(Action Code)
-	    {
-		try
-		{
-		    this.Code = Code;
-		}
+        public class InsertyThread
+        {
+            Thread MainThread = default(Thread);
+            Action Code = default(Action);
 
-		catch
-		{
-		    throw;
-		}
-	    }
+            void InsertCode(Action Code)
+            {
+                try
+                {
+                    this.Code = Code;
+                }
 
-	    void StartThread(Action Optional = default(Action))
-	    {
-		try
-		{
-		    MainThread = new Thread(() =>
-		    {
-			try
-			{
-			    if (Optional != default(Action))
-			    {
-				Code();
-			    }
+                catch
+                {
+                    throw;
+                }
+            }
 
-			    do
-			    {
-				if (Code != default(Action))
-				{
-				    Code.Invoke();
-				    Code = default(Action);
-				}
-			    }
+            void StartThread(Action Optional = default(Action))
+            {
+                try
+                {
+                    MainThread = new Thread(() =>
+                    {
+                        try
+                        {
+                            if (Optional != default(Action))
+                            {
+                                Code();
+                            }
 
-			    while (true);
-			}
+                            do
+                            {
+                                if (Code != default(Action))
+                                {
+                                    Code.Invoke();
+                                    Code = default(Action);
+                                }
+                            }
 
-			catch
-			{
-			    throw;
-			}
-		    });
+                            while (true);
+                        }
 
-		    MainThread.Start();
-		}
+                        catch
+                        {
+                            throw;
+                        }
+                    });
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                    MainThread.Start();
+                }
 
-	    public InsertyThread(Action Code) => StartThread(Code);
-	    public InsertyThread() => StartThread();
-	}
+                catch
+                {
+                    throw;
+                }
+            }
+
+            public InsertyThread(Action Code) => StartThread(Code);
+            public InsertyThread() => StartThread();
+        }
     }
 }
