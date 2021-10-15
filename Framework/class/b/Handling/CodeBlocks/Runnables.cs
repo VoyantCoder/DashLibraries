@@ -1,4 +1,4 @@
- 
+
 // Author: Dashie
 
 
@@ -16,156 +16,156 @@ namespace DashFramework
 {
     namespace Runnables
     {
-	public class Runnable
-	{
-	    public delegate void RunnableHolder();
+        public class Runnable
+        {
+            public delegate void RunnableHolder();
 
 
-	    public void RunTaskAsynchronously(Control parent, RunnableHolder execute)
-	    {
-		try
-		{
-		    new Thread(() =>
-		    {
-			if (parent != null)
-			{
-			    parent.Invoke
-			    (
-				new MethodInvoker
-				(
-				    () =>
-				    {
-					try
-					{
-					    execute();
-					}
+            public void RunTaskAsynchronously(Control parent, RunnableHolder execute)
+            {
+                try
+                {
+                    new Thread(() =>
+                    {
+                        if (parent != null)
+                        {
+                            parent.Invoke
+                    (
+                    new MethodInvoker
+                    (
+                        () =>
+                        {
+                                try
+                                {
+                                    execute();
+                                }
 
-					catch
-					{
-					    throw;
-					}
-				    }
-				)
-			    );
-			}
+                                catch
+                                {
+                                    throw;
+                                }
+                            }
+                    )
+                    );
+                        }
 
-			else
-			{
-			    execute();
-			}
-		    })
+                        else
+                        {
+                            execute();
+                        }
+                    })
 
-		    { IsBackground = true }.Start();
-		}
+                    { IsBackground = true }.Start();
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
-
-
-	    public void RunTaskSynchronously(Control parent, RunnableHolder execute)
-	    {
-		try
-		{
-		    parent.Invoke(new MethodInvoker(() =>
-		    {
-			try
-			{
-			    execute();
-			}
-
-			catch
-			{
-			    throw;
-			}
-		    }));
-		}
-
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
 
-	    public void RunTaskLater(Control parent, RunnableHolder execute, int startWhen, bool autoReset = false)
-	    {
-		try
-		{
-		    System.Timers.Timer timer = new System.Timers.Timer();
+            public void RunTaskSynchronously(Control parent, RunnableHolder execute)
+            {
+                try
+                {
+                    parent.Invoke(new MethodInvoker(() =>
+                    {
+                        try
+                        {
+                            execute();
+                        }
 
-		    timer.Elapsed += (s, e) =>
-		    {
-			execute();
-		    };
+                        catch
+                        {
+                            throw;
+                        }
+                    }));
+                }
 
-		    timer.AutoReset = autoReset;
-		    timer.Interval = startWhen;
-		    timer.Enabled = true;
-		    timer.Start();
-		}
-
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
 
-	    public void RunTaskLaterAsynchronously(Control parent, RunnableHolder execute, int startWhen, bool autoReset = false)
-	    {
-		try
-		{
-		    System.Timers.Timer timer = new System.Timers.Timer();
+            public void RunTaskLater(Control parent, RunnableHolder execute, int startWhen, bool autoReset = false)
+            {
+                try
+                {
+                    System.Timers.Timer timer = new System.Timers.Timer();
 
-		    timer.Elapsed += (s, e) =>
-		    {
-			new Thread(() =>
-			{
-			    if (parent != null)
-			    {
-				parent.Invoke
-				(
-				    new MethodInvoker
-				    (
-					() =>
-					{
-					    try
-					    {
-						execute();
-					    }
+                    timer.Elapsed += (s, e) =>
+                    {
+                        execute();
+                    };
 
-					    catch
-					    {
-						throw;
-					    }
-					}
-				    )
-				);
-			    }
+                    timer.AutoReset = autoReset;
+                    timer.Interval = startWhen;
+                    timer.Enabled = true;
+                    timer.Start();
+                }
 
-			    else
-			    {
-				execute();
-			    }
-			})
+                catch
+                {
+                    throw;
+                }
+            }
 
-			{ IsBackground = true }.Start();
-		    };
 
-		    timer.AutoReset = autoReset;
-		    timer.Interval = startWhen;
-		    timer.Enabled = true;
-		    timer.Start();
-		}
+            public void RunTaskLaterAsynchronously(Control parent, RunnableHolder execute, int startWhen, bool autoReset = false)
+            {
+                try
+                {
+                    System.Timers.Timer timer = new System.Timers.Timer();
 
-		catch
-		{
-		    throw;
-		}
-	    }
-	}
+                    timer.Elapsed += (s, e) =>
+                    {
+                        new Thread(() =>
+                {
+                        if (parent != null)
+                        {
+                            parent.Invoke
+                    (
+                        new MethodInvoker
+                        (
+                        () =>
+                        {
+                                try
+                                {
+                                    execute();
+                                }
+
+                                catch
+                                {
+                                    throw;
+                                }
+                            }
+                        )
+                    );
+                        }
+
+                        else
+                        {
+                            execute();
+                        }
+                    })
+
+                        { IsBackground = true }.Start();
+                    };
+
+                    timer.AutoReset = autoReset;
+                    timer.Interval = startWhen;
+                    timer.Enabled = true;
+                    timer.Start();
+                }
+
+                catch
+                {
+                    throw;
+                }
+            }
+        }
     }
 }

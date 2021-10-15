@@ -1,4 +1,4 @@
-  
+
 // Author: Dashie
 
 
@@ -10,63 +10,63 @@ namespace DashFramework
 {
     namespace Sorters
     {
-	public class GenericSorter<T> 
-	{
-	    public T Sort(string sectionName, Action code, bool throwException = false)
-	    {
-		try
-		{
-		    code();
-		}
+        public class GenericSorter<T>
+        {
+            public T Sort(string sectionName, Action code, bool throwException = false)
+            {
+                try
+                {
+                    code();
+                }
 
-		catch
-		{
-		    if (throwException)
-		    {
-			throw;
-		    }
-		}
-		return default(T);
-	    }
+                catch
+                {
+                    if (throwException)
+                    {
+                        throw;
+                    }
+                }
+                return default(T);
+            }
 
-	    public bool BSort(string sectionName, Action code, bool throwException = false)
-	    {
-		try
-		{
-		    code();
-		}
+            public bool BSort(string sectionName, Action code, bool throwException = false)
+            {
+                try
+                {
+                    code();
+                }
 
-		catch
-		{
-		    if (throwException)
-		    {
-			throw;
-		    }
+                catch
+                {
+                    if (throwException)
+                    {
+                        throw;
+                    }
 
-		    return false;
-		}
+                    return false;
+                }
 
-		return true;
-	    }
-	}
+                return true;
+            }
+        }
 
-	public class GenericSorter : GenericSorter<int>
-	{
-	    public new void Sort(string sectionName, Action code, bool throwException = false)
-	    {
-		try
-		{
-		    code();
-		}
+        public class GenericSorter : GenericSorter<int>
+        {
+            public new void Sort(string sectionName, Action code, bool throwException = false)
+            {
+                try
+                {
+                    code();
+                }
 
-		catch
-		{
-		    if (throwException)
-		    {
-			throw;
-		    }
-		}
-	    }
-	}
+                catch
+                {
+                    if (throwException)
+                    {
+                        throw;
+                    }
+                }
+            }
+        }
     }
 }

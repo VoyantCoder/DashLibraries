@@ -1,4 +1,4 @@
- 
+
 // Author: Dashie
 
 
@@ -14,49 +14,49 @@ namespace DashFramework
 {
     namespace AsyncSafety
     {
-	public class AsyncSendMessage
-	{
-	    // AsyncLists
-	    // AsyncControlInteraction
-	    // ....
+        public class AsyncSendMessage
+        {
+            // AsyncLists
+            // AsyncControlInteraction
+            // ....
 
-	    Runnable runnables = new Runnable();// needs work before use.
+            Runnable runnables = new Runnable();// needs work before use.
 
-	    public delegate void runnableDelegate();
-	    public runnableDelegate messageHandler;
-	    public int updateInterval = 350;
+            public delegate void runnableDelegate();
+            public runnableDelegate messageHandler;
+            public int updateInterval = 350;
 
-	    public AsyncSendMessage()
-	    {
-		runnables.RunTaskLaterAsynchronously
-		(
-		    null,
+            public AsyncSendMessage()
+            {
+                runnables.RunTaskLaterAsynchronously
+                (
+                    null,
 
-		    () =>
-		    {
-			foreach (string message in messageQueue)
-			{
-			    if (messageHandler == null)
-			    {
-				continue;
-			    }
+                    () =>
+                    {
+                        foreach (string message in messageQueue)
+                        {
+                            if (messageHandler == null)
+                            {
+                                continue;
+                            }
 
-			    messageHandler();
-			}
-		    },
+                            messageHandler();
+                        }
+                    },
 
-		    updateInterval,
-		    true
-		);
-	    }
+                    updateInterval,
+                    true
+                );
+            }
 
 
-	    readonly List<string> messageQueue = new List<string>();
+            readonly List<string> messageQueue = new List<string>();
 
-	    public void Send(string content)
-	    {
-		messageQueue.Add(content);
-	    }
-	}
+            public void Send(string content)
+            {
+                messageQueue.Add(content);
+            }
+        }
     }
 }
