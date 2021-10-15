@@ -9,17 +9,17 @@ namespace DashFramework
 {
     namespace DashControls.Controls
     {
-	public partial class Notification
-	{
-	    public Size defaultSize = new Size(-1, 80);
+        public partial class Notification
+        {
+            public Size defaultSize = new Size(-1, 80);
 
-	    public bool autoResizeContainer = true;
+            public bool autoResizeContainer = true;
 
-	    public int descriptionFontSize = 10;
-	    public int titleFontSize = 15;
+            public int descriptionFontSize = 10;
+            public int titleFontSize = 15;
 
-	    public Color backColor = Color.DarkRed;
-	    public Color foreColor = Color.White;
-	}
+            public Color backColor = Color.DarkRed;
+            public Color foreColor = Color.White;
+        }
     }
 }

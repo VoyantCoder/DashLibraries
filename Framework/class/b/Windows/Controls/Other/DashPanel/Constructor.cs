@@ -10,24 +10,24 @@ namespace DashFramework
 {
     namespace DashControls.Controls
     {
-	public partial class DashPanel : Panel
-	{
-	    public DashPanel()
-	    {
-		try
-		{
-		    //SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-		    //SetStyle(ControlStyles.Opaque, true);
-		    //BackColor = Color.Transparent;
+        public partial class DashPanel : Panel
+        {
+            public DashPanel()
+            {
+                try
+                {
+                    //SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+                    //SetStyle(ControlStyles.Opaque, true);
+                    //BackColor = Color.Transparent;
 
-		    inst = this;
-		}
+                    inst = this;
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
-	}
+                catch
+                {
+                    throw;
+                }
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
- 
+
 // Author: Dashie
 
 
@@ -15,103 +15,103 @@ namespace DashFramework
 {
     namespace DashControls.Controls
     {
-	public partial class CustomScrollbar
-	{ 
+        public partial class CustomScrollbar
+        {
 
-	    public bool ScrollingDown(MouseEventArgs e)
-	    {
-		return (e.Delta < 1);
-	    }
+            public bool ScrollingDown(MouseEventArgs e)
+            {
+                return (e.Delta < 1);
+            }
 
-	    public void RegMouseEventHandler()
-	    {
-		try
-		{
-		    if (!HasBeenSetup())
-		    {
-			return;
-		    }
+            public void RegMouseEventHandler()
+            {
+                try
+                {
+                    if (!HasBeenSetup())
+                    {
+                        return;
+                    }
 
-		    foreach (Control Control in Children)
-		    {
-			Control.MouseWheel += (s, e) =>
-			{
-			    if (ContentContainer.Height <= Parent.Height)
-			    {
-				return;
-			    }
+                    foreach (Control Control in Children)
+                    {
+                        Control.MouseWheel += (s, e) =>
+                        {
+                            if (ContentContainer.Height <= Parent.Height)
+                            {
+                                return;
+                            }
 
-			    else if (ScrollingDown(e))
-			    {
-				if (ContentContainer.Bottom >= Parent.Height)
-				{
-				    ContentContainer.Top = -(ContentContainer.Height <= MinimumHeight
-					? 0 : (ContentContainer.Height - ContentContainer.Parent.Height));
+                            else if (ScrollingDown(e))
+                            {
+                                if (ContentContainer.Bottom >= Parent.Height)
+                                {
+                                    ContentContainer.Top = -(ContentContainer.Height <= MinimumHeight
+                        ? 0 : (ContentContainer.Height - ContentContainer.Parent.Height));
 
-				    return;
-				}
+                                    return;
+                                }
 
-				ContentContainer.Top -= ContentContainerIncrement;
-			    }
+                                ContentContainer.Top -= ContentContainerIncrement;
+                            }
 
-			    else
-			    {
-				if (ContentContainer.Top <= ContentContainerIncrement)
-				{
-				    ContentContainer.Top = 0;
-				    return;
-				}
+                            else
+                            {
+                                if (ContentContainer.Top <= ContentContainerIncrement)
+                                {
+                                    ContentContainer.Top = 0;
+                                    return;
+                                }
 
-				ContentContainer.Top += ContentContainerIncrement;
-			    }
-			};
-		    }
-		}
+                                ContentContainer.Top += ContentContainerIncrement;
+                            }
+                        };
+                    }
+                }
 
-		catch
-		{
-		    ;
-		}
-	    }
-
-
-	    public void SetCollection(Control Parent = null)
-	    {
-		try
-		{
-		    Control parent = (Parent == null) ? Parent : Parent;
-		    Children = parent.Controls;
-
-		    var controls = Loopsies.GetSubControls(parent);
-		    foreach (Control control in controls)
-		    {
-			Children.Add(control);
-		    }
-
-		    RegMouseEventHandler();
-		}
-
-		catch
-		{
-		    ;
-		}
-	    }
+                catch
+                {
+                    ;
+                }
+            }
 
 
-	    public void ScrollbarSet(Control parent, Control contentContainer)
-	    {
-		try
-		{
-		    ContentContainer = contentContainer;
-		    Parent = parent;
-		    SetCollection();
-		}
+            public void SetCollection(Control Parent = null)
+            {
+                try
+                {
+                    Control parent = (Parent == null) ? Parent : Parent;
+                    Children = parent.Controls;
 
-		catch
-		{
-		    throw;
-		}
-	    }
-	}
+                    var controls = Loopsies.GetSubControls(parent);
+                    foreach (Control control in controls)
+                    {
+                        Children.Add(control);
+                    }
+
+                    RegMouseEventHandler();
+                }
+
+                catch
+                {
+                    ;
+                }
+            }
+
+
+            public void ScrollbarSet(Control parent, Control contentContainer)
+            {
+                try
+                {
+                    ContentContainer = contentContainer;
+                    Parent = parent;
+                    SetCollection();
+                }
+
+                catch
+                {
+                    throw;
+                }
+            }
+        }
     }
 }

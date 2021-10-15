@@ -6,12 +6,12 @@ namespace DashFramework
 {
     namespace DashControls.Controls
     {
-	public partial class DashPanel
-	{
-	    private static DashPanel inst;
+        public partial class DashPanel
+        {
+            private static DashPanel inst;
 
-	    private int opacity = 100;
-	    private int alpha = 0;
-	}
+            //private int opacity = 100;
+            //private int alpha = 0;
+        }
     }
 }
