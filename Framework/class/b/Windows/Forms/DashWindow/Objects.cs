@@ -12,27 +12,27 @@ namespace DashFramework
 {
     namespace Forms
     {
-	public enum DashWindowPosition
-	{
-	    Left, Right, Top, Bottom, Center, None
-	}
+        public enum DashWindowPosition
+        {
+            Left, Right, Top, Bottom, Center, None
+        }
 
-	public enum DashWindowRoundRadius
-	{
-	    Slightly, MoreSo, Extreme
-	}
+        public enum DashWindowRoundRadius
+        {
+            Slightly, MoreSo, Extreme
+        }
 
-	public partial class DashWindow
-	{
-	    readonly Dictionary<int, Control> ChildIdentifiers = new Dictionary<int, Control>();
+        public partial class DashWindow
+        {
+            readonly Dictionary<int, Control> ChildIdentifiers = new Dictionary<int, Control>();
 
-	    readonly GenericSorter Sort = new GenericSorter();
-	    readonly Transformer Transform = new Transformer();
+            readonly GenericSorter Sort = new GenericSorter();
+            readonly Transformer Transform = new Transformer();
 
-	    readonly MenuBar MenubarInstance = new MenuBar();
-	    readonly Form WindowInstance = new Form();
+            readonly MenuBar MenubarInstance = new MenuBar();
+            readonly Form WindowInstance = new Form();
 
-	    public bool Initialized = false;
-	}
+            public bool Initialized = false;
+        }
     }
 }

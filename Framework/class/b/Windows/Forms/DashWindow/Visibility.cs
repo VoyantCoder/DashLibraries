@@ -6,84 +6,84 @@ namespace DashFramework
 {
     namespace Forms
     {
-	public partial class DashWindow
-	{
-	    public virtual bool Show()
-	    {
-		try
-		{
-		    if (!WindowInstance.Visible)
-		    {
-			WindowInstance.Show();
-		    }
+        public partial class DashWindow
+        {
+            public virtual bool Show()
+            {
+                try
+                {
+                    if (!WindowInstance.Visible)
+                    {
+                        WindowInstance.Show();
+                    }
 
-		    return true;
-		}
+                    return true;
+                }
 
-		catch
-		{
-		    return false;
-		}
-	    }
+                catch
+                {
+                    return false;
+                }
+            }
 
-	    public virtual bool Hide()
-	    {
-		try
-		{
-		    if (WindowInstance.Visible)
-		    {
-			WindowInstance.Hide();
-		    }
+            public virtual bool Hide()
+            {
+                try
+                {
+                    if (WindowInstance.Visible)
+                    {
+                        WindowInstance.Hide();
+                    }
 
-		    return true;
-		}
+                    return true;
+                }
 
-		catch
-		{
-		    return false;
-		}
-	    }
+                catch
+                {
+                    return false;
+                }
+            }
 
-	    public bool IsVisible()
-	    {
-		try
-		{
-		    return WindowInstance.Visible;
-		}
+            public bool IsVisible()
+            {
+                try
+                {
+                    return WindowInstance.Visible;
+                }
 
-		catch
-		{
-		    return false;
-		}
-	    }
+                catch
+                {
+                    return false;
+                }
+            }
 
-	    public bool SendToBack()
-	    {
-		try
-		{
-		    WindowInstance.SendToBack();
-		    return true;
-		}
+            public bool SendToBack()
+            {
+                try
+                {
+                    WindowInstance.SendToBack();
+                    return true;
+                }
 
-		catch
-		{
-		    return false;
-		}
-	    }
+                catch
+                {
+                    return false;
+                }
+            }
 
-	    public bool BringToFront()
-	    {
-		try
-		{
-		    WindowInstance.BringToFront();
-		    return true;
-		}
+            public bool BringToFront()
+            {
+                try
+                {
+                    WindowInstance.BringToFront();
+                    return true;
+                }
 
-		catch
-		{
-		    return false;
-		}
-	    }
-	}
+                catch
+                {
+                    return false;
+                }
+            }
+        }
     }
 }

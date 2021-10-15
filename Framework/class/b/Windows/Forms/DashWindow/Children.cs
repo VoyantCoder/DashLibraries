@@ -10,80 +10,80 @@ namespace DashFramework
 {
     namespace Forms
     {
-	public partial class DashWindow
-	{
-	    public bool RemoveChild(int cid)
-	    {
-		try
-		{
-		    if (ChildIdentifiers.ContainsKey(cid))
-		    {
-			ChildIdentifiers[cid].Parent.Controls.Remove(ChildIdentifiers[cid]);
-			ChildIdentifiers[cid].Dispose();
-			ChildIdentifiers.Remove(cid);
-		    }
+        public partial class DashWindow
+        {
+            public bool RemoveChild(int cid)
+            {
+                try
+                {
+                    if (ChildIdentifiers.ContainsKey(cid))
+                    {
+                        ChildIdentifiers[cid].Parent.Controls.Remove(ChildIdentifiers[cid]);
+                        ChildIdentifiers[cid].Dispose();
+                        ChildIdentifiers.Remove(cid);
+                    }
 
-		    return ChildIdentifiers.ContainsKey(cid);
-		}
+                    return ChildIdentifiers.ContainsKey(cid);
+                }
 
-		catch
-		{
-		    return false;
-		}
-	    }
+                catch
+                {
+                    return false;
+                }
+            }
 
-	    public bool AddChild(Control child, int cid)
-	    {
-		try
-		{
-		    if (!ChildIdentifiers.ContainsKey(cid))
-		    {
-			WindowInstance.Controls.Add(child);
+            public bool AddChild(Control child, int cid)
+            {
+                try
+                {
+                    if (!ChildIdentifiers.ContainsKey(cid))
+                    {
+                        WindowInstance.Controls.Add(child);
 
-			if (WindowInstance.Controls.Contains(child))
-			{
-			    ChildIdentifiers.Add(cid, child);
-			    return true;
-			}
-		    }
+                        if (WindowInstance.Controls.Contains(child))
+                        {
+                            ChildIdentifiers.Add(cid, child);
+                            return true;
+                        }
+                    }
 
-		    return false;
-		}
+                    return false;
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
-	    public IEnumerable<Control> GetChildren(params int[] cids)
-	    {
-		foreach (int cid in cids)
-		{
-		    if (ChildIdentifiers.ContainsKey(cid))
-		    {
-			yield return ChildIdentifiers[cid];
-		    }
-		}
-	    }
+            public IEnumerable<Control> GetChildren(params int[] cids)
+            {
+                foreach (int cid in cids)
+                {
+                    if (ChildIdentifiers.ContainsKey(cid))
+                    {
+                        yield return ChildIdentifiers[cid];
+                    }
+                }
+            }
 
-	    public Control GetChild(int cid)
-	    {
-		try
-		{
-		    if (ChildIdentifiers.ContainsKey(cid))
-		    {
-			return ChildIdentifiers[cid];
-		    }
+            public Control GetChild(int cid)
+            {
+                try
+                {
+                    if (ChildIdentifiers.ContainsKey(cid))
+                    {
+                        return ChildIdentifiers[cid];
+                    }
 
-		    return null;
-		}
+                    return null;
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
-	}
+                catch
+                {
+                    throw;
+                }
+            }
+        }
     }
 }
