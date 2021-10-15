@@ -36,7 +36,7 @@ namespace DashFramework
                     throw;
                 }
             }
-            
+
             public int Remove(T value, int threadID)
             {
                 try
@@ -50,7 +50,7 @@ namespace DashFramework
                     {
                         return -1;
                     }
-                    
+
                     pCollection[threadID].Remove(value);
                     pElementCount -= 1;
                 }
@@ -243,7 +243,7 @@ namespace DashFramework
                     {
                         elements = mCollection[0];
                     }
-                    
+
                     else if (elements > 1)
                     {
                         elements = mCollection[elements - 1];
