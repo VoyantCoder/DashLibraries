@@ -23,12 +23,16 @@ namespace DashFramework
                     }
 
                     SetLocation(location, parent, image.Size, pictureBox);
-                    Transform.Resize(pictureBox, image.Size);
-
                     pictureBox.BackColor = Color.Transparent;
-                    pictureBox.Image = image;
 
+                    if (image != null)
+                    {
+                        pictureBox.Image = image;
+                    }
+
+                    Transform.Resize(pictureBox, image.Size);
                     parent.Controls.Add(pictureBox);
+
                     UpdateRegister(parent, pictureBox);
                 }
 

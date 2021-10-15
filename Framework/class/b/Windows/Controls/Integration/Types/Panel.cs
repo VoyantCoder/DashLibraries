@@ -13,7 +13,7 @@ namespace DashFramework
     namespace DashControls
     {
         public partial class ControlIntegrator
-        { 
+        {
             public void Panel(Control parent, DashPanel panel, Size size, Point location)
             {
                 try
@@ -24,12 +24,12 @@ namespace DashFramework
                         Register(parent, panel);
                     }
 
-                    SetLocation(location, parent, size, panel);
-                    Transform.Resize(panel, size);
-
                     panel.BackColor = parent.BackColor;
+
+                    Transform.Resize(panel, size);
                     parent.Controls.Add(panel);
 
+                    SetLocation(location, parent, size, panel);
                     UpdateRegister(parent, panel);
                 }
 

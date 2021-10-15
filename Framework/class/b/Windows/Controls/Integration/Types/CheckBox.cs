@@ -34,7 +34,7 @@ namespace DashFramework
 
                 return checkBox;
             }
-            
+
             public DashCheckBox CheckBox(Control parent, Size size, Point location, Color backColor1, Color backColor2)
             {
                 DashCheckBox checkBox = default(DashCheckBox);

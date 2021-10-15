@@ -14,7 +14,7 @@ namespace DashFramework
     {
         public partial class ControlIntegrator
         {
-            public void TextBox(Control parent, TextBox textbox, Size size, Point location, Color backColor, Color foreColor)
+            public void TextBox(Control parent, TextBox textbox, Size size, Point location, Color backColor, Color foreColor, string text, int fontPts)
             {
                 try
                 {
@@ -26,8 +26,10 @@ namespace DashFramework
 
                     SetLocation(location, parent, size, textbox);
 
+                    textbox.Font = ResourceTool.GetFont(1, fontPts);
                     textbox.BackColor = backColor;
                     textbox.ForeColor = foreColor;
+                    textbox.Text = text;
 
                     parent.Controls.Add(textbox);
 
@@ -41,7 +43,7 @@ namespace DashFramework
                 }
             }
 
-            public void TextBox(Control parent, TextBox textbox, Size size, Point location, Color backColor, Color foreColor, int fixedBoxSpacing, bool additionals)
+            public void TextBox(Control parent, TextBox textbox, Size size, Point location, Color backColor, Color foreColor, string text, int fontPts, int fixedBoxSpacing, bool additionals)
             {
                 try
                 {
@@ -68,7 +70,7 @@ namespace DashFramework
 
                     location = new Point(fixedBoxSpacing, fixedBoxSpacing);
 
-                    TextBox(panel, textbox, size, location, backColor, foreColor);
+                    TextBox(panel, textbox, size, location, backColor, foreColor, text, fontPts);
                     UpdateRegister(panel, textbox);
                 }
 
@@ -78,11 +80,12 @@ namespace DashFramework
                 }
             }
 
-            public void TextBox(Control parent, TextBox textbox, Size size, Point location, Color backColor, Color foreColor, int fixedBoxSpacing, bool additionals, bool multiline)
+            public void TextBox(Control parent, TextBox textbox, Size size, Point location, Color backColor, Color foreColor, string text, int fontPts, int fixedBoxSpacing, bool additionals, bool multiline)
             {
                 try
                 {
-                    TextBox(parent, textbox, size, location, backColor, foreColor, fixedBoxSpacing, additionals);
+                    TextBox(parent, textbox, size, location, backColor,
+                        foreColor, text, fontPts, fixedBoxSpacing, additionals);
 
                     textbox.AcceptsTab = multiline;
                     textbox.Multiline = multiline;

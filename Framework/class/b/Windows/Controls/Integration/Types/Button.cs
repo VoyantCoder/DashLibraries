@@ -27,9 +27,10 @@ namespace DashFramework
                     button.Text = text;
 
                     SetLocation(location, parent, size, button);
-                    Transform.Resize(button, size);
 
+                    Transform.Resize(button, size);
                     parent.Controls.Add(button);
+
                     UpdateRegister(parent, button);
                 }
 
@@ -39,7 +40,7 @@ namespace DashFramework
                 }
             }
 
-            public void Button(Control parent, Button button, Size size, Point location, int fontPts, string text, Color backColor, Color foreColor)
+            public void Button(Control parent, Button button, Size size, Point location, int fontPts, string text, Color backColor, Color foreColor, bool additionals = true)
             {
                 try
                 {
@@ -47,21 +48,6 @@ namespace DashFramework
 
                     button.BackColor = backColor;
                     button.ForeColor = foreColor;
-
-                    UpdateRegister(parent, button);
-                }
-
-                catch
-                {
-                    throw;
-                }
-            }
-
-            public void Button(Control parent, Button button, Size size, Point location, int fontPts, string text, Color backColor, Color foreColor, bool additionals)
-            {
-                try
-                {
-                    Button(parent, button, size, location, fontPts, text, backColor, foreColor);
 
                     if (additionals)
                     {
