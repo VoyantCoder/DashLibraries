@@ -3,6 +3,7 @@
 
 
 using System;
+using System.Drawing;
 
 
 namespace DashFramework
@@ -23,12 +24,12 @@ namespace DashFramework
                     throw;
                 }
             }
-
+            
             public HelperGUI()
             {
                 try
                 {
-                    //...design
+                    WindowInst.Integrate(DashWindowPosition.Center, WindowSize, WindowBackColor, BorderBackColor, DoRoundSides, DashWindowRoundRadius.Slightly, MenubarBackColor, MenubarForeColor, MenubarIcon, WindowTitle);
                 }
 
                 catch (Exception E)
