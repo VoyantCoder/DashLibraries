@@ -9,22 +9,22 @@ namespace DashFramework
 {
     namespace Erroring
     {
-	public partial class HandleError
-	{
-	    readonly SimpleDialog dialog = new SimpleDialog("Error Handler");
+        public partial class HandleError
+        {
+            readonly SimpleDialog dialog = new SimpleDialog("Error Handler");
 
-	    public void Initialize()
-	    {
-		try
-		{
-		    dialog.SetButtonText("Close Session");
-		}
+            public void Initialize()
+            {
+                try
+                {
+                    dialog.SetButtonText("Close Session");
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
-	}
+                catch
+                {
+                    throw;
+                }
+            }
+        }
     }
 }

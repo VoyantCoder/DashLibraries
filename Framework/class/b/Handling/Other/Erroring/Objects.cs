@@ -10,16 +10,16 @@ namespace DashFramework
 {
     namespace Erroring
     {
-	public enum HandlerDialogColor
-	{
-	    Window, Menubar, Content
-	}
+        public enum HandlerDialogColor
+        {
+            Window, Menubar, Content
+        }
 
-	public partial class HandleError
-	{
-	    Action onProceed = () => Environment.Exit(-1);
+        public partial class HandleError
+        {
+            Action onProceed = () => Environment.Exit(-1);
 
-	    //set methods for action.
-	}
+            //set methods for action.
+        }
     }
 }

@@ -1,4 +1,4 @@
- 
+
 // Author: Dashie
 
 
@@ -19,38 +19,38 @@ namespace DashFramework
 {
     namespace Interact
     {
-	public class CurrentInstance
-	{
-	    public bool IsAdministrator() => new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
-	    public bool IsRunning(string ProcessName) => Process.GetProcessesByName(ProcessName).Length > 1;
-	    public string GetFilePath() => Assembly.GetExecutingAssembly().Location;
+        public class CurrentInstance
+        {
+            public bool IsAdministrator() => new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
+            public bool IsRunning(string ProcessName) => Process.GetProcessesByName(ProcessName).Length > 1;
+            public string GetFilePath() => Assembly.GetExecutingAssembly().Location;
 
 
-	    public void Restart()
-	    {
-		Start();
-		Close();
-	    }
+            public void Restart()
+            {
+                Start();
+                Close();
+            }
 
-	    public void Close()
-	    {
-		Application.Exit();
-	    }
+            public void Close()
+            {
+                Application.Exit();
+            }
 
-	    readonly Extern Externality = new Extern();
+            readonly Extern Externality = new Extern();
 
-	    public void Start()
-	    {
-		try
-		{
-		    Externality.StartProcess(GetFilePath());
-		}
+            public void Start()
+            {
+                try
+                {
+                    Externality.StartProcess(GetFilePath());
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
-	}
+                catch
+                {
+                    throw;
+                }
+            }
+        }
     }
 }
