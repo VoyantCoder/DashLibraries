@@ -13,280 +13,280 @@ namespace DashFramework
 {
     namespace DashDialogs
     {
-	public partial class SimpleDialog
-	{
-	    public void UUIMenubarBackColor(Color color)
-	    {
-		try
-		{
-		    if (Window.Menubar() != null)
-		    {
-			Window.Menubar().SetMenubarBackColor(color);
-		    }
+        public partial class SimpleDialog
+        {
+            public void UUIMenubarBackColor(Color color)
+            {
+                try
+                {
+                    if (Window.Menubar() != null)
+                    {
+                        Window.Menubar().SetMenubarBackColor(color);
+                    }
 
-		    UIMenubarBackColor = color;
-		}
+                    UIMenubarBackColor = color;
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
-	    public void UUIBackColor(Color color)
-	    {
-		try
-		{
-		    Window.SetWindowBackColor(color);
-		    UIBackColor = color;
-		}
+            public void UUIBackColor(Color color)
+            {
+                try
+                {
+                    Window.SetWindowBackColor(color);
+                    UIBackColor = color;
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
-	    public void UUITextForeColor(Color color)
-	    {
-		try
-		{
-		    if (Window.Menubar() != null)
-		    {
-			Window.Menubar().SetTitleForeColor(color);
-		    }
+            public void UUITextForeColor(Color color)
+            {
+                try
+                {
+                    if (Window.Menubar() != null)
+                    {
+                        Window.Menubar().SetTitleForeColor(color);
+                    }
 
-		    HeadLabel.ForeColor = color;
-		    BodyLabel.ForeColor = color;
-		    CloseBttn.ForeColor = color;
-		    UITextForeColor = color;
-		}
+                    HeadLabel.ForeColor = color;
+                    BodyLabel.ForeColor = color;
+                    CloseBttn.ForeColor = color;
+                    UITextForeColor = color;
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
-	    public void UpdateColor(Color color, DiagColorType colorType)
-	    {
-		try
-		{
-		    void Hook1()
-		    {
-			try
-			{
-			    UUIMenubarBackColor(color);
-			}
+            public void UpdateColor(Color color, DiagColorType colorType)
+            {
+                try
+                {
+                    void Hook1()
+                    {
+                        try
+                        {
+                            UUIMenubarBackColor(color);
+                        }
 
-			catch
-			{
-			    throw;
-			}
-		    }
+                        catch
+                        {
+                            throw;
+                        }
+                    }
 
-		    void Hook2()
-		    {
-			try
-			{
-			    UUITextForeColor(color);
-			}
+                    void Hook2()
+                    {
+                        try
+                        {
+                            UUITextForeColor(color);
+                        }
 
-			catch
-			{
-			    throw;
-			}
-		    }
+                        catch
+                        {
+                            throw;
+                        }
+                    }
 
-		    void Hook3()
-		    {
-			try
-			{
-			    UUIBackColor(color);
-			}
+                    void Hook3()
+                    {
+                        try
+                        {
+                            UUIBackColor(color);
+                        }
 
-			catch
-			{
-			    throw;
-			}
-		    }
+                        catch
+                        {
+                            throw;
+                        }
+                    }
 
-		    switch (colorType)
-		    {
-			case DiagColorType.UIMenuBar: Hook1(); break;
-			case DiagColorType.UIText: Hook2(); break;
-			case DiagColorType.UI: Hook3(); break;
-		    }
-		}
+                    switch (colorType)
+                    {
+                        case DiagColorType.UIMenuBar: Hook1(); break;
+                        case DiagColorType.UIText: Hook2(); break;
+                        case DiagColorType.UI: Hook3(); break;
+                    }
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
-	    public void UpdateColors(Color[] colors, params DiagColorType[] colorTypes)
-	    {
-		try
-		{
-		    Exception Exception(string desc) => throw new Exception(desc);
+            public void UpdateColors(Color[] colors, params DiagColorType[] colorTypes)
+            {
+                try
+                {
+                    Exception Exception(string desc) => throw new Exception(desc);
 
-		    if (colors.Length != colorTypes.Length)
-			throw Exception("Inequal length of colors and types of colors.");
+                    if (colors.Length != colorTypes.Length)
+                        throw Exception("Inequal length of colors and types of colors.");
 
-		    for (int k = 0; k < colors.Length; k += 1)
-		    {
-			UpdateColor(colors[k], colorTypes[k]);
-		    }
-		}
+                    for (int k = 0; k < colors.Length; k += 1)
+                    {
+                        UpdateColor(colors[k], colorTypes[k]);
+                    }
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
-	
-	    public void UpdateWindowSize()
-	    {
-		try
-		{
-		    int height = CloseBttn.Height + CloseBttn.Top + 15;
-		    Size windowSize = new Size(350, height);
-		    Window.SetWindowSize(windowSize);
-		}
+                catch
+                {
+                    throw;
+                }
+            }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+            public void UpdateWindowSize()
+            {
+                try
+                {
+                    int height = CloseBttn.Height + CloseBttn.Top + 15;
+                    Size windowSize = new Size(350, height);
+                    Window.SetWindowSize(windowSize);
+                }
 
-	    public void SetContents(string head, string body)
-	    {
-		try
-		{
-		    Size SizeFor(Label lbl, string str)
-		    {
-			try
-			{
-			    Size comparer = TextRenderer.MeasureText(str, lbl.Font);
+                catch
+                {
+                    throw;
+                }
+            }
 
-			    return comparer.Width >= 300 ? TextRenderer.MeasureText
-				(str, lbl.Font, new Size(300, 0), TextFormatFlags.WordBreak) : comparer;
-			}
+            public void SetContents(string head, string body)
+            {
+                try
+                {
+                    Size SizeFor(Label lbl, string str)
+                    {
+                        try
+                        {
+                            Size comparer = TextRenderer.MeasureText(str, lbl.Font);
 
-			catch
-			{
-			    throw;
-			}
-		    }
+                            return comparer.Width >= 300 ? TextRenderer.MeasureText
+                            (str, lbl.Font, new Size(300, 0), TextFormatFlags.WordBreak) : comparer;
+                        }
 
-		    Size size1 = SizeFor(HeadLabel, head);
-		    Size size2 = SizeFor(BodyLabel, body);
-		    
-		    Transform.Resize(HeadLabel, size1);
-		    Transform.Resize(BodyLabel, size2);
-		    
-		    HeadLabel.Text = head;
-		    BodyLabel.Text = body;
+                        catch
+                        {
+                            throw;
+                        }
+                    }
 
-		    Control parent = HeadLabel.Parent;
+                    Size size1 = SizeFor(HeadLabel, head);
+                    Size size2 = SizeFor(BodyLabel, body);
 
-		    HeadLabel.Left = (parent.Width - HeadLabel.Width) / 2;
-		    BodyLabel.Left = (parent.Width - BodyLabel.Width) / 2;
-		    BodyLabel.Top = HeadLabel.Top + HeadLabel.Height + 15;
-		    CloseBttn.Top = BodyLabel.Top + BodyLabel.Height + 25;
+                    Transform.Resize(HeadLabel, size1);
+                    Transform.Resize(BodyLabel, size2);
 
-		    UpdateWindowSize();
-		}
+                    HeadLabel.Text = head;
+                    BodyLabel.Text = body;
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                    Control parent = HeadLabel.Parent;
 
-	    public void SetCloseHandler(Action code)
-	    {
-		try
-		{
-		    CloseCode = code;
-		}
+                    HeadLabel.Left = (parent.Width - HeadLabel.Width) / 2;
+                    BodyLabel.Left = (parent.Width - BodyLabel.Width) / 2;
+                    BodyLabel.Top = HeadLabel.Top + HeadLabel.Height + 15;
+                    CloseBttn.Top = BodyLabel.Top + BodyLabel.Height + 25;
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                    UpdateWindowSize();
+                }
 
-	    public void SetButtonText(string text)
-	    {
-		try
-		{
-		    CloseBttn.Text = text;
-		}
+                catch
+                {
+                    throw;
+                }
+            }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+            public void SetCloseHandler(Action code)
+            {
+                try
+                {
+                    CloseCode = code;
+                }
 
-	    public void Show()
-	    {
-		try
-		{
-		    Window.Show();
-		    Window.BringToFront();
-		}
+                catch
+                {
+                    throw;
+                }
+            }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+            public void SetButtonText(string text)
+            {
+                try
+                {
+                    CloseBttn.Text = text;
+                }
 
-	    public void Show(string head, string body)
-	    {
-		try
-		{
-		    SetContents(head, body);
-		}
+                catch
+                {
+                    throw;
+                }
+            }
 
-		catch
-		{
-		    throw;
-		}
+            public void Show()
+            {
+                try
+                {
+                    Window.Show();
+                    Window.BringToFront();
+                }
 
-		Show();
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
-	    public void Hide()
-	    {
-		try
-		{
-		    Window.Hide();
-		    Window.SendToBack();
-		}
+            public void Show(string head, string body)
+            {
+                try
+                {
+                    SetContents(head, body);
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
 
-	    public DashWindow getWindow()
-	    {
-		try
-		{
-		    return Window;
-		}
+                Show();
+            }
 
-		catch
-		{
-		    throw;
-		}
-	    }
-	}
+            public void Hide()
+            {
+                try
+                {
+                    Window.Hide();
+                    Window.SendToBack();
+                }
+
+                catch
+                {
+                    throw;
+                }
+            }
+
+            public DashWindow getWindow()
+            {
+                try
+                {
+                    return Window;
+                }
+
+                catch
+                {
+                    throw;
+                }
+            }
+        }
     }
 }

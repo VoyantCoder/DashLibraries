@@ -16,30 +16,30 @@ namespace DashFramework
 {
     namespace DashDialogs
     {
-	public enum DiagColorType
-	{
-	    UIMenuBar, UI, UIText
-	}
+        public enum DiagColorType
+        {
+            UIMenuBar, UI, UIText
+        }
 
-	public partial class SimpleDialog
-	{
-	    readonly DashWindow Window = new DashWindow();
-	    readonly Button CloseBttn = new Button();
-	    readonly Label HeadLabel = new Label();
-	    readonly Label BodyLabel = new Label();
-	    
-	    Color UIMenubarBackColor = Color.FromArgb(8, 8, 8);
-	    Color UIButtonColor = Color.FromArgb(12, 12, 12);
-	    Color UIBackColor = Color.FromArgb(24, 24, 24);
-	    Color UITextForeColor = Color.White;
+        public partial class SimpleDialog
+        {
+            readonly DashWindow Window = new DashWindow();
+            readonly Button CloseBttn = new Button();
+            readonly Label HeadLabel = new Label();
+            readonly Label BodyLabel = new Label();
 
-	    Action CloseCode = () => Environment.Exit(-1);
+            Color UIMenubarBackColor = Color.FromArgb(8, 8, 8);
+            Color UIButtonColor = Color.FromArgb(12, 12, 12);
+            Color UIBackColor = Color.FromArgb(24, 24, 24);
+            Color UITextForeColor = Color.White;
 
-	    readonly ControlIntegrator Integrate = new ControlIntegrator();
-	    readonly Transformer Transform = new Transformer();
-	    readonly DataTools DataTool = new DataTools();
+            Action CloseCode = () => Environment.Exit(-1);
 
-	    bool RoundSides = true;
-	}
+            readonly ControlIntegrator Integrate = new ControlIntegrator();
+            readonly Transformer Transform = new Transformer();
+            readonly DataTools DataTool = new DataTools();
+
+            bool RoundSides = true;
+        }
     }
 }
