@@ -11,98 +11,98 @@ namespace DashFramework
 {
     namespace Networking
     {
-	public partial class Network
-	{
-	    public partial class HttpServer
-	    {
-		public void Stop()
-		{
-		    try
-		    {
-			if (Listener.IsListening)
-			{
-			    Listener.Stop();
-			}
-		    }
+        public partial class Network
+        {
+            public partial class HttpServer
+            {
+                public void Stop()
+                {
+                    try
+                    {
+                        if (Listener.IsListening)
+                        {
+                            Listener.Stop();
+                        }
+                    }
 
-		    catch
-		    {
-			throw;
-		    }
-		}
-		
-		public void Start(bool LaunchInBrowser)
-		{
-		    try
-		    {
-			if (!Listener.IsListening)
-			{
-			    Listener.Start();
+                    catch
+                    {
+                        throw;
+                    }
+                }
 
-			    if (Listener.IsListening && ServerPrefix != string.Empty)
-			    {
-				Task.Delay(1000).ContinueWith(ok =>
-				{
-				    try
-				    {
-					if (LaunchInBrowser)
-					{
-					    using (Process proc = new Process())
-					    {
-						proc.StartInfo = new ProcessStartInfo()
-						{
-						    UseShellExecute = true,
-						    FileName = ServerPrefix,
-						};
+                public void Start(bool LaunchInBrowser)
+                {
+                    try
+                    {
+                        if (!Listener.IsListening)
+                        {
+                            Listener.Start();
 
-						proc.Start();
-					    }
-					}
+                            if (Listener.IsListening && ServerPrefix != string.Empty)
+                            {
+                                Task.Delay(1000).ContinueWith(ok =>
+                                {
+                                    try
+                                    {
+                                        if (LaunchInBrowser)
+                                        {
+                                            using (Process proc = new Process())
+                                            {
+                                                proc.StartInfo = new ProcessStartInfo()
+                                                {
+                                                    UseShellExecute = true,
+                                                    FileName = ServerPrefix,
+                                                };
 
-					if (AutoStartPageHandler)
-					{
-					    StartPageHandler();
-					}
-				    }
+                                                proc.Start();
+                                            }
+                                        }
 
-				    catch
-				    {
-					throw;
-				    }
-				});
-			    }
-			}
-		    }
+                                        if (AutoStartPageHandler)
+                                        {
+                                            StartPageHandler();
+                                        }
+                                    }
 
-		    catch
-		    {
-			throw;
-		    }
-		}
+                                    catch
+                                    {
+                                        throw;
+                                    }
+                                });
+                            }
+                        }
+                    }
 
-		public HttpServer(string host = "127.0.0.1", int port = 80, bool startListener = true)
-		{
-		    try
-		    {
-			if (Listener.Prefixes.Count > 0) Listener.Prefixes.Clear();
-			if (Listener.IsListening) Listener.Stop();
-			
-			ServerPrefix = ($"http://{host}:{port}/");
-			Listener.Prefixes.Add(ServerPrefix);
+                    catch
+                    {
+                        throw;
+                    }
+                }
 
-			byte[] html = Encoding.ASCII.GetBytes("default page");
+                public HttpServer(string host = "127.0.0.1", int port = 80, bool startListener = true)
+                {
+                    try
+                    {
+                        if (Listener.Prefixes.Count > 0) Listener.Prefixes.Clear();
+                        if (Listener.IsListening) Listener.Stop();
 
-			AddPage(html, "/", "");
+                        ServerPrefix = ($"http://{host}:{port}/");
+                        Listener.Prefixes.Add(ServerPrefix);
 
-			if (startListener) Start(false);
-		    }
+                        byte[] html = Encoding.ASCII.GetBytes("default page");
 
-		    catch
-		    {
-			throw;
-		    }
-		}
-	    }
-	}
+                        AddPage(html, "/", "");
+
+                        if (startListener) Start(false);
+                    }
+
+                    catch
+                    {
+                        throw;
+                    }
+                }
+            }
+        }
     }
 }
