@@ -10,79 +10,79 @@ namespace DashFramework
 {
     namespace DashControls.Controls
     {
-	public partial class RegularDropMenu
-	{
-	    public bool MenuInstalled()
-	    {
-		try
-		{
-		    return Settings.HasBaseInit;
-		}
+        public partial class RegularDropMenu
+        {
+            public bool MenuInstalled()
+            {
+                try
+                {
+                    return Settings.HasBaseInit;
+                }
 
-		catch
-		{
-		    return false;
-		}
-	    }
+                catch
+                {
+                    return false;
+                }
+            }
 
-	    public void InstallSubMenu(Color BackColor = default(Color), Color ForeColor = default(Color), int ItemWidth = 100)
-	    {
-		try
-		{
-		    if (!MenuInstalled())
-		    {
-			return;
-		    }
+            public void InstallSubMenu(Color BackColor = default(Color), Color ForeColor = default(Color), int ItemWidth = 100)
+            {
+                try
+                {
+                    if (!MenuInstalled())
+                    {
+                        return;
+                    }
 
 
-		}
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
-	    public void InstallSubMenu(Color BackColor, Color ForeColor, Size ItemSize, params string[] ItemNames)
-	    {
-		try
-		{
-		    if (!MenuInstalled())
-		    {
-			return;
-		    }
+            public void InstallSubMenu(Color BackColor, Color ForeColor, Size ItemSize, params string[] ItemNames)
+            {
+                try
+                {
+                    if (!MenuInstalled())
+                    {
+                        return;
+                    }
 
-		    Integrator();
-		}
+                    Integrator();
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
-	    public void InstallSubMenu(Color BackColor, Color ForeColor, Size ItemSize, params (string, Action)[] ItemSets)
-	    {
-		try
-		{
-		    if (!MenuInstalled())
-		    {
-			return;
-		    }
-		}
+            public void InstallSubMenu(Color BackColor, Color ForeColor, Size ItemSize, params (string, Action)[] ItemSets)
+            {
+                try
+                {
+                    if (!MenuInstalled())
+                    {
+                        return;
+                    }
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
-	    public void Integrator()
-	    {
-		// (Control Parent, Point Location, Color BackColor = default(Color), Color ForeColor = default(Color), int ItemWidth = 100)
-		// (Control Parent, Point Location, Color BackColor, Color ForeColor, Size ItemSize, params string[] ItemNames)
-		// (Control Parent, Point Location, Color BackColor, Color ForeColor, Size ItemSize, params (string, Action)[] ItemSets)
-	    }
-	}
+            public void Integrator()
+            {
+                // (Control Parent, Point Location, Color BackColor = default(Color), Color ForeColor = default(Color), int ItemWidth = 100)
+                // (Control Parent, Point Location, Color BackColor, Color ForeColor, Size ItemSize, params string[] ItemNames)
+                // (Control Parent, Point Location, Color BackColor, Color ForeColor, Size ItemSize, params (string, Action)[] ItemSets)
+            }
+        }
     }
 }

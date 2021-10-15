@@ -15,41 +15,41 @@ namespace DashFramework
 {
     namespace DashControls.Controls
     {
-	public partial class ClickDropMenu
-	{
-	    public readonly List<DropItem> ItemStack = new List<DropItem>();
-	    
-	    public class DropItem
-	    {
-		public readonly Label Item = new Label();
+        public partial class ClickDropMenu
+        {
+            public readonly List<DropItem> ItemStack = new List<DropItem>();
 
-	    }
+            public class DropItem
+            {
+                public readonly Label Item = new Label();
 
-	    public List<DropItem> GetItemStack()
-	    {
-		return ItemStack;
-	    }
+            }
 
-	    public Color ItemBackColor = Color.FromArgb(5, 23, 31);
-	    public Color ItemForeColor = Color.White;
+            public List<DropItem> GetItemStack()
+            {
+                return ItemStack;
+            }
 
-	    public DashPanel UpperContainer = new DashPanel();
-	    public DashPanel LowerContainer = new DashPanel();
-	    public Control ContainerParent = new Control();
+            public Color ItemBackColor = Color.FromArgb(5, 23, 31);
+            public Color ItemForeColor = Color.White;
 
-	    public int ItemFontSize = 12, ItemHeight = 24;
-	    public int ItemWidth = 100, ItemFontId = 1;
-	    public bool ItemCenterText = true;
+            public DashPanel UpperContainer = new DashPanel();
+            public DashPanel LowerContainer = new DashPanel();
+            public Control ContainerParent = new Control();
 
-	    public ClickDropMenu()
-	    {
-		UpperContainer.Visible = false;
-	    }
+            public int ItemFontSize = 12, ItemHeight = 24;
+            public int ItemWidth = 100, ItemFontId = 1;
+            public bool ItemCenterText = true;
 
-	    readonly ControlIntegrator Controls = new ControlIntegrator();
-	    readonly OutsmartLoops Loopsies = new OutsmartLoops();
-	    readonly Transformer Transform = new Transformer();
-	    readonly GenericSorter Sort = new GenericSorter();
-	}
+            public ClickDropMenu()
+            {
+                UpperContainer.Visible = false;
+            }
+
+            readonly ControlIntegrator Controls = new ControlIntegrator();
+            readonly OutsmartLoops Loopsies = new OutsmartLoops();
+            readonly Transformer Transform = new Transformer();
+            readonly GenericSorter Sort = new GenericSorter();
+        }
     }
 }

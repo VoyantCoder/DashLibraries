@@ -9,71 +9,71 @@ namespace DashFramework
 {
     namespace DashControls.Controls
     {
-	public partial class RegularDropMenu
-	{
-	    public void RegVisTrigger(params Control[] Triggers)
-	    {
-		try
-		{
-		    void Register(Control Trigger)
-		    {
-			try
-			{
-			    Trigger.MouseEnter += (s, e) =>
-			    {
-				Show();
-			    };
-			}
+        public partial class RegularDropMenu
+        {
+            public void RegVisTrigger(params Control[] Triggers)
+            {
+                try
+                {
+                    void Register(Control Trigger)
+                    {
+                        try
+                        {
+                            Trigger.MouseEnter += (s, e) =>
+                            {
+                                Show();
+                            };
+                        }
 
-			catch
-			{
-			    throw;
-			}
-		    }
+                        catch
+                        {
+                            throw;
+                        }
+                    }
 
-		    foreach (Control Trigger in Triggers)
-		    {
-			Register(Trigger);
-		    }
-		}
+                    foreach (Control Trigger in Triggers)
+                    {
+                        Register(Trigger);
+                    }
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
-	    public void RegInvisTrigger(params Control[] Triggers)
-	    {
-		try
-		{
-		    void Register(Control Trigger)
-		    {
-			try
-			{
-			    Trigger.MouseEnter += (s, e) =>
-			    {
-				Hide();
-			    };
-			}
+            public void RegInvisTrigger(params Control[] Triggers)
+            {
+                try
+                {
+                    void Register(Control Trigger)
+                    {
+                        try
+                        {
+                            Trigger.MouseEnter += (s, e) =>
+                            {
+                                Hide();
+                            };
+                        }
 
-			catch
-			{
-			    throw;
-			}
-		    }
+                        catch
+                        {
+                            throw;
+                        }
+                    }
 
-		    foreach (Control Trigger in Triggers)
-		    {
-			Register(Trigger);
-		    }
-		}
+                    foreach (Control Trigger in Triggers)
+                    {
+                        Register(Trigger);
+                    }
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
-	}
+                catch
+                {
+                    throw;
+                }
+            }
+        }
     }
 }

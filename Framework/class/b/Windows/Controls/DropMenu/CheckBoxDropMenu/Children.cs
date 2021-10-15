@@ -11,190 +11,187 @@ namespace DashFramework
 {
     namespace DashControls.Controls
     {
-	public partial class CBDropMenu
-	{
-	    Point GetNextItemLocation()
-	    {
-		try
-		{
-		    Point Location = new Point(0, 0);
+        public partial class CBDropMenu
+        {
+            Point GetNextItemLocation()
+            {
+                try
+                {
+                    Point Location = new Point(0, 0);
 
-		    if (DropMenuEntries.Count > 0)
-		    {
-			Entry Entry = DropMenuEntries[DropMenuEntries.Count - 1];
-			Location.Y = (Entry.LicensePlate.Top + Entry.LicensePlate.Height);
-		    }
+                    if (DropMenuEntries.Count > 0)
+                    {
+                        Entry Entry = DropMenuEntries[DropMenuEntries.Count - 1];
+                        Location.Y = (Entry.LicensePlate.Top + Entry.LicensePlate.Height);
+                    }
 
-		    return Location;
-		}
+                    return Location;
+                }
 
-		catch
-		{
-		    return Point.Empty;
-		}
-	    }
+                catch
+                {
+                    return Point.Empty;
+                }
+            }
 
-	    void UpdateContainerSizes(bool SubMenu = false)//For future.
-	    {
-		try
-		{
-		    int Layer12Height = GetNextItemLocation().Y + 4;
-		    int Layer34Height = Layer12Height - 2;
-		    int Layer12Width = Layer2.Width;
+            void UpdateContainerSizes(bool SubMenu = false)//For future.
+            {
+                try
+                {
+                    int Layer12Height = GetNextItemLocation().Y + 4;
+                    int Layer34Height = Layer12Height - 2;
+                    int Layer12Width = Layer2.Width;
 
-		    Size Layer12Size = new Size(Layer12Width, Layer12Height);
-		    Size Layer3Size = new Size(Layer3.Width, Layer34Height);
-		    Size Layer4Size = new Size(Layer4.Width, Layer34Height);
+                    Size Layer12Size = new Size(Layer12Width, Layer12Height);
+                    Size Layer3Size = new Size(Layer3.Width, Layer34Height);
+                    Size Layer4Size = new Size(Layer4.Width, Layer34Height);
 
-		    Transform.Resize(Layer1, Layer12Size);
-		    Transform.Resize(Layer2, Layer12Size);
-		    Transform.Resize(Layer3, Layer3Size);
-		    Transform.Resize(Layer4, Layer4Size);
-		}
+                    Transform.Resize(Layer1, Layer12Size);
+                    Transform.Resize(Layer2, Layer12Size);
+                    Transform.Resize(Layer3, Layer3Size);
+                    Transform.Resize(Layer4, Layer4Size);
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
-	    public void RegisterCheckBoxClickEvent(CheckBox CheckBox, Action OnClick)
-	    {
-		try
-		{
-		    void Register(Control Control)
-		    {
-			try
-			{
-			    Control.Click += (s, e) =>
-			    {
-				try
-				{
-				    OnClick();
-				}
+            public void RegisterCheckBoxClickEvent(CheckBox CheckBox, Action OnClick)
+            {
+                try
+                {
+                    void Register(Control Control)
+                    {
+                        try
+                        {
+                            Control.Click += (s, e) =>
+                            {
+                                try
+                                {
+                                    OnClick();
+                                }
 
-				catch
-				{
-				    throw;
-				}
-			    };
-			}
+                                catch
+                                {
+                                    throw;
+                                }
+                            };
+                        }
 
-			catch
-			{
-			    throw;
-			}
-		    }
+                        catch
+                        {
+                            throw;
+                        }
+                    }
 
-		    Register(CheckBox.OutterHeadlight);
-		    Register(CheckBox.BasisHeadlight);
-		    Register(CheckBox.InnerHeadlight);
-		}
+                    Register(CheckBox.OutterHeadlight);
+                    Register(CheckBox.BasisHeadlight);
+                    Register(CheckBox.InnerHeadlight);
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
-	    void AddChild(string Name, Action OnClick, Color ForeColor, Color BackColor1, Color BackColor2, Color BackColor3)
-	    {
-		try
-		{
-		    Point EntryLocation = GetNextItemLocation();
-		    int EntryHeight() => 30;
+            void AddChild(string Name, Action OnClick, Color ForeColor, Color BackColor1, Color BackColor2, Color BackColor3)
+            {
+                try
+                {
+                    Point EntryLocation = GetNextItemLocation();
+                    int EntryHeight() => 30;
 
-		    Sort.Sort("License Plate", () =>
-		    {
-			Size Size = new Size(Layer3.Width, EntryHeight());
+                    Sort.Sort("License Plate", () =>
+                    {
+                        Size Size = new Size(Layer3.Width, EntryHeight());
+                        Point Location2 = new Point(0, 0);
+                        Point Location1 = EntryLocation;
+                        int FontSize = 10;
 
-			Point Location2 = new Point(0, 0);
-			Point Location1 = EntryLocation;
+                        Entry Entry = new Entry();
 
-			int FontTypeId = 1;
-			int FontSize = 10;
+                        Integrate.Label(Entry.LicensePlate, Entry.License, Size, Location2, BackColor1, ForeColor, FontSize, Name);
+                        Integrate.Panel(Layer3, Entry.LicensePlate, Size, Location1, BackColor1);
 
-			Entry Entry = new Entry();
+                        DropMenuEntries.Add(Entry);
+                    });
 
-			Integrate.Label(Entry.LicensePlate, Entry.License, Size, Location2, BackColor1, ForeColor, Name, FontTypeId, FontSize);
-			Integrate.Panel(Layer3, Entry.LicensePlate, Size, Location1, BackColor1);
+                    Sort.Sort("Check Box", () =>
+                    {
+                        Size GetBaseSize(int Width, int Height)
+                        {
+                            try
+                            {
+                                if (Width < 24 || Height < 24)
+                                {
+                                    return Size.Empty;
+                                }
 
-			DropMenuEntries.Add(Entry);
-		    });
+                                return new Size(Width, Height);
+                            }
 
-		    Sort.Sort("Check Box", () =>
-		    {
-			Size GetBaseSize(int Width, int Height)
-			{
-			    try
-			    {
-				if (Width < 24 || Height < 24)
-				{
-				    return Size.Empty;
-				}
+                            catch
+                            {
+                                return Size.Empty;
+                            }
+                        }
 
-				return new Size(Width, Height);
-			    }
+                        Point Location2 = new Point(-1, -1);
+                        Point Location3 = new Point(-1, -1);
+                        Point Location1 = EntryLocation;
 
-			    catch
-			    {
-				return Size.Empty;
-			    }
-			}
+                        Size Size1 = GetBaseSize(Layer4.Width, EntryHeight());
+                        Size Size2 = new Size(24, 24);
+                        Size Size3 = new Size(14, 14);
 
-			Point Location2 = new Point(-1, -1);
-			Point Location3 = new Point(-1, -1);
-			Point Location1 = EntryLocation;
+                        if (Size1 == Size.Empty)
+                        {
+                            throw new Exception();
+                        }
 
-			Size Size1 = GetBaseSize(Layer4.Width, EntryHeight());
-			Size Size2 = new Size(24, 24);
-			Size Size3 = new Size(14, 14);
+                        CheckBox CheckBox = new CheckBox();
 
-			if (Size1 == Size.Empty)
-			{
-			    throw new Exception();
-			}
+                        Integrate.Panel(Layer4, CheckBox.BasisHeadlight, Size1, Location1, BackColor1);
+                        Integrate.Panel(CheckBox.BasisHeadlight, CheckBox.OutterHeadlight, Size2, Location2, BackColor2);
+                        Integrate.Panel(CheckBox.OutterHeadlight, CheckBox.InnerHeadlight, Size3, Location3, BackColor3);
 
-			CheckBox CheckBox = new CheckBox();
+                        RegisterCheckBoxClickEvent(CheckBox, OnClick);
+                        DropMenuBoxes.Add(CheckBox);
+                        UpdateContainerSizes();
+                    });
+                }
 
-			Integrate.Panel(Layer4, CheckBox.BasisHeadlight, Size1, Location1, BackColor1);
-			Integrate.Panel(CheckBox.BasisHeadlight, CheckBox.OutterHeadlight, Size2, Location2, BackColor2);
-			Integrate.Panel(CheckBox.OutterHeadlight, CheckBox.InnerHeadlight, Size3, Location3, BackColor3);
+                catch
+                {
+                    throw;
+                }
+            }
 
-			RegisterCheckBoxClickEvent(CheckBox, OnClick);
-			DropMenuBoxes.Add(CheckBox);
-			UpdateContainerSizes();
-		    });
-		}
+            public bool Integrator(Control Parent, Point Location, Color BackColor1, Color BackColor2, Color BackColor3, Color ForeColor, int MenuWidth, params (string, Action)[] Children)
+            {
+                try
+                {
+                    if (Integrator(Parent, Location, BackColor1, MenuWidth))
+                    {
+                        foreach ((string, Action) Child in Children)
+                        {
+                            AddChild(Child.Item1, Child.Item2, ForeColor, BackColor1, BackColor2, BackColor3);
+                        }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                        return true;
+                    }
 
-	    public bool Integrator(Control Parent, Point Location, Color BackColor1, Color BackColor2, Color BackColor3, Color ForeColor, int MenuWidth, params (string, Action)[] Children)
-	    {
-		try
-		{
-		    if (Integrator(Parent, Location, BackColor1, MenuWidth))
-		    {
-			foreach ((string, Action) Child in Children)
-			{
-			    AddChild(Child.Item1, Child.Item2, ForeColor, BackColor1, BackColor2, BackColor3);
-			}
+                    return false;
+                }
 
-			return true;
-		    }
-
-		    return false;
-		}
-
-		catch
-		{
-		    return false;
-		}
-	    }
-	}
+                catch
+                {
+                    return false;
+                }
+            }
+        }
     }
 }

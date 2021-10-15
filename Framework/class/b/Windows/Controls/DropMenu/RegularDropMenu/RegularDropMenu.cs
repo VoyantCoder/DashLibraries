@@ -1,4 +1,4 @@
- 
+
 // Author: Dashie
 
 
@@ -16,74 +16,74 @@ namespace DashFramework
 {
     namespace DashControls.Controls
     {
-	public partial class RegularDropMenu
-	{
-	    public virtual void Hide()
-	    {
-		try
-		{
-		    Panel1.Hide();
-		}
+        public partial class RegularDropMenu
+        {
+            public virtual void Hide()
+            {
+                try
+                {
+                    Panel1.Hide();
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
-	    public virtual void Show()
-	    {
-		try
-		{
-		    Panel1.BringToFront();
-		    Panel1.Show();
-		}
+            public virtual void Show()
+            {
+                try
+                {
+                    Panel1.BringToFront();
+                    Panel1.Show();
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
-	    public bool Integrator(Control Parent, Point Location, Color BackColor = default(Color), Color ForeColor = default(Color), int ItemWidth = 100)
-	    {
-		try
-		{
-		    if (Settings.GetStatus(0))
-		    {
-			return false;
-		    }
+            public bool Integrator(Control Parent, Point Location, Color BackColor = default(Color), Color ForeColor = default(Color), int ItemWidth = 100)
+            {
+                try
+                {
+                    if (Settings.GetStatus(0))
+                    {
+                        return false;
+                    }
 
-		    Color def = default(Color);
+                    Color def = default(Color);
 
-		    if (BackColor.Equals(def))
-		    {
-			BackColor = Color.FromArgb(8, 8, 8);
-		    }
+                    if (BackColor.Equals(def))
+                    {
+                        BackColor = Color.FromArgb(8, 8, 8);
+                    }
 
-		    if (ForeColor.Equals(def))
-		    {
-			ForeColor = Color.White;
-		    }
-		    
-		    Integrate.Panel(Parent, Panel1, new Size
-			(ItemWidth + 4, 10), Location, BackColor);
+                    if (ForeColor.Equals(def))
+                    {
+                        ForeColor = Color.White;
+                    }
 
-		    Settings.ForeColor = ForeColor;
-		    Settings.BackColor = BackColor;
-		    Settings.ItemWidth = ItemWidth;
-		    Settings.ToggleInit(1);
+                    Integrate.Panel(Parent, Panel1, new Size
+                    (ItemWidth + 4, 10), Location, BackColor);
 
-		    Hide();
-		}
+                    Settings.ForeColor = ForeColor;
+                    Settings.BackColor = BackColor;
+                    Settings.ItemWidth = ItemWidth;
+                    Settings.ToggleInit(1);
 
-		catch
-		{
-		    return false;
-		}
+                    Hide();
+                }
 
-		return true;
-	    }
-	}
+                catch
+                {
+                    return false;
+                }
+
+                return true;
+            }
+        }
     }
 }
