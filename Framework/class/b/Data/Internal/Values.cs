@@ -14,97 +14,97 @@ namespace DashFramework
     namespace Data
     {
 
-	public class Values
-	{
-	    // List Related:
-	    public List<string> GetLineIf(string file, string contains)
-	    {
-		try
-		{
-		    var lines = new List<string>();
+        public class Values
+        {
+            // List Related:
+            public List<string> GetLineIf(string file, string contains)
+            {
+                try
+                {
+                    var lines = new List<string>();
 
-		    if (!File.Exists(file))
-		    {
-			return null;
-		    }
+                    if (!File.Exists(file))
+                    {
+                        return null;
+                    }
 
-		    foreach (string line in File.ReadAllLines(file))
-		    {
-			if (line.IndexOf(contains, StringComparison.OrdinalIgnoreCase) >= 0)
-			{
-			    lines.Add(line);
-			}
-		    }
+                    foreach (string line in File.ReadAllLines(file))
+                    {
+                        if (line.IndexOf(contains, StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            lines.Add(line);
+                        }
+                    }
 
-		    return lines;
-		}
+                    return lines;
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
-
-
-	    public List<object> ListRemove(List<object> obj, object criteria)
-	    {
-		try
-		{
-		    for (int id = 0; id < obj.Count; id += 1)
-		    {
-			if (obj[id] == criteria)
-			{
-			    obj.RemoveAt(id);
-			}
-		    }
-
-		    return obj;
-		}
-
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
 
-	    // String etc Related:
-	    public bool ArrayContains(object obj, object[] arr)
-	    {
-		for (int k = 0; k < arr.Length; k += 1)
-		    if (arr[k] != obj && !arr[k].Equals(obj))
-			return false;
-		return true;
-	    }
+            public List<object> ListRemove(List<object> obj, object criteria)
+            {
+                try
+                {
+                    for (int id = 0; id < obj.Count; id += 1)
+                    {
+                        if (obj[id] == criteria)
+                        {
+                            obj.RemoveAt(id);
+                        }
+                    }
+
+                    return obj;
+                }
+
+                catch
+                {
+                    throw;
+                }
+            }
 
 
-	    public string Replace(string obj, string to, params string[] wha)
-	    {
-		try
-		{
-		    foreach (string criteria in wha)
-		    {
-			obj = obj.ToLower().Replace(criteria
-			    .ToLower(), $@"{to}");
-		    }
-
-		    return obj;
-		}
-
-		catch
-		{
-		    throw;
-		}
-	    }
+            // String etc Related:
+            public bool ArrayContains(object obj, object[] arr)
+            {
+                for (int k = 0; k < arr.Length; k += 1)
+                    if (arr[k] != obj && !arr[k].Equals(obj))
+                        return false;
+                return true;
+            }
 
 
-	    public bool IsAnyNull(params object[] targets)
-	    {
-		foreach (object target in targets)
-		    if (target == null)
-			return true;
-		return false;
-	    }
-	}
+            public string Replace(string obj, string to, params string[] wha)
+            {
+                try
+                {
+                    foreach (string criteria in wha)
+                    {
+                        obj = obj.ToLower().Replace(criteria
+                            .ToLower(), $@"{to}");
+                    }
+
+                    return obj;
+                }
+
+                catch
+                {
+                    throw;
+                }
+            }
+
+
+            public bool IsAnyNull(params object[] targets)
+            {
+                foreach (object target in targets)
+                    if (target == null)
+                        return true;
+                return false;
+            }
+        }
     }
 }

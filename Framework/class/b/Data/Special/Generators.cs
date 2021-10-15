@@ -13,158 +13,158 @@ namespace DashFramework
 {
     namespace Data.Special
     {
-	public partial class Specialities
-	{
-	    readonly Random Rand = new Random();
+        public partial class Specialities
+        {
+            readonly Random Rand = new Random();
 
-	    public int GetRandomInt(int min, int max)
-	    {
-		try
-		{
-		    return Rand.Next(min, max);
-		}
+            public int GetRandomInt(int min, int max)
+            {
+                try
+                {
+                    return Rand.Next(min, max);
+                }
 
-		catch
-		{
-		    return 0000;
-		}
-	    }
+                catch
+                {
+                    return 0000;
+                }
+            }
 
-	    public int GetRandomInt(int max)
-	    {
-		try
-		{
-		    return Rand.Next(max);
-		}
+            public int GetRandomInt(int max)
+            {
+                try
+                {
+                    return Rand.Next(max);
+                }
 
-		catch
-		{
-		    return 0000;
-		}
-	    }
+                catch
+                {
+                    return 0000;
+                }
+            }
 
-	    public string RandomStringAlphabet =
-	    (
-		"abcdefghijklmnopqrstuvwxyz" +
-		"ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
-		"0123456789 "
-	    );
-	    
-	    public string GetRandomString(int MinLength, int MaxLength)
-	    {
-		try
-		{
-		    int b = GetRandomInt(MinLength, MaxLength);
-		    string a = RandomStringAlphabet;
+            public string RandomStringAlphabet =
+            (
+            "abcdefghijklmnopqrstuvwxyz" +
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+            "0123456789 "
+            );
 
-		    return new string(Enumerable.Repeat(a, b).Select
-			(entry => entry[GetRandomInt(entry.Length)]).ToArray());
-		}
+            public string GetRandomString(int MinLength, int MaxLength)
+            {
+                try
+                {
+                    int b = GetRandomInt(MinLength, MaxLength);
+                    string a = RandomStringAlphabet;
 
-		catch
-		{
-		    return null;
-		}
-	    }
-		
-	    public string GetRandomString(int Length)
-	    {
-		try
-		{
-		    return GetRandomString(Length, Length + 1);
-		}
+                    return new string(Enumerable.Repeat(a, b).Select
+                    (entry => entry[GetRandomInt(entry.Length)]).ToArray());
+                }
 
-		catch
-		{
-		    return null;
-		}
-	    }
+                catch
+                {
+                    return null;
+                }
+            }
 
-	    public string GetRandomFileName(int Length)
-	    {
-		try
-		{
-		    return GetRandomString(Length);
-		}
+            public string GetRandomString(int Length)
+            {
+                try
+                {
+                    return GetRandomString(Length, Length + 1);
+                }
 
-		catch
-		{
-		    return null;
-		}
-	    }
+                catch
+                {
+                    return null;
+                }
+            }
 
-	    public string GetRandomFileName(int Length, string Extension)
-	    {
-		try
-		{
-		    return string.Format("{0}.{1}", 
-			GetRandomFileName(Length), Extension);
-		}
+            public string GetRandomFileName(int Length)
+            {
+                try
+                {
+                    return GetRandomString(Length);
+                }
 
-		catch
-		{
-		    return null;
-		}
-	    }
+                catch
+                {
+                    return null;
+                }
+            }
 
-	    public string GetRandomFileName(int MinLength, int MaxLength)
-	    {
-		try
-		{
-		    return GetRandomString(MinLength, MaxLength);
-		}
+            public string GetRandomFileName(int Length, string Extension)
+            {
+                try
+                {
+                    return string.Format("{0}.{1}",
+                    GetRandomFileName(Length), Extension);
+                }
 
-		catch
-		{
-		    return null;
-		}
-	    }
+                catch
+                {
+                    return null;
+                }
+            }
 
-	    public string GetRandomDirPath(int Depth, int MinLength, int MaxLength, string Base = @"C:\")
-	    {
-		try
-		{
-		    if (Depth < 1 || !Directory.Exists(Base))
-		    {
-			return null;
-		    }
+            public string GetRandomFileName(int MinLength, int MaxLength)
+            {
+                try
+                {
+                    return GetRandomString(MinLength, MaxLength);
+                }
 
-		    else if (!Base.EndsWith(@"\"))
-		    {
-			Base += @"\";
-		    }
+                catch
+                {
+                    return null;
+                }
+            }
 
-		    StringBuilder build = new StringBuilder();
+            public string GetRandomDirPath(int Depth, int MinLength, int MaxLength, string Base = @"C:\")
+            {
+                try
+                {
+                    if (Depth < 1 || !Directory.Exists(Base))
+                    {
+                        return null;
+                    }
 
-		    build.Append(string.Format(Base));
+                    else if (!Base.EndsWith(@"\"))
+                    {
+                        Base += @"\";
+                    }
 
-		    for (int k = 0; k <= Depth; k += 1)
-		    {
-			string name = GetRandomString(MinLength, MaxLength);
-			build.Append(string.Format(@"{0}\", name));
-		    }
+                    StringBuilder build = new StringBuilder();
 
-		    return build.ToString();
-		}
+                    build.Append(string.Format(Base));
 
-		catch
-		{
-		    return null;
-		}
-	    }
+                    for (int k = 0; k <= Depth; k += 1)
+                    {
+                        string name = GetRandomString(MinLength, MaxLength);
+                        build.Append(string.Format(@"{0}\", name));
+                    }
 
-	    public string GetRandomDirPath(int Depth, string Base = @"C:\")
-	    {
-		try
-		{
-		    return GetRandomDirPath(Depth, 2, 10, Base);
-		}
+                    return build.ToString();
+                }
 
-		catch
-		{
-		    return null;
-		}
-	    }
-	}
+                catch
+                {
+                    return null;
+                }
+            }
+
+            public string GetRandomDirPath(int Depth, string Base = @"C:\")
+            {
+                try
+                {
+                    return GetRandomDirPath(Depth, 2, 10, Base);
+                }
+
+                catch
+                {
+                    return null;
+                }
+            }
+        }
     }
 }
