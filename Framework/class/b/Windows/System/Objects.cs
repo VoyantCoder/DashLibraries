@@ -9,16 +9,16 @@ namespace DashFramework
 {
     namespace Systems
     {
-	public enum REGISTRY_ROOTS
-	{
-	    CLASSES_ROOT, CURRENT_USER,
-	    LOCAL_MACHINE, USERS, CURRENT_CONFIG,
-	    PERFORMANCE_DATA
-	}
+        public enum REGISTRY_ROOTS
+        {
+            CLASSES_ROOT, CURRENT_USER,
+            LOCAL_MACHINE, USERS, CURRENT_CONFIG,
+            PERFORMANCE_DATA
+        }
 
-	public partial class EasyRegistry
-	{
-	    public RegistryKey User = Registry.CurrentUser;
-	}
+        public partial class EasyRegistry
+        {
+            public RegistryKey User = Registry.CurrentUser;
+        }
     }
 }

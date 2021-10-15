@@ -10,108 +10,108 @@ namespace DashFramework
 {
     namespace Forms
     {
-	public partial class Toolbar
-	{
-	    public void SetLocation(Point Location)
-	    {
-		try
-		{
-		    Panel1.Location = Location;
-		}
+        public partial class Toolbar
+        {
+            public void SetLocation(Point Location)
+            {
+                try
+                {
+                    Panel1.Location = Location;
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
-	    public Point GetPosition(ToolbarPosition Position, Control Parent = default(Control), Size Size = default(Size))
-	    {
-		try
-		{
-		    if (Parent == default(Control))
-		    {
-			if (Panel1.Parent == null)
-			{
-			    return Point.Empty;
-			}
+            public Point GetPosition(ToolbarPosition Position, Control Parent = default(Control), Size Size = default(Size))
+            {
+                try
+                {
+                    if (Parent == default(Control))
+                    {
+                        if (Panel1.Parent == null)
+                        {
+                            return Point.Empty;
+                        }
 
-			Parent = Panel1.Parent;
-		    }
+                        Parent = Panel1.Parent;
+                    }
 
-		    if (Size == default(Size))
-		    {
-			if (Panel1.Parent == null)
-			{
-			    return Point.Empty;
-			}
+                    if (Size == default(Size))
+                    {
+                        if (Panel1.Parent == null)
+                        {
+                            return Point.Empty;
+                        }
 
-			Size = Panel1.Size;
-		    }
+                        Size = Panel1.Size;
+                    }
 
-		    Point Location = new Point(-2, -2);
+                    Point Location = new Point(-2, -2);
 
-		    switch (Position)
-		    {
-			case ToolbarPosition.Top:
-			{
-			    Location.Y = 0;
-			    break;
-			}
+                    switch (Position)
+                    {
+                        case ToolbarPosition.Top:
+                            {
+                                Location.Y = 0;
+                                break;
+                            }
 
-			case ToolbarPosition.Bottom:
-			{
-			    Location.Y = Parent.Height - Size.Height;
-			    break;
-			}
+                        case ToolbarPosition.Bottom:
+                            {
+                                Location.Y = Parent.Height - Size.Height;
+                                break;
+                            }
 
-			case ToolbarPosition.Right:
-			{
-			    Location.X = Parent.Width - Size.Width;
-			    break;
-			}
+                        case ToolbarPosition.Right:
+                            {
+                                Location.X = Parent.Width - Size.Width;
+                                break;
+                            }
 
-			case ToolbarPosition.Left:
-			{
-			    Location.X = 0;
-			    break;
-			}
-		    }
+                        case ToolbarPosition.Left:
+                            {
+                                Location.X = 0;
+                                break;
+                            }
+                    }
 
-		    return Location;
-		}
+                    return Location;
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
-	    public void SetPosition(ToolbarPosition Position)
-	    {
-		try
-		{
-		    SetLocation(GetPosition(Position, null, Size.Empty));
-		}
+            public void SetPosition(ToolbarPosition Position)
+            {
+                try
+                {
+                    SetLocation(GetPosition(Position, null, Size.Empty));
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
+                catch
+                {
+                    throw;
+                }
+            }
 
-	    public void Integrate(Control Parent, Color BackColor, Size Size, ToolbarPosition Position)
-	    {
-		try
-		{
-		    Integrate(Parent, BackColor, Size, GetPosition(Position, Parent, Size));
-		}
+            public void Integrate(Control Parent, Color BackColor, Size Size, ToolbarPosition Position)
+            {
+                try
+                {
+                    Integrate(Parent, BackColor, Size, GetPosition(Position, Parent, Size));
+                }
 
-		catch
-		{
-		    throw;
-		}
-	    }
-	}
+                catch
+                {
+                    throw;
+                }
+            }
+        }
     }
 }
