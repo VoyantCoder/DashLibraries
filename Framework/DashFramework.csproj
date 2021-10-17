@@ -189,9 +189,13 @@
     <Compile Include="class\b\Windows\Forms\DashWindow\Visibility.cs" />
     <Compile Include="class\b\Windows\Forms\Forms.cs" />
     <Compile Include="class\b\Windows\Forms\DashWindow\DashWindow.cs" />
-    <Compile Include="class\b\Windows\Forms\HelperGUI\Additional.cs" />
-    <Compile Include="class\b\Windows\Forms\HelperGUI\Constructor.cs" />
-    <Compile Include="class\b\Windows\Forms\HelperGUI\Objects.cs" />
+    <Compile Include="class\b\Windows\Forms\HelperGUI\Additional\Helper.cs" />
+    <Compile Include="class\b\Windows\Forms\HelperGUI\Additional\Properties.cs" />
+    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Base.cs" />
+    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Constructor.cs" />
+    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\LeftPanel.cs" />
+    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\RightPanel.cs" />
+    <Compile Include="class\b\Windows\Forms\HelperGUI\Other\Objects.cs" />
     <Compile Include="class\b\Windows\Forms\MenuBar\Buttons.cs" />
     <Compile Include="class\b\Windows\Forms\MenuBar\Icons.cs" />
     <Compile Include="class\b\Windows\Forms\MenuBar\MenuBar.cs" />
