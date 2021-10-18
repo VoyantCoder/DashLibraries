@@ -26,6 +26,19 @@ namespace DashFramework
                 }
             }
 
+            public MenuBar Menubar
+            {
+                get
+                { 
+                    if (MenubarInstance.Added)
+                    {
+                        return MenubarInstance;
+                    }
+
+                    return null;
+                }
+            }
+
             public Form Parent
             {
                 get
@@ -72,11 +85,12 @@ namespace DashFramework
             {
                 try
                 {
-                    Size menubarSize = new Size(size.Width,
-                    Menubar().GetMenubarSize().Height);
-
-                    Menubar().SetMenubarSize(menubarSize);
                     Transform.Resize(WindowInstance, size);
+
+                    int height = Menubar.GetMenubarSize().Height;
+                    Size newMSize = new Size(size.Width, height);
+                    
+                    Menubar.SetMenubarSize(newMSize);
                 }
 
                 catch
