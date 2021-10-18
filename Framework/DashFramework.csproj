@@ -191,11 +191,14 @@
     <Compile Include="class\b\Windows\Forms\DashWindow\DashWindow.cs" />
     <Compile Include="class\b\Windows\Forms\HelperGUI\Additional\Helper.cs" />
     <Compile Include="class\b\Windows\Forms\HelperGUI\Additional\Properties.cs" />
-    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Base.cs" />
+    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\BasePanel.cs" />
     <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Constructor.cs" />
     <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\LeftPanel.cs" />
+    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Objects\General.cs" />
+    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Objects\Left.cs" />
+    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Objects\Right.cs" />
     <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\RightPanel.cs" />
-    <Compile Include="class\b\Windows\Forms\HelperGUI\Other\Objects.cs" />
+    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Objects\Base.cs" />
     <Compile Include="class\b\Windows\Forms\MenuBar\Buttons.cs" />
     <Compile Include="class\b\Windows\Forms\MenuBar\Icons.cs" />
     <Compile Include="class\b\Windows\Forms\MenuBar\MenuBar.cs" />
@@ -210,7 +213,11 @@
     <Compile Include="class\b\Windows\System\Objects.cs" />
     <Compile Include="class\b\Windows\System\Registry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="resources\Resources.Designer.cs" />
+    <Compile Include="resources\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <None Include="class\b\DashSpecial\Herbal\strains.template" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -243,6 +250,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\framework\guihelper\HelperConfiguration" />
     <None Include="resources\image\ICON.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -252,6 +260,7 @@
     <EmbeddedResource Include="resources\Resources.resx">
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
