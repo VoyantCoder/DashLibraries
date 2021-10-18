@@ -19,12 +19,15 @@ namespace DashFramework
             {
                 DashWindow Window = new DashWindow();
 
-                Window.Integrate(DashWindowPosition.Center, new Size(675, 400), Color.White, Color.FromArgb(8, 34, 46), false, 0, Color.FromArgb(8, 34, 46), Color.White, resources.Resources.LOGO, $"Dash Framework");
+                HelperGUI gui = new HelperGUI();
+                gui.Show(true);
 
-                MainGUI MainGUI = new MainGUI();
-                MainGUI.Initiator(Window);
+                //Window.Integrate(DashWindowPosition.Center, new Size(675, 400), Color.White, Color.FromArgb(8, 34, 46), false, 0, Color.FromArgb(8, 34, 46), Color.White, resources.Resources.LOGO, $"Dash Framework");
+           
+                //MainGUI MainGUI = new MainGUI();
+                //MainGUI.Initiator(Window);
 
-                Application.Run(Window.Instance);
+                //Application.Run(Window.Instance);
             }
 
             catch (Exception E)
