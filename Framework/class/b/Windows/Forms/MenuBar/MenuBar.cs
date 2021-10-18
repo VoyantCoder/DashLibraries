@@ -12,9 +12,12 @@ namespace DashFramework
     {
         public partial class MenuBar
         {
-            public bool HasMenubarBeenAdded()
+            public bool Added
             {
-                return Panel1.Parent != null;
+                get
+                {
+                    return Panel1.Parent != null;
+                }
             }
 
             public void SetMenubarSize(Size NewSize)
