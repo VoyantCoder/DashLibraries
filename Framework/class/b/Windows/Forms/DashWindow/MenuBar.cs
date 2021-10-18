@@ -23,7 +23,7 @@ namespace DashFramework
                     MenubarInstance.Integrate(WindowInstance, MenubarSize, MenubarLocation, MenuBarBackColor, MenuBarTitle,
                         MenuBarForeColor, TitlePosition.LeftMiddle, MenuBarIcon, IconPosition.LeftMiddle, ButtonSet.Close);
 
-                    Menubar().SetMenubarDraggability();
+                    Menubar.SetMenubarDraggability();
                 }
 
                 catch
