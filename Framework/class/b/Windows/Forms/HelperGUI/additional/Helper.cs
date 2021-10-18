@@ -2,9 +2,7 @@
 // Author: Dashie
 
 
-using System.Windows.Forms;
-
-using DashFramework.Forms;
+using System.Linq;
 
 
 namespace DashFramework
@@ -17,7 +15,28 @@ namespace DashFramework
             {
                 try
                 {
-                    WindowInst.Show();
+                    windowInst.Show();
+                }
+
+                catch
+                {
+                    throw;
+                }
+            }
+
+            public void Show(bool dialog)
+            {
+                try
+                {
+                    if (dialog)
+                    {
+                        Parent.ShowDialog();
+                    }
+
+                    else
+                    {
+                        Show();
+                    }
                 }
 
                 catch
@@ -30,7 +49,7 @@ namespace DashFramework
             {
                 try
                 {
-                    WindowInst.Hide();
+                    windowInst.Hide();
                 }
 
                 catch
