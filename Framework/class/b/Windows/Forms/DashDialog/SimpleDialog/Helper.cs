@@ -19,9 +19,9 @@ namespace DashFramework
             {
                 try
                 {
-                    if (Window.Menubar() != null)
+                    if (Window.Menubar != null)
                     {
-                        Window.Menubar().SetMenubarBackColor(color);
+                        Window.Menubar.SetMenubarBackColor(color);
                     }
 
                     UIMenubarBackColor = color;
@@ -51,9 +51,9 @@ namespace DashFramework
             {
                 try
                 {
-                    if (Window.Menubar() != null)
+                    if (Window.Menubar != null)
                     {
-                        Window.Menubar().SetTitleForeColor(color);
+                        Window.Menubar.SetTitleForeColor(color);
                     }
 
                     HeadLabel.ForeColor = color;
