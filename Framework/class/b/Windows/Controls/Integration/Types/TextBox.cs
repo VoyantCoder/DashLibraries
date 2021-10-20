@@ -43,7 +43,31 @@ namespace DashFramework
                 }
             }
 
-            public void TextBox(Control parent, TextBox textbox, Size size, Point location, Color backColor, Color foreColor, string text, int fontPts, int fixedBoxSpacing, bool additionals)
+            public void TextBox(Control parent, TextBox textbox, Size size, Point location, Color backColor, Color foreColor, string text, int fontPts, bool additionals1, bool additionals2)
+            {
+                try
+                {
+                    TextBox(parent, textbox, size, location, backColor, foreColor, text, fontPts);
+
+                    if (additionals1)
+                    {
+                        textbox.BorderStyle = BorderStyle.None;
+                        textbox.WordWrap = true;
+                    }
+
+                    if (additionals2)
+                    {
+                        textbox.TextAlign = HorizontalAlignment.Center;
+                    }
+                }
+
+                catch
+                {
+                    throw;
+                }
+            }
+
+            public void TextBox(Control parent, TextBox textbox, Size size, Point location, Color backColor, Color foreColor, string text, int fontPts, bool additionals1, bool additionals2, int fixedBoxSpacing)
             {
                 try
                 {
@@ -52,25 +76,17 @@ namespace DashFramework
                         return;
                     }
 
+                    location = new Point(fixedBoxSpacing, fixedBoxSpacing);
+                    DashPanel panel = new DashPanel();
+
+                    TextBox(panel, textbox, size, location, backColor, foreColor, text, fontPts, additionals1, additionals2);
+
                     int height = size.Height + (fixedBoxSpacing * 2);
                     int width = size.Width + (fixedBoxSpacing * 2);
-
                     Size panelSize = new Size(width, height);
-                    DashPanel panel = new DashPanel();
 
                     Panel(parent, panel, panelSize, location, backColor);
                     Register(parent, panel);
-
-                    if (additionals)
-                    {
-                        textbox.TextAlign = HorizontalAlignment.Center;
-                        textbox.BorderStyle = BorderStyle.None;
-                        textbox.WordWrap = true;
-                    }
-
-                    location = new Point(fixedBoxSpacing, fixedBoxSpacing);
-
-                    TextBox(panel, textbox, size, location, backColor, foreColor, text, fontPts);
                     UpdateRegister(panel, textbox);
                 }
 
@@ -80,16 +96,35 @@ namespace DashFramework
                 }
             }
 
-            public void TextBox(Control parent, TextBox textbox, Size size, Point location, Color backColor, Color foreColor, string text, int fontPts, int fixedBoxSpacing, bool additionals, bool multiline)
+            public void TextBox(Control parent, TextBox textbox, Size size, Point location, Color backColor, Color foreColor, string text, int fontPts, bool additionals1, bool additionals2, int fixedBoxSpacing, bool multiline)
             {
                 try
                 {
-                    TextBox(parent, textbox, size, location, backColor,
-                        foreColor, text, fontPts, fixedBoxSpacing, additionals);
+                    TextBox(parent, textbox, size, location, backColor, foreColor, text, fontPts, additionals1, additionals2);
 
                     textbox.AcceptsTab = multiline;
                     textbox.Multiline = multiline;
-                    textbox.Refresh();
+                    
+                    UpdateRegister(parent, textbox);
+                }
+
+                catch
+                {
+                    throw;
+                }
+            }
+
+            public void TextBox(Control parent, TextBox textbox, Size size, Point location, Color backColor, Color foreColor, string text, int fontPts, bool additionals1, bool additionals2, int fixedBoxSpacing, bool multiline, bool horizontalScrollbar)
+            {
+                try
+                {
+                    TextBox(parent, textbox, size, location, backColor, foreColor, text, fontPts, additionals1, additionals2, fixedBoxSpacing, multiline);
+
+                    if (horizontalScrollbar)
+                    {
+                        textbox.WordWrap = true;
+                        textbox.ScrollBars = ScrollBars.Vertical;
+                    }
 
                     UpdateRegister(parent, textbox);
                 }
