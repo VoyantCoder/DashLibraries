@@ -13,6 +13,18 @@ namespace DashFramework
     {
         public partial class OutsmartLoops
         {
+            bool returnParent = false;
+
+            public OutsmartLoops(bool returnParent)
+            {
+                this.returnParent = returnParent;
+            }
+
+            public OutsmartLoops() 
+            { 
+                //nothing special.
+            }
+
             public List<Control> GetSubControls(Control parent)
             {
                 IEnumerable<Control> AsList(Control.ControlCollection collection)
@@ -51,6 +63,11 @@ namespace DashFramework
                     }
 
                     while (true);
+
+                    if (returnParent)
+                    {
+                        added.Add(parent);
+                    }
                 }
 
                 catch
