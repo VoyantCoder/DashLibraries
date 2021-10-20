@@ -2,6 +2,9 @@
 // Author: Dashie
 
 
+using System.Windows.Forms;
+
+
 namespace DashFramework
 {
     namespace Forms
@@ -12,7 +15,7 @@ namespace DashFramework
             {
                 get
                 {
-                    return WindowInst.Menubar();
+                    return windowInst.Menubar;
                 }
             }
 
@@ -20,7 +23,7 @@ namespace DashFramework
             {
                 get
                 {
-                    return WindowInst;
+                    return windowInst;
                 }
             }
 
@@ -28,7 +31,7 @@ namespace DashFramework
             {
                 get
                 {
-                    return WindowInst.Instance;
+                    return windowInst.Instance;
                 }
             }
         }
