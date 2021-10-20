@@ -104,8 +104,8 @@ namespace DashFramework
             {
                 try
                 {
-                    Size Size = new Size(Con.Width - 1, Con.Height - 1);
-                    Point Loca = new Point(0, 0);
+                    Size Size = new Size(Con.Width - Ptw, Con.Height - Ptw);
+                    Point Loca = new Point(Ptw / 2, Ptw / 2);
 
                     PaintRectangle(Con, Ptw, Size, Loca, BCol);
                 }
