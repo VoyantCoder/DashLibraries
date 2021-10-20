@@ -54,6 +54,9 @@
   <PropertyGroup>
     <ApplicationIcon>resources\image\ICON.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -133,7 +136,8 @@
     <Compile Include="class\b\Windows\Controls\Other\CheckBox\CheckBox.cs" />
     <Compile Include="class\b\Windows\Controls\Other\CheckBox\Hooks.cs" />
     <Compile Include="class\b\Windows\Controls\Other\CheckBox\Objects.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\CustomScrollbar\CustomScrollbar.cs" />
+    <Compile Include="class\b\Windows\Controls\Other\CustomScrollbar\Creation.cs" />
+    <Compile Include="class\b\Windows\Controls\Other\CustomScrollbar\Event.cs" />
     <Compile Include="class\b\Windows\Controls\Other\CustomScrollbar\Objects.cs" />
     <Compile Include="class\b\Windows\Controls\Other\DashListBox\DashListBox.cs">
       <SubType>Component</SubType>
@@ -193,12 +197,15 @@
     <Compile Include="class\b\Windows\Forms\HelperGUI\Additional\Properties.cs" />
     <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\BasePanel.cs" />
     <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Constructor.cs" />
-    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\LeftPanel.cs" />
+    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Finalize.cs" />
+    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\LeftPanel\EntryHelper.cs" />
+    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\LeftPanel\LeftPanel.cs" />
     <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Objects\General.cs" />
     <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Objects\Left.cs" />
     <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Objects\Right.cs" />
     <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\RightPanel.cs" />
     <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Objects\Base.cs" />
+    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Window.cs" />
     <Compile Include="class\b\Windows\Forms\MenuBar\Buttons.cs" />
     <Compile Include="class\b\Windows\Forms\MenuBar\Icons.cs" />
     <Compile Include="class\b\Windows\Forms\MenuBar\MenuBar.cs" />
