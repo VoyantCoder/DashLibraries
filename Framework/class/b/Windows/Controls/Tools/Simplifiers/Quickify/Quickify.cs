@@ -97,7 +97,7 @@ namespace DashFramework
                         fixedBoxSpacing = 4;
                     }
 
-                    Controls.TextBox(parent, txtbox, TxtboxSize, loca, TxtboxBCol, TxtboxFCol, text, TxtboxFpts, fixedBoxSpacing, true, false);
+                    Controls.TextBox(parent, txtbox, TxtboxSize, loca, TxtboxBCol, TxtboxFCol, text, TxtboxFpts, true, true, fixedBoxSpacing);
 
                     txtbox.ScrollBars = ScrollBars.Vertical;
                     txtbox.ReadOnly = Readonly;
