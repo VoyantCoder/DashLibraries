@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 using DashFramework.Erroring;
 using DashFramework.Forms;
