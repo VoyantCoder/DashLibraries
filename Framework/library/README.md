@@ -1,0 +1,2 @@
+> This folder is dedicated to third-party extensions of the .NET Framework.  Such as extra data structures and what not.  May be handy in the future.
+> The C5 Library used can be found here: https://itu.dk/research/c5/
