@@ -66,9 +66,12 @@ namespace DashFramework
                     {
                         try
                         {
-                            if (Label1.Left <= 10)
+                            if (Icon != null && Label1 != null)
                             {
-                                Label1.Left = 10 + Icon.Width + Icon1Position.X;
+                                if (Label1.Left <= 10)
+                                {
+                                    Label1.Left = 10 + Icon.Width + Icon1Position.X;
+                                }
                             }
                         }
 
@@ -135,9 +138,12 @@ namespace DashFramework
                             }
                     }
 
-                    if (Icon.Height <= Panel1.Height)
+                    if (Icon != null && Panel1 != null)
                     {
-                        Icon2.Visible = false;
+                        if (Icon.Height <= Panel1.Height)
+                        {
+                            Icon2.Visible = false;
+                        }
                     }
 
                     Color IconBackColor = Panel1.BackColor;

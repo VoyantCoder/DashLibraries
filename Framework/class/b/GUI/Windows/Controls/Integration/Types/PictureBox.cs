@@ -22,7 +22,9 @@ namespace DashFramework
                         Register(parent, pictureBox);
                     }
 
-                    SetLocation(location, parent, image.Size, pictureBox);
+                    Size size = image == null ? new Size(0, 0) : image.Size;
+
+                    SetLocation(location, parent, size, pictureBox);
                     pictureBox.BackColor = Color.Transparent;
 
                     if (image != null)
@@ -30,7 +32,7 @@ namespace DashFramework
                         pictureBox.Image = image;
                     }
 
-                    Transform.Resize(pictureBox, image.Size);
+                    Transform.Resize(pictureBox, size);
                     parent.Controls.Add(pictureBox);
 
                     UpdateRegister(parent, pictureBox);
