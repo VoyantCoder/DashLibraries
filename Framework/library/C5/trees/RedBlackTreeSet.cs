@@ -1538,7 +1538,6 @@ namespace C5
       }
       else
       {
-#warning for bag implementation: count is wrong
         if (ActiveEvents != 0)
           raiseForUpdate(item, olditem, 1);
         return true;
@@ -2146,7 +2145,6 @@ private bool removeIterativePhase2(Node cursor, int level)
       //A much more efficient version is possible if items is sorted like this.
       //Well, it is unclear how efficient it would be.
       //We could use a marking method!?
-#warning how does this work together with persistence?
       TreeSet<T> t = (TreeSet<T>)MemberwiseClone();
 
       T jtem = default(T);
@@ -2159,7 +2157,6 @@ private bool removeIterativePhase2(Node cursor, int level)
       if (size == t.size)
         return;
 
-#warning improve (mainly for bag) by using a Node iterator instead of ItemMultiplicities()
       CircularQueue<KeyValuePair<T, int>> wasRemoved = null;
       if ((ActiveEvents & EventTypeEnum.Removed) != 0)
       {

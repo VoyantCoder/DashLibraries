@@ -724,7 +724,7 @@ namespace C5
     /// <summary>
     /// 
     /// </summary>
-    bool IsFixedSize { get; }
+    new bool IsFixedSize { get; }
 
     /// <summary>
     /// On this list, this indexer is read/write.
