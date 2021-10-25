@@ -6,7 +6,7 @@
     <!-- This was Debug -->
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{58A7B4EB-1C2F-43DC-8037-E7E07FA5056A}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>DashFramework</RootNamespace>
     <!-- FrameworkUpdate4._0 was PugPawzPanel -->
     <AssemblyName>FrameworkUpdate4.0</AssemblyName>
@@ -76,153 +76,154 @@
     <Compile Include="class\a\MainGUI.cs" />
     <Compile Include="class\a\Program.cs" />
     <Compile Include="class\b\CLI\Text\Center.cs" />
-    <Compile Include="class\b\CLI\Text\Crumbler.cs" />
-    <Compile Include="class\b\CLI\Text\Shuffle.cs" />
-    <Compile Include="class\b\CLI\Text\SwapCase.cs" />
-    <Compile Include="class\b\Data\External\Files.cs" />
-    <Compile Include="class\b\Data\Internal\Data.cs" />
-    <Compile Include="class\b\Data\Internal\Lists.cs" />
-    <Compile Include="class\b\Data\Internal\Resources.cs" />
-    <Compile Include="class\b\Data\Internal\Values.cs" />
-    <Compile Include="class\b\Handling\CodeBlocks\AsyncSafe.cs" />
-    <Compile Include="class\b\Handling\CodeBlocks\CodeSorting.cs" />
-    <Compile Include="class\b\Handling\CodeBlocks\Runnables.cs" />
-    <Compile Include="class\b\Handling\Other\Erroring\Dialog.cs" />
-    <Compile Include="class\b\Handling\Other\Erroring\Helper.cs" />
-    <Compile Include="class\b\Handling\Other\Erroring\Objects.cs" />
-    <Compile Include="class\b\NETExt\control.cs" />
-    <Compile Include="class\b\NETExt\string.cs" />
-    <Compile Include="class\b\Networking\Http\Data\Header.cs" />
-    <Compile Include="class\b\Networking\Http\Data\UserAgent.cs" />
-    <Compile Include="class\b\Networking\Http\Objects.cs" />
-    <Compile Include="class\b\Networking\Http\PageHandler.cs" />
-    <Compile Include="class\b\Networking\Http\Settings.cs" />
-    <Compile Include="class\b\Networking\Ports\PortScan.cs" />
-    <Compile Include="class\b\Networking\Other\Sockets.cs" />
-    <Compile Include="class\b\Networking\Other\Data.cs" />
-    <Compile Include="class\b\Networking\Other\Domain.cs" />
-    <Compile Include="class\b\Networking\Http\ServerHandler.cs" />
-    <Compile Include="class\b\Networking\Ports\Settings.cs" />
-    <Compile Include="class\b\Data\Special\Generators.cs" />
-    <Compile Include="class\b\Threading\Other\InsertyThread.cs" />
-    <Compile Include="class\b\Handling\Other\Erroring\Constructor.cs" />
-    <Compile Include="class\b\Handling\Other\Interact\CurrentInstance.cs" />
-    <Compile Include="class\b\DashSpecial\Herbal\Loader.cs" />
-    <Compile Include="class\b\Threading\Safe\SafeList\Additional.cs" />
-    <Compile Include="class\b\Threading\Safe\SafeList\Constructor.cs" />
-    <Compile Include="class\b\Threading\Safe\SafeList\Objects.cs" />
-    <Compile Include="class\b\Threading\Safe\SafeList\Updater.cs" />
-    <Compile Include="class\b\Windows\Controls\Integration\Caching\Additional.cs" />
-    <Compile Include="class\b\Windows\Controls\Integration\Caching\CheckBoxes.cs" />
-    <Compile Include="class\b\Windows\Controls\Integration\Caching\Controls.cs" />
-    <Compile Include="class\b\Windows\Controls\Integration\Caching\Helper.cs" />
-    <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\CheckBoxDropMenu.cs" />
-    <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\Children.cs" />
-    <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\Extension.cs" />
-    <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\Layout.cs" />
-    <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\Objects.cs" />
-    <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\Sub.cs" />
-    <Compile Include="class\b\Windows\Controls\DropMenu\CheckBoxDropMenu\Visibility.cs" />
-    <Compile Include="class\b\Windows\Controls\DropMenu\ClickDropMenu\ClickDropMenu.cs" />
-    <Compile Include="class\b\Windows\Controls\DropMenu\ClickDropMenu\Objects.cs" />
-    <Compile Include="class\b\Windows\Controls\DropMenu\RegularDropMenu\Children.cs" />
-    <Compile Include="class\b\Windows\Controls\DropMenu\RegularDropMenu\Objects.cs" />
-    <Compile Include="class\b\Windows\Controls\DropMenu\RegularDropMenu\RegularDropMenu.cs" />
-    <Compile Include="class\b\Windows\Controls\DropMenu\RegularDropMenu\SubMenu.cs" />
-    <Compile Include="class\b\Windows\Controls\DropMenu\RegularDropMenu\Visibility.cs" />
-    <Compile Include="class\b\Windows\Controls\Integration\Caching\Objects.cs" />
-    <Compile Include="class\b\Windows\Controls\Integration\Types\Button.cs" />
-    <Compile Include="class\b\Windows\Controls\Integration\Types\CheckBox.cs" />
-    <Compile Include="class\b\Windows\Controls\Integration\Types\Label.cs" />
-    <Compile Include="class\b\Windows\Controls\Integration\Types\Panel.cs" />
-    <Compile Include="class\b\Windows\Controls\Integration\Types\PictureBox.cs" />
-    <Compile Include="class\b\Windows\Controls\Integration\Types\TextBox.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\CheckBox\CheckBox.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\CheckBox\Hooks.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\CheckBox\Objects.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\CustomScrollbar\Creation.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\CustomScrollbar\Event.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\CustomScrollbar\Objects.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\DashListBox\DashListBox.cs">
+    <Compile Include="class\b\CLI\Text\TranslateColors.cs" />
+    <Compile Include="class\b\General\Text\Crumbler.cs" />
+    <Compile Include="class\b\General\Text\Shuffle.cs" />
+    <Compile Include="class\b\General\Text\SwapCase.cs" />
+    <Compile Include="class\b\General\Data\External\Files.cs" />
+    <Compile Include="class\b\General\Data\Internal\Data.cs" />
+    <Compile Include="class\b\General\Data\Internal\Lists.cs" />
+    <Compile Include="class\b\General\Data\Internal\Resources.cs" />
+    <Compile Include="class\b\General\Data\Internal\Values.cs" />
+    <Compile Include="class\b\General\Handling\CodeBlocks\AsyncSafe.cs" />
+    <Compile Include="class\b\General\Handling\CodeBlocks\CodeSorting.cs" />
+    <Compile Include="class\b\General\Handling\CodeBlocks\Runnables.cs" />
+    <Compile Include="class\b\GUI\Handling\Other\Erroring\Dialog.cs" />
+    <Compile Include="class\b\GUI\Handling\Other\Erroring\Helper.cs" />
+    <Compile Include="class\b\GUI\Handling\Other\Erroring\Objects.cs" />
+    <Compile Include="class\b\General\Extensions\control.cs" />
+    <Compile Include="class\b\General\Extensions\string.cs" />
+    <Compile Include="class\b\General\Networking\Http\Data\Header.cs" />
+    <Compile Include="class\b\General\Networking\Http\Data\UserAgent.cs" />
+    <Compile Include="class\b\General\Networking\Http\Objects.cs" />
+    <Compile Include="class\b\General\Networking\Http\PageHandler.cs" />
+    <Compile Include="class\b\General\Networking\Http\Settings.cs" />
+    <Compile Include="class\b\General\Networking\Ports\PortScan.cs" />
+    <Compile Include="class\b\General\Networking\Other\Sockets.cs" />
+    <Compile Include="class\b\General\Networking\Other\Data.cs" />
+    <Compile Include="class\b\General\Networking\Other\Domain.cs" />
+    <Compile Include="class\b\General\Networking\Http\ServerHandler.cs" />
+    <Compile Include="class\b\General\Networking\Ports\Settings.cs" />
+    <Compile Include="class\b\General\Data\Special\Generators.cs" />
+    <Compile Include="class\b\General\Threading\Other\InsertyThread.cs" />
+    <Compile Include="class\b\GUI\Handling\Other\Erroring\Constructor.cs" />
+    <Compile Include="class\b\General\Environment\CurrentInstance.cs" />
+    <Compile Include="class\b\GUI\DashSpecial\Herbal\Loader.cs" />
+    <Compile Include="class\b\General\Threading\Safe\SafeList\Additional.cs" />
+    <Compile Include="class\b\General\Threading\Safe\SafeList\Constructor.cs" />
+    <Compile Include="class\b\General\Threading\Safe\SafeList\Objects.cs" />
+    <Compile Include="class\b\General\Threading\Safe\SafeList\Updater.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Integration\Caching\Additional.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Integration\Caching\CheckBoxes.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Integration\Caching\Controls.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Integration\Caching\Helper.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\DropMenu\CheckBoxDropMenu\CheckBoxDropMenu.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\DropMenu\CheckBoxDropMenu\Children.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\DropMenu\CheckBoxDropMenu\Extension.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\DropMenu\CheckBoxDropMenu\Layout.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\DropMenu\CheckBoxDropMenu\Objects.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\DropMenu\CheckBoxDropMenu\Sub.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\DropMenu\CheckBoxDropMenu\Visibility.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\DropMenu\ClickDropMenu\ClickDropMenu.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\DropMenu\ClickDropMenu\Objects.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\DropMenu\RegularDropMenu\Children.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\DropMenu\RegularDropMenu\Objects.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\DropMenu\RegularDropMenu\RegularDropMenu.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\DropMenu\RegularDropMenu\SubMenu.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\DropMenu\RegularDropMenu\Visibility.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Integration\Caching\Objects.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Integration\Types\Button.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Integration\Types\CheckBox.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Integration\Types\Label.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Integration\Types\Panel.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Integration\Types\PictureBox.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Integration\Types\TextBox.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Other\CheckBox\CheckBox.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Other\CheckBox\Hooks.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Other\CheckBox\Objects.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Other\CustomScrollbar\Creation.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Other\CustomScrollbar\Event.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Other\CustomScrollbar\Objects.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Other\DashListBox\DashListBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="class\b\Windows\Controls\Other\DashPanel\Children.cs">
+    <Compile Include="class\b\GUI\Windows\Controls\Other\DashPanel\Children.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="class\b\Windows\Controls\Other\DashPanel\Constructor.cs">
+    <Compile Include="class\b\GUI\Windows\Controls\Other\DashPanel\Constructor.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="class\b\Windows\Controls\Other\DashPanel\Transparency.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\DashPanel\Objects.cs">
+    <Compile Include="class\b\GUI\Windows\Controls\Other\DashPanel\Transparency.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Other\DashPanel\Objects.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="class\b\Windows\Controls\Other\DashTreeView\DashTreeView.cs">
+    <Compile Include="class\b\GUI\Windows\Controls\Other\DashTreeView\DashTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="class\b\Windows\Controls\Other\LabelPage\LabelPage.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\LabelPage\Objects.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\Notification\Constructor.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\Notification\Notification.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\Notification\Objects.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\Notification\Settings.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\Notification\Timer.cs" />
-    <Compile Include="class\b\Windows\Controls\Other\TransLabel\Constructor.cs">
+    <Compile Include="class\b\GUI\Windows\Controls\Other\LabelPage\LabelPage.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Other\LabelPage\Objects.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Other\Notification\Constructor.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Other\Notification\Notification.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Other\Notification\Objects.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Other\Notification\Settings.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Other\Notification\Timer.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Other\TransLabel\Constructor.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="class\b\Windows\Controls\Other\TransLabel\Objects.cs">
+    <Compile Include="class\b\GUI\Windows\Controls\Other\TransLabel\Objects.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="class\b\Windows\Controls\Other\TransLabel\Transparency.cs">
+    <Compile Include="class\b\GUI\Windows\Controls\Other\TransLabel\Transparency.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="class\b\Windows\Controls\Tools\Other\Algorithm.cs" />
-    <Compile Include="class\b\Windows\Controls\Tools\Other\Appliance.cs" />
-    <Compile Include="class\b\Windows\Controls\Tools\Other\Useless.cs" />
-    <Compile Include="class\b\Windows\Controls\Tools\Other\Extern.cs" />
-    <Compile Include="class\b\Windows\Controls\Tools\Simplifiers\Ashamed\Ashamed.cs" />
-    <Compile Include="class\b\Windows\Controls\Tools\Simplifiers\Ashamed\Objects.cs" />
-    <Compile Include="class\b\Windows\Controls\Tools\Simplifiers\Quickify\Objects.cs" />
-    <Compile Include="class\b\Windows\Controls\Tools\Simplifiers\Quickify\Quickify.cs" />
-    <Compile Include="class\b\Windows\Controls\Tools\Other\Transformer.cs" />
-    <Compile Include="class\b\Windows\Forms\DashDialog\SimpleDialog\Constructions.cs" />
-    <Compile Include="class\b\Windows\Forms\DashDialog\SimpleDialog\Helper.cs" />
-    <Compile Include="class\b\Windows\Forms\DashDialog\SimpleDialog\Objects.cs" />
-    <Compile Include="class\b\Windows\Forms\DashDialog\SimpleDialog\SimpleDialog.cs" />
-    <Compile Include="class\b\Windows\Forms\DashWindow\Bordering.cs" />
-    <Compile Include="class\b\Windows\Forms\DashWindow\Children.cs" />
-    <Compile Include="class\b\Windows\Forms\DashWindow\MenuBar.cs" />
-    <Compile Include="class\b\Windows\Forms\DashWindow\Objects.cs" />
-    <Compile Include="class\b\Windows\Forms\DashWindow\Rounding.cs" />
-    <Compile Include="class\b\Windows\Forms\DashWindow\Unnamed.cs" />
-    <Compile Include="class\b\Windows\Forms\DashWindow\Visibility.cs" />
-    <Compile Include="class\b\Windows\Forms\Forms.cs" />
-    <Compile Include="class\b\Windows\Forms\DashWindow\DashWindow.cs" />
-    <Compile Include="class\b\Windows\Forms\HelperGUI\Additional\Helper.cs" />
-    <Compile Include="class\b\Windows\Forms\HelperGUI\Additional\Properties.cs" />
-    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\BasePanel.cs" />
-    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Constructor.cs" />
-    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Finalize.cs" />
-    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\LeftPanel\EntryHelper.cs" />
-    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\LeftPanel\LeftPanel.cs" />
-    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Objects\General.cs" />
-    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Objects\Left.cs" />
-    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Objects\Right.cs" />
-    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\RightPanel.cs" />
-    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Objects\Base.cs" />
-    <Compile Include="class\b\Windows\Forms\HelperGUI\Construction\Window.cs" />
-    <Compile Include="class\b\Windows\Forms\MenuBar\Buttons.cs" />
-    <Compile Include="class\b\Windows\Forms\MenuBar\Icons.cs" />
-    <Compile Include="class\b\Windows\Forms\MenuBar\MenuBar.cs" />
-    <Compile Include="class\b\Windows\Forms\MenuBar\Objects.cs" />
-    <Compile Include="class\b\Windows\Forms\MenuBar\Titling.cs" />
-    <Compile Include="class\b\Windows\Forms\MenuBar\Unnamed.cs" />
-    <Compile Include="class\b\Windows\Forms\Toolbar\Children.cs" />
-    <Compile Include="class\b\Windows\Forms\Toolbar\Position.cs" />
-    <Compile Include="class\b\Windows\Forms\Toolbar\Templates.cs" />
-    <Compile Include="class\b\Windows\Forms\Toolbar\ToolBar.cs" />
-    <Compile Include="class\b\Windows\Forms\Toolbar\Values.cs" />
-    <Compile Include="class\b\Windows\System\Objects.cs" />
-    <Compile Include="class\b\Windows\System\Registry.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Tools\Other\Algorithm.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Tools\Other\Appliance.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Tools\Other\Useless.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Tools\Other\Extern.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Tools\Simplifiers\Ashamed\Ashamed.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Tools\Simplifiers\Ashamed\Objects.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Tools\Simplifiers\Quickify\Objects.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Tools\Simplifiers\Quickify\Quickify.cs" />
+    <Compile Include="class\b\GUI\Windows\Controls\Tools\Other\Transformer.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\DashDialog\SimpleDialog\Constructions.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\DashDialog\SimpleDialog\Helper.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\DashDialog\SimpleDialog\Objects.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\DashDialog\SimpleDialog\SimpleDialog.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\DashWindow\Bordering.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\DashWindow\Children.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\DashWindow\MenuBar.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\DashWindow\Objects.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\DashWindow\Rounding.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\DashWindow\Unnamed.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\DashWindow\Visibility.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\Forms.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\DashWindow\DashWindow.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\HelperGUI\Additional\Helper.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\HelperGUI\Additional\Properties.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\HelperGUI\Construction\BasePanel.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\HelperGUI\Construction\Constructor.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\HelperGUI\Construction\Finalize.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\HelperGUI\Construction\LeftPanel\EntryHelper.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\HelperGUI\Construction\LeftPanel\LeftPanel.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\HelperGUI\Construction\Objects\General.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\HelperGUI\Construction\Objects\Left.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\HelperGUI\Construction\Objects\Right.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\HelperGUI\Construction\RightPanel.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\HelperGUI\Construction\Objects\Base.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\HelperGUI\Construction\Window.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\MenuBar\Buttons.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\MenuBar\Icons.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\MenuBar\MenuBar.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\MenuBar\Objects.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\MenuBar\Titling.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\MenuBar\Unnamed.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\Toolbar\Children.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\Toolbar\Position.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\Toolbar\Templates.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\Toolbar\ToolBar.cs" />
+    <Compile Include="class\b\GUI\Windows\Forms\Toolbar\Values.cs" />
+    <Compile Include="class\b\GUI\Windows\System\Objects.cs" />
+    <Compile Include="class\b\GUI\Windows\System\Registry.cs" />
     <Compile Include="library\C5\arrays\ArrayList.cs" />
     <Compile Include="library\C5\arrays\CircularQueue.cs" />
     <Compile Include="library\C5\arrays\HashedArrayList.cs" />
@@ -263,7 +264,7 @@
     </Compile>
     <None Include=".editorconfig" />
     <None Include="Properties\.editorconfig" />
-    <None Include="class\b\DashSpecial\Herbal\strains.template" />
+    <None Include="class\b\GUI\DashSpecial\Herbal\strains.template" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
