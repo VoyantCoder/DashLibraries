@@ -75,6 +75,10 @@
   <ItemGroup>
     <Compile Include="class\a\MainGUI.cs" />
     <Compile Include="class\a\Program.cs" />
+    <Compile Include="class\b\CLI\Text\Center.cs" />
+    <Compile Include="class\b\CLI\Text\Crumbler.cs" />
+    <Compile Include="class\b\CLI\Text\Shuffle.cs" />
+    <Compile Include="class\b\CLI\Text\SwapCase.cs" />
     <Compile Include="class\b\Data\External\Files.cs" />
     <Compile Include="class\b\Data\Internal\Data.cs" />
     <Compile Include="class\b\Data\Internal\Lists.cs" />
@@ -257,6 +261,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include=".editorconfig" />
     <None Include="Properties\.editorconfig" />
     <None Include="class\b\DashSpecial\Herbal\strains.template" />
     <None Include="Properties\Settings.settings">
