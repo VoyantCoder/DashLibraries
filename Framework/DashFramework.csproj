@@ -77,6 +77,7 @@
     <Compile Include="class\a\Program.cs" />
     <Compile Include="class\b\CLI\Text\Center.cs" />
     <Compile Include="class\b\CLI\Text\TranslateColors.cs" />
+    <Compile Include="class\b\General\Extensions\arrays.cs" />
     <Compile Include="class\b\General\Text\Crumbler.cs" />
     <Compile Include="class\b\General\Text\Shuffle.cs" />
     <Compile Include="class\b\General\Text\SwapCase.cs" />

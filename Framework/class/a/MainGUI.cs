@@ -19,9 +19,7 @@ namespace DashFramework
         {
             try
             {
-                CLI.ConsoleText text = new CLI.ConsoleText();
 
-                text.ColorText("&aThis world is a crazy place. &6Peace!", true, format:"&e[&b!&e] &7Success: %text%");
             }
 
             catch (Exception E)
