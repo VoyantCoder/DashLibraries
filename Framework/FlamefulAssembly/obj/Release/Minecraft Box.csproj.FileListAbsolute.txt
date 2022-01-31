@@ -1,0 +1,10 @@
+C:\Users\Dashie Lunare\Desktop\Offline\Minecraft Box\FlamefulAssembly\app\Minecraft Box.exe.config
+C:\Users\Dashie Lunare\Desktop\Offline\Minecraft Box\FlamefulAssembly\app\Minecraft Box.exe
+C:\Users\Dashie Lunare\Desktop\Offline\Minecraft Box\FlamefulAssembly\app\Minecraft Box.pdb
+C:\Users\Dashie Lunare\Desktop\Offline\Minecraft Box\FlamefulAssembly\obj\Release\Minecraft Box.csproj.AssemblyReference.cache
+C:\Users\Dashie Lunare\Desktop\Offline\Minecraft Box\FlamefulAssembly\obj\Release\Minecraft Box.csproj.SuggestedBindingRedirects.cache
+C:\Users\Dashie Lunare\Desktop\Offline\Minecraft Box\FlamefulAssembly\obj\Release\FlamefulAssembly.resources.Resources.resources
+C:\Users\Dashie Lunare\Desktop\Offline\Minecraft Box\FlamefulAssembly\obj\Release\Minecraft Box.csproj.GenerateResource.cache
+C:\Users\Dashie Lunare\Desktop\Offline\Minecraft Box\FlamefulAssembly\obj\Release\Minecraft Box.csproj.CoreCompileInputs.cache
+C:\Users\Dashie Lunare\Desktop\Offline\Minecraft Box\FlamefulAssembly\obj\Release\Minecraft Box.exe
+C:\Users\Dashie Lunare\Desktop\Offline\Minecraft Box\FlamefulAssembly\obj\Release\Minecraft Box.pdb
